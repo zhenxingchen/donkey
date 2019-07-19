@@ -1,0 +1,19 @@
+{
+  "name": "donkey",
+  "version": "1.0.0",
+  "description": "使用 json 的方式构建整个页面",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhenxingchen/donkey.git"
+  },
+  "author": "bling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhenxingchen/donkey/issues"
+  },
+  "homepage": "https://github.com/zhenxingchen/donkey#readme"
+}
