@@ -1,9 +1,11 @@
 {
   "name": "donkey",
   "version": "1.0.0",
-  "description": "使用 json 的方式构建整个页面",
+  "description": "with json config to build the full page",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack-dev-server --config scripts/dev.js --mode=development --watch",
+    "build": "webpack --config webpack/build.js --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,19 @@
   "bugs": {
     "url": "https://github.com/zhenxingchen/donkey/issues"
   },
-  "homepage": "https://github.com/zhenxingchen/donkey#readme"
+  "homepage": "https://github.com/zhenxingchen/donkey#readme",
+  "dependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "chalk": "^2.4.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.7.2"
+  }
 }
