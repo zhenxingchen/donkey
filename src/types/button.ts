@@ -1,19 +1,17 @@
-import * as IEvents from "./event";
-import {IKeyBoradEvent} from "./event";
-
+import IItem from "./item";
 /**
  * button
  */
-export default interface IButton {
-  tag: "button";
-  text: string;
+export default interface IButton extends IItem {
+  tag?: "button";
+  text?: string;
   attr?: {
+    disabled?: boolean;
+    title?: string,
+    type?: "submit" | "reset" | "button",
+    permission?: string;
     style?: string | object,
     className?: string
   },
-  event:
-    IEvents.IMouseEvent
-    | IEvents.IFormEvent
-    | IEvents.IKeyBoradEvent
-    | IEvents.IWindowEvent;
+  onClick?: (e: Event) => void;
 }

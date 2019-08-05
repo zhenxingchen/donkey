@@ -1,24 +1,32 @@
+
+import log from "../shared/log";
+
+// interface IEvent {
+//   [ name: string ]: (result: any) => any;
+// }
 /**
  * event bus
  */
-const EventBus = {
-  events: {},
-  on: (eventName: string, eventHandler: (data?: any) => void) => {
-    if (this.event.hasOwnProperty(eventName)) {
-      this.events.eventName.push(eventHandler);
+function EventBus() {
+  this.events = {};
+  this.on = (name: string, handler: (data?: any) => void) => {
+    if (this.events.hasOwnProperty(name)) {
+      this.events[name].push(handler);
     } else {
-      this.events.eventName = [eventHandler];
+      this.events[name] = [handler];
     }
-  },
-  emit: (eventName: string, data?: any) => {
-    const handlers = this.eventName;
-    for (const handler of handlers) {
-      handler(data);
+  };
+  this.emit = (name: string, data?: any, callback?: (result: any) => void) => {
+    const handlers = this.events[name];
+    if (handlers) {
+      for (const handler of handlers) {
+        callback && typeof callback === "function" ? callback(handler(data)) : handler(data);
+      }
     }
-  },
-  off: (eventName: string) => {
-    delete this.events.eventName;
-  },
-};
+  };
+  this.off = (name: string) => {
+    delete this.events[name];
+  }
+}
 
-export default EventBus;
+export default new EventBus();

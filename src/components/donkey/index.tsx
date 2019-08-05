@@ -4,9 +4,10 @@ import * as React from "react";
 import log from "../../shared/log";
 
 import IConfig from "../../types/config";
+import IDonkey from "../../types/donkey";
 import Form from "../form";
 
-function Donkey(props: IConfig) {
+function Donkey(props: IConfig<IDonkey>) {
 
   const [config] = React.useState(props.config);
 
@@ -27,7 +28,7 @@ function Donkey(props: IConfig) {
   };
 
   return (
-    <div className="dk-main">
+    <div className="dk-donkey dk-container">
       { render() }
     </div>
   );

@@ -1,7 +1,8 @@
+import IItem from "./item";
 
+export default interface ITree extends IItem {
+  tag?: "tree"
+  attr?: {
 
-export default interface ITree {
-
-  tag: "tree"
-
+  }
 }

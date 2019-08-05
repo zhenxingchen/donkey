@@ -1,24 +1,25 @@
 
-const chalk = require("chalk");
-
-const debug = chalk.keyword("gray");
-const warning = chalk.keyword("orange");
-const error = chalk.bold.red;
+const handleArgs = (msg) => {
+  const msgResult = [];
+  for (const m of msg) {
+    msgResult.push(`${typeof m === 'object' ? JSON.stringify(m) : m}`);
+  }
+  return msgResult.join(" ");
+}
 
 const log = {
-
-  debug: (...msg) => {
-    console.log("[debug]", debug(...msg))
+  curr: (...args) => {
+    console.log("[=====================>]", handleArgs(args));
   },
-
-  warning: (...msg) => {
-    console.warn("[warning]", warning(...msg));
+  debug: (...args) => {
+    console.log("[debug]", handleArgs(args));
   },
-
-  error: (...msg) => {
-    console.error("[error]", error(...msg));
+  warning: (...args) => {
+    console.warn("[warning]", handleArgs(args));
   },
-
+  error: (...args) => {
+    console.error("[error]", handleArgs(args));
+  },
 };
 
 export default log;

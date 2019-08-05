@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "with json config to build the full page",
   "main": "index.js",
+  "typings": "types/index.d.ts",
   "scripts": {
     "dev": "webpack-dev-server --config scripts/dev.js --mode=development --watch",
     "build": "webpack --config webpack/build.js --mode=production",
@@ -21,15 +22,19 @@
   "dependencies": {
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
-    "chalk": "^2.4.2",
+    "css-loader": "^3.1.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "style-loader": "^0.23.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
+    "ts-lint": "^4.5.1",
     "webpack-dev-server": "^3.7.2"
   }
 }

@@ -1,10 +1,8 @@
 import IValidate from "./validte";
+import IItem from "./item";
 
-import { IFormItemsLayout } from "./form";
-
-export default interface IInput extends IFormItemsLayout {
-  tag: "input";
-
+export default interface IInput extends IItem {
+  tag?: "input";
   attr?: {
     id?: string;
     name: string;
@@ -12,16 +10,15 @@ export default interface IInput extends IFormItemsLayout {
     value?: string;
     placeholder?: string;
     maxLength?: number;
-
     disabled?: boolean;
     readonly?: boolean;
     clear?: boolean;
-
+    autoComplete?: "off" | "on";
     style?: object;
     className?: string
   };
-
-  validate?: IValidate;
-
+  onBlur?: (e: Event) => void | boolean;
   onChange?: (e: Event) => void | boolean;
+  onFocus?: (e: Event) => void | boolean;
+  validate?: IValidate;
 }

@@ -11,4 +11,3 @@ run/
 *.sw*
 *.un~
 .nyc_output/
-public/

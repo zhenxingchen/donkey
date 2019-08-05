@@ -1,4 +1,6 @@
 
 import * as React from "react";
 
-export const FormDataContext = React.createContext([{}, () => {} ]);
+export const FormContext = React.createContext(null);
+
+export const GroupContext = React.createContext(null);
