@@ -1,16 +1,15 @@
-import Item from "./item";
-
-export default interface ICheckbox extends Item{
-  tag?: "checkbox",
+export default interface ICheckbox {
+  tag?: "checkbox";
+  cols?: string | string[];
   attr?: {
     id?: string;
     name?: string;
     text?: string;
-    value?: string | boolean | number;
+    value?: string | number | string[];
     disabled?: boolean;
     readonly?: boolean;
-    style?: object;
-    className?: string
+    className?: string;
+    style?: {};
   },
-  onClick?: (e: Event) => boolean;
+  onClick?: (target: HTMLInputElement) => boolean;
 }

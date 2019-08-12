@@ -3,9 +3,11 @@ import ISpan from "./span";
 
 export default interface IBread {
   tag: "bread";
+  cols?: string | string[];
   attr?: {
-    style?: {},
-    className?: string
+    id?: string;
+    className?: string;
+    style?: {};
   },
   items: (ILink | ISpan)[]
 }

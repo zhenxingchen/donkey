@@ -1,24 +1,27 @@
 import IValidate from "./validte";
-import IItem from "./item";
 
-export default interface IInput extends IItem {
+export default interface IInput {
   tag?: "input";
+  cols?: string | string[];
+  label?: string;
   attr?: {
     id?: string;
-    name: string;
+    name?: string;
     type?: "text" | "password" | "email" | "number";
     value?: string;
     placeholder?: string;
     maxLength?: number;
     disabled?: boolean;
     readonly?: boolean;
-    clear?: boolean;
     autoComplete?: "off" | "on";
-    style?: object;
-    className?: string
+    clear?: boolean;
+    className?: string;
+    style?: {};
   };
-  onBlur?: (e: Event) => void | boolean;
-  onChange?: (e: Event) => void | boolean;
-  onFocus?: (e: Event) => void | boolean;
+  onBlur?: (target: HTMLInputElement) => void | boolean;
+  onChange?: (target: HTMLInputElement) => void | boolean;
+  onFocus?: (target: HTMLInputElement) => void | boolean;
   validate?: IValidate;
+  form?: {};
+  table?: {};
 }

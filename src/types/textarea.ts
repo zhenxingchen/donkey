@@ -1,23 +1,25 @@
-import IItem from "./item";
 import IValidate from "./validte";
-
 /**
  * textarea
  */
-export default interface ITextArea extends IItem {
-  tag: "textarea";
+export default interface ITextArea {
+  tag?: "textarea";
+  cols?: string | string[];
+  label?: string;
   attr?: {
     id?: string;
     name?: string;
     value?: string;
     cols?: number;
     rows?: number;
-    style?: string | {};
+    maxLength?: number;
+    disabled?: boolean;
     className?: string;
+    style?: {};
   }
-  onBlur?: (e: Event) => void | boolean;
-  onFocus?: (e: Event) => void | boolean;
-  onChange?: (e: Event) => void | boolean;
-  onInput?: (e: Event) => void | boolean;
+  onBlur?: (target: HTMLInputElement) => void | boolean;
+  onFocus?: (target: HTMLInputElement) => void | boolean;
+  onChange?: (target: HTMLInputElement) => void | boolean;
+  onInput?: (target: HTMLInputElement) => void | boolean;
   validate?: IValidate;
 }

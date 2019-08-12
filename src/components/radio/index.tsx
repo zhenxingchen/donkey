@@ -1,18 +1,22 @@
 import * as React from "react";
-
 import { FormContext } from "../../shared/context";
-
 import bus from "../../shared/bus";
 import log from "../../shared/log";
-
-import IConfig from "../../types/config";
+import util from "../../shared/util";
+import IProps from "../../types/props";
 import IRadio from "../../types/radio";
 
 import "./style.less";
 
-function Radio(props: IConfig<IRadio>) {
+function Radio(props: IProps<IRadio>) {
 
-  const [config, setConfig] = React.useState(null);
+  const [config, setConfig] = React.useState(() => {
+    const config = props.config;
+    if (!config.attr) {
+      config.attr = {};
+    }
+    return config;
+  });
   const [formContext] = React.useContext(FormContext);
 
   React.useEffect(() => {
@@ -41,7 +45,7 @@ function Radio(props: IConfig<IRadio>) {
       return null;
     }
     return (
-      <div className="dk-radio">
+      <div className={`dk-radio ${util.getCols(config.cols)}`}>
         <input
           id={ config.attr.id }
           name={ config.attr.name }
@@ -55,7 +59,7 @@ function Radio(props: IConfig<IRadio>) {
           <span className="dk-radio-circle dk-transition-border">
             <i className="dk-radio-checked dk-transition-opacity"></i>
           </span>
-          <span className="dk-radio-text">{ config.label }</span>
+          <span className="dk-radio-text">{ config.attr.text }</span>
         </label>
       </div>
     );

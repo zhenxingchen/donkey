@@ -1,9 +1,3 @@
-
-import log from "../shared/log";
-
-// interface IEvent {
-//   [ name: string ]: (result: any) => any;
-// }
 /**
  * event bus
  */

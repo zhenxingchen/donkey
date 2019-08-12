@@ -1,4 +1,42 @@
 @charset "utf-8";
 .dk-form {
-
+  .dk-form-items {
+    white-space: nowrap;
+    *zoom: 1;
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .label-for {
+      position: relative;
+      display: inline-block;
+      width: 70px;
+      padding-right: 10px;
+      text-align: right;
+      &.required {
+        &:after {
+          position: absolute;
+          right: 3px;
+          top: 3px;
+          content: '*';
+          color: #e40;;
+        }
+      }
+    }
+    .dk-link, .dk-span {
+      line-height: 38px;
+    }
+    .dk-button,
+    .dk-group,
+    .dk-input,
+    .dk-link,
+    .dk-span,
+    .dk-select,
+    .dk-selects,
+    .dk-textarea,
+    .dk-upload {
+      margin-bottom: 20px;
+    }
+  }
 }

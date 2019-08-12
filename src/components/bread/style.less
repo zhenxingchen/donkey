@@ -1,0 +1,36 @@
+@charset "utf-8";
+.dk-bread {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0 8px;
+  .item {
+    display: inline-block;
+    line-height: 40px;
+    &:after {
+      margin: 0 8px;
+      color: #999;
+    }
+    &.arrow {
+      &:after {
+        content: '>';
+      }
+    }
+    &.slash-left {
+      &:after {
+        content: '/';
+      }
+    }
+    &.slash-right {
+      &:after {
+        content: '\\';
+      }
+    }
+    &:last-child {
+      &:after {
+        content: '';
+      }
+    }
+  }
+  .dk-link, .dk-span {
+    display: inline-block;
+  }
+}

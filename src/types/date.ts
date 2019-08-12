@@ -1,19 +1,20 @@
-import IItem from "./item";
 import IValidate from "./validte";
 
-export default interface IDate extends IItem {
+export default interface IDate {
   tag?: "date";
+  cols?: string | string[];
+  label?: string;
   attr?: {
     id?: string;
     name?: string;
     value?: string | number | Date;
     readonly?: boolean;
     disabled?: boolean;
-    style?: string | {};
     className?: string;
+    style?: {};
   }
-  onBlur?: (e: Event) => boolean | void;
-  onChange?: (e: Event) => boolean | void;
-  onFocus?: (e: Event) => boolean | void;
+  onBlur?: (target: HTMLInputElement) => boolean | void;
+  onChange?: (target: HTMLInputElement) => boolean | void;
+  onFocus?: (target: HTMLInputElement) => boolean | void;
   validate?: IValidate;
 }

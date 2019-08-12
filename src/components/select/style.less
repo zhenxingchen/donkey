@@ -1,44 +1,51 @@
 @charset "utf-8";
 .dk-select {
-  display: inline-block;
   position: relative;
-  .dk-select-options {
+  .drop-down {
     position: absolute;
-    width: 100%;
-    max-height: 196px;
-    border: 1px solid #e8e8e8;
-    box-shadow: 0 4px 8px #e8e8e8;
+    z-index: 99;
+    box-shadow: 0 4px 8px #e2e2e2;
+    border: 1px solid #e2e2e2;
     border-radius: 3px;
     overflow-y: auto;
-    ul {
-      list-style: none;
-      li {
-        list-style: none;
-        height: 33px;
-        line-height: 33px;
-        padding: 0 8px;
-        color: #666;
-        &:hover {
-          cursor: pointer;
-          background: #f2f2f2;
-        }
-        &.dk-select-curr {
-          color: #409eff;
-          .dk-select-checked {
-            float: right;
-            margin-top: 10px;
-            display: inline-block;
-            width: 8px;
-            height: 4px;
-            border-left: 1px solid #409eff;
-            border-bottom: 1px solid #409eff;
-            transform: rotateZ(-45deg);
-          }
-        }
-      }
-    }
-    .dk-select-page {
+    width: calc(100% - 2px);
+    color: #666;
+    background: #fff;
+    .options {
+       width: 100%;
+       min-height: 196px;
+       overflow-y: auto;
+       ul {
+         list-style: none;
+         li {
+           list-style: none;
+           height: 33px;
+           line-height: 33px;
+           padding: 0 8px;
+           &:hover {
+             cursor: pointer;
+             background: #f2f2f2;
+             color: #333;
+           }
+           &.curr {
+             color: #409eff;
+           }
+           .checked {
+             float: right;
+             margin-top: 10px;
+             display: inline-block;
+             width: 8px;
+             height: 4px;
+             border-left: 2px solid #409eff;
+             border-bottom: 2px solid #409eff;
+             transform: rotateZ(-45deg);
+           }
+         }
+       }
+     }
+    .page {
       text-align: center;
+      border-top: 1px solid #e2e2e2;
       a {
         display: inline-block;
         width: 50px;

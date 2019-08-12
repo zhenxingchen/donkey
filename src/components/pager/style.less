@@ -1,0 +1,39 @@
+@charset "utf-8";
+.dk-pager {
+  margin: 10px 0;
+  a {
+    display: inline-block;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+    padding: 7px 12px;
+    color: #666;
+    margin-right: 8px;
+    text-decoration: none;
+    &:hover {
+      color: #409eff;
+      border: 1px solid #409eff;
+      box-shadow: 0 0 2px #e8e8e8;
+    }
+    &.curr {
+      color: #409eff;
+      border: 1px solid #409eff;
+      box-shadow: 0 0 2px #e8e8e8;
+    }
+    &.disabled {
+      cursor: not-allowed;
+      color: #999;
+      border: 1px solid #e8e8e8;
+      background: #f8f8f8;
+      &:hover {
+        box-shadow: none;
+      }
+    }
+    &.dot {
+      border: 0;
+      &:hover {
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
+}

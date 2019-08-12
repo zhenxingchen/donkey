@@ -1,11 +1,13 @@
-import IItem from "./item";
 
-export default interface ISpan extends IItem {
+export default interface ISpan {
   tag: "span";
+  cols?: string | string[];
+  label?: string;
   text?: string;
   attr?: {
-    style?: string | object;
+    id?: string;
     className?: string;
+    style?: {};
   }
-  onClick?: (e: Event) => void;
+  onClick?: (target: HTMLSpanElement) => void;
 }

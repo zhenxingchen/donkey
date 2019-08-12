@@ -1,36 +1,38 @@
 @charset "utf-8";
-.dk-donkey {
-  .dk-form-control {
-    border: 1px solid #e2e2e2;
-    padding: 8px 7px;
+.dk-form-control {
+  border: 1px solid #e8e8e8;
+  padding: 0 7px;
+  height: 36px;
+  width: 180px;
+  outline: none;
+  border-radius: 3px;
+  &:hover {
+    border: 1px solid #409eff;
+    box-shadow: 0 0 4px #e8e8e8;
+  }
+  &.error {
+    border: 1px solid #e40;
+  }
+  &.small {
+    width: 80px;
+  }
+  &.middle {
     width: 180px;
-    outline: none;
-    border-radius: 3px;
-    &:hover {
-      border: 1px solid #409eff;
-      box-shadow: 0 0 4px #e2e2e2;
-    }
-    &.error {
-      border: 1px solid #e40;
-    }
-    &.small {
-      width: 80px;
-    }
-    &.middle {
-      width: 180px;
-    }
-    &.large {
-      width: 280px;
-    }
   }
-  .dk-form-control[disabled] {
-    border: 1px solid #e2e2e2;
-    background: #eee;
-    color: gray;
-    &:hover {
-      cursor: not-allowed;
-      border: 1px solid #e2e2e2;
-      box-shadow: none;
-    }
+  &.large {
+    width: 280px;
   }
+}
+.dk-form-control[disabled] {
+  border: 1px solid #e8e8e8;
+  background: #eee;
+  color: gray;
+  &:hover {
+    cursor: not-allowed;
+    border: 1px solid #e8e8e8;
+    box-shadow: none;
+  }
+}
+.dk-form-control-with-label {
+  width: calc(100% - 115px);
 }

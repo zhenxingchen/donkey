@@ -1,15 +1,20 @@
 import * as React from "react";
-
 import ICheckbox from "../../types/checkbox";
-import IConfig from "../../types/config";
+import IProps from "../../types/props";
 import {FormContext} from "../../shared/context";
 import bus from "../../shared/bus";
-
+import util from "../../shared/util";
 import "./style.less";
 
-function Checkbox(props: IConfig<ICheckbox>) {
+function Checkbox(props: IProps<ICheckbox>) {
 
-  const [config, setConfig] = React.useState(null);
+  const [config, setConfig] = React.useState(() => {
+    const config = props.config;
+    if (!config.attr) {
+      config.attr = {};
+    }
+    return config;
+  });
   const [formContext] = React.useContext(FormContext);
 
   React.useEffect(() => {
@@ -21,7 +26,6 @@ function Checkbox(props: IConfig<ICheckbox>) {
   }, [ props.config ]);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.checked);
     if (formContext.data[config.attr.name].indexOf(config.attr.value) > -1) {
       return ;
     }
@@ -36,7 +40,7 @@ function Checkbox(props: IConfig<ICheckbox>) {
       return null;
     }
     return (
-      <div className="dk-checkbox">
+      <div className={`dk-checkbox ${util.getCols(config.cols)}`}>
         <input
           id={ config.attr.id }
           name={ config.attr.name }
@@ -54,7 +58,7 @@ function Checkbox(props: IConfig<ICheckbox>) {
             <i className="dk-checkbox-checked-all dk-transition-opacity"></i>
             <i className="dk-checkbox-checked-half dk-transition-opacity"></i>
           </span>
-          <span className="dk-checkbox-text">{ config.label }</span>
+          <span className="dk-checkbox-text">{ config.attr.text }</span>
         </label>
       </div>
     );

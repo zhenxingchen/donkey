@@ -1,36 +1,25 @@
 import * as React from "react";
 import { GroupContext } from "../../shared/context";
-import IConfig from "../../types/config";
+import IProps from "../../types/props";
 import IGroup from "../../types/group";
-
-import Link from "../link";
-import Button from "../button";
-import Checkbox from "../checkbox";
-import Input from "../input";
-import Radio from "../radio";
-import Select from "../select";
-import Selects from "../selects";
-import Span from "../span";
+import Items from "../items";
+import util from "../../shared/util";
 
 import "./style.less";
 
-function Group(props: IConfig<IGroup>) {
+function Group(props: IProps<IGroup>) {
 
-  const [config, setConfig] = React.useState(null);
-  const [permissionCodes, setPermissionCodes] = React.useState(null);
-
-  React.useEffect(() => {
-    setDefault();
-    loadAjax();
-  }, [ props.config ]);
-
-  const setDefault = () => {
+  const [config, setConfig] = React.useState(() => {
     const config = props.config;
     if (!config.attr) {
       config.attr = {};
     }
-    setConfig(config);
-  };
+    return config;
+  });
+  const [permissionCodes, setPermissionCodes] = React.useState(null);
+
+  React.useEffect(() => {
+  }, [ props.config ]);
 
   const loadAjax = () => {
     if (!config) {
@@ -41,20 +30,26 @@ function Group(props: IConfig<IGroup>) {
     }
   };
 
-  const renderItem = (item, index) => {
-    if (!item) {
+  const renderLabel = () => {
+    if (!config.label) {
       return null;
     }
-    switch (item.tag) {
-      case "link": return (<Link config={item} key={index}/>);
-      case "button": return (<Button config={item} key={index}/>);
-      case "checkbox": return (<Checkbox config={item} key={index}/>);
-      case "input": return (<Input config={item} key={index}/>);
-      case "radio": return (<Radio config={item} key={index}/>);
-      case "select": return (<Select config={item} key={index}/>);
-      case "selects": return (<Selects config={item} key={index}/>);
-      case "span": return (<Span config={item} key={index}/>);
+    return (
+      <label className="label-for required" htmlFor={ config.attr.id }>{ config.label }</label>
+    );
+  };
+
+  const renderItems = () => {
+    if (!config.items
+      || !(config.items instanceof Array)
+      || config.items.length < 1) {
+      return null;
     }
+    return (
+      <div className="dk-group-items">
+        <Items configs={ config.items }/>
+      </div>
+    );
   };
 
   const render = () => {
@@ -62,9 +57,10 @@ function Group(props: IConfig<IGroup>) {
       return null;
     }
     return (
-      <div className="dk-group">
+      <div className={ `dk-group ${util.getCols(config.cols)}` } style={ {...config.attr.style} }>
         <GroupContext.Provider value={[ permissionCodes ]}>
-          { config.items.map((item, index) => renderItem(item, index)) }
+          { renderLabel() }
+          { renderItems() }
         </GroupContext.Provider>
       </div>
     );

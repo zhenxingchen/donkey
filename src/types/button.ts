@@ -1,17 +1,18 @@
-import IItem from "./item";
 /**
  * button
  */
-export default interface IButton extends IItem {
+export default interface IButton {
   tag?: "button";
+  cols?: string | string[];
   text?: string;
   attr?: {
-    disabled?: boolean;
-    title?: string,
-    type?: "submit" | "reset" | "button",
+    id?: string;
+    title?: string;
+    type?: "submit" | "reset" | "button";
     permission?: string;
-    style?: string | object,
-    className?: string
+    disabled?: boolean;
+    className?: string;
+    style?: {};
   },
-  onClick?: (e: Event) => void;
+  onClick?: (target: HTMLButtonElement) => void | boolean;
 }

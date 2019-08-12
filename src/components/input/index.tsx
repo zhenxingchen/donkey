@@ -1,24 +1,25 @@
 import * as React from "react";
-
-import { FormContext } from "../../shared/context";
+import { FormContext, TableContext } from "../../shared/context";
 import bus from "../../shared/bus";
-
-import IConfig from "../../types/config";
+import util from "../../shared/util";
+import IProps from "../../types/props";
 import IInput from "../../types/input";
-
 import "./style.less";
 
-function Input(props: IConfig<IInput>) {
+function Input(props: IProps<IInput>) {
 
-  const [config, setConfig] = React.useState(null);
-  const [formContext] = React.useContext(FormContext);
-
-  React.useEffect(() => {
+  const [config, setConfig] = React.useState(() => {
     const config = props.config;
     if (!config.attr) {
-      config.attr = { name: "_" };
+      config.attr = {};
     }
-    setConfig(config);
+    return config;
+  });
+  const [formContext] = React.useContext(FormContext);
+  const [tableContext] = React.useContext(TableContext);
+
+  React.useEffect(() => {
+
   }, [ props.config ]);
 
   React.useEffect(() => {
@@ -53,26 +54,42 @@ function Input(props: IConfig<IInput>) {
     });
   };
 
+  const renderLabel = () => {
+    if (!config.label) {
+      return null;
+    }
+    return (
+      <label className="label-for required" htmlFor={ config.attr.id }>{ config.label }</label>
+    );
+  };
+
+  const renderInput = () => {
+    return (
+      <input
+        id={ config.attr.id }
+        name={ config.attr.name }
+        type={ config.attr.type ? config.attr.type : "text" }
+        value={ config.attr.value }
+        disabled={ !!config.attr.disabled }
+        readOnly={ !!config.attr.readonly }
+        autoComplete={ config.attr.autoComplete ? config.attr.autoComplete : "off" }
+        style={ config.attr.style }
+        className={ `${config.attr.className ? config.attr.className : ""} dk-form-control dk-transition-border` }
+        onBlur={ eventHandler.bind(this, "onBlur") }
+        onChange={ eventHandler.bind(this, "onChange") }
+        onFocus={ eventHandler.bind(this, "onFocus") }
+      />
+    );
+  };
+
   const render = () => {
     if (!config) {
       return null;
     }
     return (
-      <div className="dk-input">
-        <input
-          id={ config.attr.id }
-          name={ config.attr.name }
-          type={ config.attr.type ? config.attr.type : "text" }
-          value={ config.attr.value }
-          disabled={ !!config.attr.disabled }
-          readOnly={ !!config.attr.readonly }
-          autoComplete={ config.attr.autoComplete ? config.attr.autoComplete : "off" }
-          style={ config.attr.style }
-          className={ `${config.attr.className ? config.attr.className : ""} dk-form-control dk-transition-border` }
-          onBlur={ eventHandler.bind(this, "onBlur") }
-          onChange={ eventHandler.bind(this, "onChange") }
-          onFocus={ eventHandler.bind(this, "onFocus") }
-        />
+      <div className={`dk-input ${util.getCols(config.cols)}`}>
+        { renderLabel() }
+        { renderInput() }
       </div>
     );
   };

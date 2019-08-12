@@ -1,19 +1,11 @@
-
-import { IFormItem } from "./form";
-
-import ITable from "./table";
-import IPager from "./pager";
-
+import IItems from "./items";
 export default interface IBlock {
   tag?: "block";
-  cols?: number;
+  cols?: string | string[];
   attr?: {
-    title?: string;
-    fold?: boolean;
-    style?: {},
-    className?: string
+    id?: string;
+    className?: string;
+    style?: {};
   };
-  items: IFormItem[];
-  table?: ITable;
-  pager?: IPager;
+  items?: IItems[]
 }

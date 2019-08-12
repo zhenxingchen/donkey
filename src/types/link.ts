@@ -1,17 +1,17 @@
-import IItem from "./item";
-
 /**
  * link
  */
-export default interface ILink extends IItem {
-  tag?: "a";
-  text: string;
+export default interface ILink {
+  tag?: "link";
+  cols?: string | string[];
+  label?: string;
+  text?: string;
   attr?: {
-    id?: string,
-    href?: string,
-    target?: string,
-    style?: {},
-    className?: string
+    id?: string;
+    href?: string;
+    target?: string;
+    className?: string;
+    style?: {};
   };
-  onClick?: (e: Event) => boolean | void;
+  onClick?: (target: HTMLLinkElement) => boolean | void;
 }

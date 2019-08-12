@@ -1,30 +1,62 @@
 @charset "utf-8";
 .dk-button {
-  display: inline-block;
-  button {
-    height: 33px;
-    padding: 0 15px;
+  .btn {
+    height: 38px;
+    padding: 0 18px;
     border-radius: 4px;
     border-radius: 4px;
-    border: 1px;
+    border: 1px solid;
     outline: none;
-    &.dk-btn-primary {
+    &:hover {
+      cursor: pointer;
+    }
+    &.blue {
       color: #fff;
       background-color: #1890ff;
       border-color: #1890ff;
       &:hover {
-        cursor: pointer;
         box-shadow: 0 0 4px #1890ff;
       }
     }
-    &.dk-btn-danger {
+    &.red {
       color: #fff;
       background-color: #ff4d4f;
       border-color: #ff4d4f;
       &:hover {
-        cursor: pointer;
         box-shadow: 0 0 4px #ff4d4f;
       }
+    }
+    &.green {
+      color: #fff;
+      background: #5FB878;
+      border-color: #5FB878;
+      &:hover {
+        box-shadow: 0 0 4px #5FB878;
+      }
+    }
+    &.gray {
+      color: #fff;
+      background: #009688;
+      border-color: #009688;
+      &:hover {
+        box-shadow: 0 0 4px #009688;
+      }
+    }
+    &.white {
+      background: #fff;
+      border-color: #e2e2e2;
+      &:hover {
+        box-shadow: 0 0 4px #e2e2e2;
+      }
+    }
+  }
+  .btn[disabled] {
+    border: 1px solid #e2e2e2;
+    background: #f2f2f2;
+    color: #888;
+    cursor: not-allowed;
+    &:hover {
+      box-shadow: none;
     }
   }
 }

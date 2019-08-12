@@ -1,37 +1,45 @@
-
 import * as React from "react";
+import IProps from "../../types/props";
 
-import log from "../../shared/log";
-
-import IConfig from "../../types/config";
-import IDonkey from "../../types/donkey";
+import Block from "../block";
 import Form from "../form";
+import Tab from "../tab";
 
-function Donkey(props: IConfig<IDonkey>) {
+function Donkey(props: IProps<any>) {
 
-  const [config] = React.useState(props.config);
-
-  React.useEffect(() => {
-    log.debug("donkey", config);
+  const [config, setConfig] = React.useState(() => {
+    const config = props.config;
+    if (!config.attr) {
+      config.attr = {};
+    }
+    return config;
   });
 
-  const render = () => {
-    for (const i in config) {
-      if (config.hasOwnProperty(i)) {
-        if (i === "form") {
-          return (
-            <Form key={i} config={ config[i] }></Form>
-          );
-        }
-      }
+  React.useEffect(() => {
+
+  }, [ props.config ]);
+
+  React.useEffect(() => {
+    console.log("page load finish...");
+  }, []);
+
+  const renderComponent = () => {
+    switch (config.tag) {
+      case "block": return (<Block config={config}/>);
+      case "form": return (<Form config={config}/>);
+      case "tab": return (<Tab config={config}/>);
+      default: return null;
     }
   };
 
-  return (
-    <div className="dk-donkey dk-container">
-      { render() }
-    </div>
-  );
+  const render = () => {
+    if (!config || !config.tag) {
+      return null;
+    }
+    return (<>{ renderComponent() }</>);
+  };
+
+  return render();
 
 }
 

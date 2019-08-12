@@ -1,26 +1,29 @@
 import * as React from "react";
 import { FormContext } from "../../shared/context";
-import IConfig from "../../types/config";
+import { GroupContext} from "../../shared/context";
+import IProps from "../../types/props";
 import IButton from "../../types/button";
-
+import util from "../../shared/util";
 import "./style.less";
 
-function Button(props: IConfig<IButton>) {
+function Button(props: IProps<IButton>) {
 
-  const [config, setConfig] = React.useState(null);
-  const [formContext] = React.useContext(FormContext);
-
-  React.useEffect(() => {
+  const [config, setConfig] = React.useState(() => {
     const config = props.config;
     if (!config.attr) {
       config.attr = {};
     }
-    setConfig(config);
+    return config;
+  });
+  const [formContext] = React.useContext(FormContext);
+  const [groupContext] = React.useContext(GroupContext);
+
+  React.useEffect(() => {
   }, [ props.config ]);
 
   const handleClick = (e) => {
     e.preventDefault();
-    config.form = { ...formContext };
+    // config.form = { ...formContext };
     if (config.onClick && typeof config.onClick === "function") {
       return config.onClick(e.target) ? true : false;
     }
@@ -32,11 +35,12 @@ function Button(props: IConfig<IButton>) {
       return null;
     }
     return (
-      <div className="dk-button">
+      <div className={`dk-button ${util.getCols(config.cols)}`}>
         <button
           type={ config.attr.type }
+          disabled={ !!config.attr.disabled }
           style={ {...config.attr.style} }
-          className={ `${config.attr.className} dk-transition-shadow` }
+          className={ `btn ${config.attr.className ? config.attr.className : 'blur'}` }
           onClick={ handleClick.bind(this) }
         >
           { config.text }
