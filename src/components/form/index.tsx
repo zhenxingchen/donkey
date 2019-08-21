@@ -2,10 +2,10 @@ import * as React from "react";
 import log from "../../shared/log";
 import bus from "../../shared/bus";
 import { FormContext } from "../../shared/context";
-import IProps from "../../types/props";
-import IForm from "../../types/form";
+import IProps from "../../types/common/props";
+import IForm from "../../types/components/form";
 import Block from "../block";
-import Items from "../items";
+import Item from "../item";
 import util from "../../shared/util";
 import "./style.less";
 
@@ -67,7 +67,7 @@ function Form(props: IProps<IForm>) {
     }
     return (
       <div className="dk-form-items">
-        <Items configs={ config.items }/>
+        <Item configs={ config.items }/>
       </div>
     );
   };
@@ -77,12 +77,13 @@ function Form(props: IProps<IForm>) {
       return null;
     }
     return (
-      <div className={`dk-form ${util.getCols(config.cols)}`} style={ {...config.attr.style} }>
+      <div className={`dk-form ${util.getClassName(config.cols)}`} style={ {...config.attr.style} }>
         <form
           name={ config.attr.name }
           action={ config.attr.action }
           method={ config.attr.method }
           onSubmit={ handleFormSubmit.bind(this) }
+          className={ util.getClassName(config.attr.className) }
         >
           <FormContext.Provider
             value={[{

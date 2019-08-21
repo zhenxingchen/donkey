@@ -1,7 +1,7 @@
 import * as React from "react";
-import IPanel from "../../types/panel";
-import IProps from "../../types/props";
-import Items from "../items";
+import IPanel from "../../types/components/panel";
+import IProps from "../../types/common/props";
+import Item from "../item";
 import util from "../../shared/util";
 import "./style.less";
 
@@ -20,7 +20,7 @@ function Panel(props: IProps<IPanel>) {
       return null;
     }
     return (
-      <div className="panel-top">
+      <div className="dk-panel-top">
         <span className="title">{ config.attr.title }</span>
       </div>
     );
@@ -31,8 +31,8 @@ function Panel(props: IProps<IPanel>) {
       return null;
     }
     return (
-      <div className="panel-content">
-        <Items configs={ config.items }/>
+      <div className="dk-panel-content">
+        <Item configs={ config.items }/>
       </div>
     );
   };
@@ -42,8 +42,10 @@ function Panel(props: IProps<IPanel>) {
       return null;
     }
     return (
-      <div className={`dk-panel ${util.getCols(config.cols)}`}>
-        <div className="panel-container" style={ {...config.attr.style} }>
+      <div className={`dk-panel ${util.getClassName(config.cols)}`}>
+        <div
+          className={`dk-panel-container ${util.getClassName(config.attr.className)}`}
+          style={ {...config.attr.style} }>
           { renderTop() }
           { renderContent() }
         </div>

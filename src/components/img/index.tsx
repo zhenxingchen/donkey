@@ -1,10 +1,12 @@
 import * as React from "react";
-import ISpan from "../../types/components/span";
+
+import IImg from "../../types/components/img";
 import IProps from "../../types/common/props";
 import util from "../../shared/util";
+
 import "./style.less";
 
-function Span(props: IProps<ISpan>) {
+function Img(props: IProps<IImg>) {
 
   const [config, setConfig] = React.useState(() => {
     const config = props.config;
@@ -14,16 +16,22 @@ function Span(props: IProps<ISpan>) {
     return config;
   });
 
-  React.useEffect(() => {
-  }, [ props.config ]);
+  const renderImg = () => {
+    return (
+      <img src={ config.attr.src } alt={ config.attr.alt }/>
+    );
+  };
 
   const render = () => {
     if (!config) {
       return null;
     }
     return (
-      <div className={`dk-span ${util.getClassName(config.cols)}`}>
-        { config.text }
+      <div className={`dk-img ${util.getClassName(config.cols)}`}>
+        <div className="dk-img-container">
+          { util.getLabel(config) }
+          { renderImg() }
+        </div>
       </div>
     );
   };
@@ -31,4 +39,4 @@ function Span(props: IProps<ISpan>) {
   return render();
 }
 
-export default Span;
+export default Img;

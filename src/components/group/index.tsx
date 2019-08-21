@@ -1,8 +1,8 @@
 import * as React from "react";
 import { GroupContext } from "../../shared/context";
-import IProps from "../../types/props";
-import IGroup from "../../types/group";
-import Items from "../items";
+import IProps from "../../types/common/props";
+import IGroup from "../../types/components/group";
+import Item from "../item";
 import util from "../../shared/util";
 
 import "./style.less";
@@ -30,15 +30,6 @@ function Group(props: IProps<IGroup>) {
     }
   };
 
-  const renderLabel = () => {
-    if (!config.label) {
-      return null;
-    }
-    return (
-      <label className="label-for required" htmlFor={ config.attr.id }>{ config.label }</label>
-    );
-  };
-
   const renderItems = () => {
     if (!config.items
       || !(config.items instanceof Array)
@@ -47,7 +38,7 @@ function Group(props: IProps<IGroup>) {
     }
     return (
       <div className="dk-group-items">
-        <Items configs={ config.items }/>
+        <Item configs={ config.items }/>
       </div>
     );
   };
@@ -57,11 +48,13 @@ function Group(props: IProps<IGroup>) {
       return null;
     }
     return (
-      <div className={ `dk-group ${util.getCols(config.cols)}` } style={ {...config.attr.style} }>
-        <GroupContext.Provider value={[ permissionCodes ]}>
-          { renderLabel() }
-          { renderItems() }
-        </GroupContext.Provider>
+      <div className={ `dk-group ${util.getClassName(config.cols)}` }>
+        <div className="dk-group-container" style={ {...config.attr.style} }>
+          <GroupContext.Provider value={[ permissionCodes ]}>
+            { util.getLabel(config) }
+            { renderItems() }
+          </GroupContext.Provider>
+        </div>
       </div>
     );
   };

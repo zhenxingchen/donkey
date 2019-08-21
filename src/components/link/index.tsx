@@ -1,6 +1,6 @@
 import * as React from "react";
-import IProps from "../../types/props";
-import ILink from "../../types/link";
+import IProps from "../../types/common/props";
+import ILink from "../../types/components/link";
 import util from "../../shared/util";
 import "./style.less";
 
@@ -29,15 +29,6 @@ function Link(props: IProps<ILink>) {
     }
   };
 
-  const renderLabel = () => {
-    if (!config.label) {
-      return null;
-    }
-    return (
-      <label className="label-for required" htmlFor={ config.attr.id }>{ config.label }</label>
-    );
-  };
-
   const renderLink = () => {
     return (
       <a
@@ -58,8 +49,8 @@ function Link(props: IProps<ILink>) {
       return null;
     }
     return (
-      <div className={`dk-link ${util.getCols(config.cols)}`}>
-        { renderLabel() }
+      <div className={`dk-link ${util.getClassName(config.cols)}`}>
+        { util.getLabel(config) }
         { renderLink() }
       </div>
     );

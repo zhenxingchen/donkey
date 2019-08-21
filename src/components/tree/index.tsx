@@ -1,6 +1,6 @@
 import * as React from "react";
-import IProps from "../../types/props";
-import ITree from "../../types/tree";
+import IProps from "../../types/common/props";
+import ITree from "../../types/components/tree";
 import util from "../../shared/util";
 
 function Tree(props: IProps<ITree>) {
@@ -21,8 +21,8 @@ function Tree(props: IProps<ITree>) {
       return null;
     }
     return (
-      <div className={`dk-tree ${util.getCols(config.cols)}`}>
-
+      <div className={`dk-tree ${util.getClassName(config.cols)}`}>
+        树节点
       </div>
     );
   };

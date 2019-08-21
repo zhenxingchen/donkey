@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormContext } from "../../shared/context";
-import IProps from "../../types/props";
-import ITextArea from "../../types/textarea";
+import IProps from "../../types/common/props";
+import ITextArea from "../../types/components/textarea";
 import util from "../../shared/util";
 import "./style.less";
 
@@ -24,15 +24,6 @@ function TextArea(props: IProps<ITextArea>) {
     setConfig(config);
   }, [ props.config ]);
 
-  const renderLabel = () => {
-    if (!config.label) {
-      return null;
-    }
-    return (
-      <label className="label-for required" htmlFor={ config.attr.id }>{ config.label }</label>
-    );
-  };
-
   const renderTextArea = () => {
     return (
       <textarea
@@ -50,8 +41,8 @@ function TextArea(props: IProps<ITextArea>) {
       return null;
     }
     return (
-      <div className={`dk-textarea ${util.getCols(config.cols)}`}>
-        { renderLabel() }
+      <div className={`dk-textarea ${util.getClassName(config.cols)}`}>
+        { util.getLabel(config) }
         { renderTextArea() }
       </div>
     );

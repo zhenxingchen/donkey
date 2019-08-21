@@ -2,8 +2,8 @@ import * as React from "react";
 import { FormContext, TableContext } from "../../shared/context";
 import bus from "../../shared/bus";
 import util from "../../shared/util";
-import IProps from "../../types/props";
-import IInput from "../../types/input";
+import IProps from "../../types/common/props";
+import IInput from "../../types/components/input";
 import "./style.less";
 
 function Input(props: IProps<IInput>) {
@@ -54,15 +54,6 @@ function Input(props: IProps<IInput>) {
     });
   };
 
-  const renderLabel = () => {
-    if (!config.label) {
-      return null;
-    }
-    return (
-      <label className="label-for required" htmlFor={ config.attr.id }>{ config.label }</label>
-    );
-  };
-
   const renderInput = () => {
     return (
       <input
@@ -73,8 +64,8 @@ function Input(props: IProps<IInput>) {
         disabled={ !!config.attr.disabled }
         readOnly={ !!config.attr.readonly }
         autoComplete={ config.attr.autoComplete ? config.attr.autoComplete : "off" }
-        style={ config.attr.style }
-        className={ `${config.attr.className ? config.attr.className : ""} dk-form-control dk-transition-border` }
+        style={ {...config.attr.style} }
+        className={ `dk-form-control dk-transition-border ${config.attr.className ? config.attr.className : ""}` }
         onBlur={ eventHandler.bind(this, "onBlur") }
         onChange={ eventHandler.bind(this, "onChange") }
         onFocus={ eventHandler.bind(this, "onFocus") }
@@ -87,9 +78,11 @@ function Input(props: IProps<IInput>) {
       return null;
     }
     return (
-      <div className={`dk-input ${util.getCols(config.cols)}`}>
-        { renderLabel() }
-        { renderInput() }
+      <div className={`dk-input ${util.getClassName(config.cols)}`}>
+        <div className="dk-input-container">
+          { util.getLabel(config) }
+          { renderInput() }
+        </div>
       </div>
     );
   };

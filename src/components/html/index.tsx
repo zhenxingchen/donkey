@@ -1,10 +1,10 @@
 import * as React from "react";
-import ISpan from "../../types/components/span";
 import IProps from "../../types/common/props";
-import util from "../../shared/util";
+import IHtml from "../../types/components/html";
+
 import "./style.less";
 
-function Span(props: IProps<ISpan>) {
+function Html(props: IProps<IHtml>) {
 
   const [config, setConfig] = React.useState(() => {
     const config = props.config;
@@ -14,21 +14,19 @@ function Span(props: IProps<ISpan>) {
     return config;
   });
 
-  React.useEffect(() => {
-  }, [ props.config ]);
-
   const render = () => {
     if (!config) {
       return null;
     }
     return (
-      <div className={`dk-span ${util.getClassName(config.cols)}`}>
-        { config.text }
+      <div className="dk-html">
+
       </div>
     );
   };
 
   return render();
+
 }
 
-export default Span;
+export default Html;

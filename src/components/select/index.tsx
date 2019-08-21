@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormContext } from "../../shared/context";
-import IProps from "../../types/props";
-import ISelect from "../../types/select";
+import IProps from "../../types/common/props";
+import ISelect from "../../types/components/select";
 import util from "../../shared/util";
 import "./style.less";
 
@@ -20,27 +20,10 @@ function Select(props: IProps<ISelect>) {
   React.useEffect(() => {
   }, [ props.config ]);
 
-  const renderLabel = () => {
-    if (!config.label) {
+  const renderOptions = () => {
+    if (!doroDown) {
       return null;
     }
-    return (
-      <label className="label-for required" htmlFor={ config.attr.id }>{ config.label }</label>
-    );
-  };
-
-  const renderInput = () => {
-    return (
-      <input
-        className={`${config.attr.className} dk-form-control dk-transition-border`}
-        type="text"
-        onFocus={() => setDropDown(true)}
-        onBlur={() => setDropDown(false)}
-      />
-    );
-  };
-
-  const renderOptions = () => {
     return (
       <div className="options">
         <ul>
@@ -53,28 +36,11 @@ function Select(props: IProps<ISelect>) {
             ))
           }
         </ul>
-      </div>
-    );
-  };
-
-  const renderPage = () => {
-    return (
-      <div className="page">
-        <a className="pre" href="#">&lt;</a>
-        <span>1 / 23</span>
-        <a className="next" href="#">&gt;</a>
-      </div>
-    );
-  };
-
-  const renderDropDown = () => {
-    if (!doroDown) {
-      return null;
-    }
-    return (
-      <div className="drop-down">
-        { renderOptions() }
-        { renderPage() }
+        <div className="page">
+          <a className="pre" href="#">&lt;</a>
+          <span>1 / 23</span>
+          <a className="next" href="#">&gt;</a>
+        </div>
       </div>
     );
   }
@@ -84,10 +50,17 @@ function Select(props: IProps<ISelect>) {
       return null;
     }
     return (
-      <div className={`dk-select ${util.getCols(config.cols)}`}>
-        { renderLabel() }
-        { renderInput() }
-        { renderDropDown() }
+      <div className={`dk-select ${util.getClassName(config.cols)}`}>
+        { util.getLabel(config) }
+        <div className="dk-select-container">
+          <input
+            className={`dk-form-control dk-transition-border ${config.attr.className}`}
+            type="text"
+            onFocus={() => setDropDown(true)}
+            onBlur={() => setDropDown(false)}
+          />
+          { renderOptions() }
+        </div>
       </div>
     );
   };

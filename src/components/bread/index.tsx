@@ -1,6 +1,6 @@
 import * as React from "react";
-import IProps from "../../types/props";
-import IBread from "../../types/bread";
+import IProps from "../../types/common/props";
+import IBread from "../../types/components/bread";
 import Link from "../link";
 import Span from "../span";
 import util from "../../shared/util";
@@ -20,7 +20,9 @@ function Bread(props: IProps<IBread>) {
   }, [ props.config ]);
 
   const renderItems = () => {
-    if (!config.items || !(config.items instanceof Array) || config.items.length < 1) {
+    if (!config.items
+      || !(config.items instanceof Array)
+      || config.items.length < 1) {
       return null;
     }
     return (
@@ -55,11 +57,13 @@ function Bread(props: IProps<IBread>) {
     }
     return (
       <div
-        className={ `dk-bread ${util.getCols(config.cols)} ${config.attr.className}` }
+        className={ `dk-bread ${util.getClassName(config.cols)}` }
         style={ config.attr.style }>
-        {
-          renderItems()
-        }
+        <div className={ `dk-bread-container ${util.getClassName(config.attr.className)}` }>
+          {
+            renderItems()
+          }
+        </div>
       </div>
     );
   };

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { FormContext } from "../../shared/context";
-import IProps from "../../types/props";
-import IBlock from "../../types/block";
-import Items from "../items";
+import IProps from "../../types/common/props";
+import IBlock from "../../types/components/block";
+import Item from "../item";
 import util from "../../shared/util";
 
 import "./style.less";
@@ -28,8 +28,8 @@ function Block(props: IProps<IBlock>) {
       return null;
     }
     return (
-      <div className="dk-block-items">
-        <Items configs={ config.items }/>
+      <div className={`dk-block-items ${util.getClassName(config.attr.className)}`}>
+        <Item configs={ config.items }/>
       </div>
     );
   };
@@ -39,7 +39,7 @@ function Block(props: IProps<IBlock>) {
       return null;
     }
     return (
-      <div className={ `dk-block ${util.getCols(config.cols)}` } style={ {...config.attr.style} }>
+      <div className={ `dk-block ${util.getClassName(config.cols)}` } style={ {...config.attr.style} }>
         { renderItems() }
       </div>
     );

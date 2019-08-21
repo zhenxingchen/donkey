@@ -1,5 +1,5 @@
 import * as React from "react";
-import IProps from "../../types/props";
+import IProps from "../../types/common/props";
 
 import Block from "../block";
 import Form from "../form";

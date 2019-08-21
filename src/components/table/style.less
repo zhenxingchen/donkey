@@ -1,7 +1,6 @@
 @charset "utf-8";
 .dk-table {
   white-space: nowrap;
-  overflow-x: scroll;
   table {
     border: 1px solid #e8e8e8;
     border-collapse: collapse;
@@ -57,10 +56,35 @@
         border-radius: 0;
         padding: 0 10px;
       }
-      hr {
-        margin: 0 -5px;
-        border: 0;
-        border-top: 1px solid #e8e8e8;
+    }
+  }
+  .fold {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    border: 1px solid #e2e2e2;
+    color: #999;
+    font-size: 16px;
+    &:hover {
+      cursor: pointer;
+      &.open, &.close {
+        border: 1px solid #409eff;
+        color: #409eff;
+      }
+    }
+    &.open {
+      &:before {
+        content: '+';
+      }
+    }
+    &.close {
+      &:before {
+        content: '-';
       }
     }
   }

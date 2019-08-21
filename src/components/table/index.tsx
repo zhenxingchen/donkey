@@ -1,15 +1,12 @@
 import * as React from "react";
 import { FormContext } from "../../shared/context";
 import { TableContext } from "../../shared/context";
-import IProps from "../../types/props";
-import ITable from "../../types/table";
-import Button from "../button";
-import Group from "../group";
-import Input from "../input";
-import Link from "../link";
-import Select from "../select";
-import Span from "../span";
+import IProps from "../../types/common/props";
+import ITable from "../../types/components/table";
+import Checkbox from "../checkbox";
+import Item from "../item";
 import Pager from "../pager";
+import Radio from "../radio";
 import util from "../../shared/util";
 
 import "./style.less";
@@ -24,111 +21,205 @@ function Table(props: IProps<ITable>) {
     }
     return config;
   });
-  const [rowItems, setRowItems] = React.useState(null);
+  const [rows, setRows] = React.useState(null);
 
   React.useEffect(() => {
-    convertDataToTrItems(config.data);
+    convertDataToRows(config.data);
   }, [ props.config ]);
 
-  const convertDataToTrItems = (tableData) => {
-    if (!tableData || !(tableData instanceof Array) || tableData.length < 1
-      || !config.items || !(config.items instanceof Array) || config.items.length < 1) {
+  const convertDataToRows = (tableData) => {
+    if (!tableData
+      || !(tableData instanceof Array)
+      || tableData.length < 1
+      || !config.columns
+      || !(config.columns instanceof Array)
+      || config.columns.length < 1) {
       return null;
     }
-    const tableRowItems = [];
+    const tableRows = [];
     let rowIndex = 0;
     for (const rowData of tableData) {
       const rowItems = [];
-      for (const colItem of config.items) {
+      // fold col
+      if (rowData.hasOwnProperty("children")) {
+        !rowData.hasOwnProperty("childrenOpen")
+          ? rowData.childrenOpen = false
+          : null;
+        rowItems.push(
+          rowData.childrenOpen
+            ? (<i className="fold close dk-transition-border"></i>)
+            : (<i className="fold open dk-transition-border"></i>)
+        );
+      }
+      // check col
+      if (config.attr.checkType
+        && ["radio", "checkbox"].indexOf(config.attr.checkType) > -1) {
+        rowItems.push(
+          "radio" === config.attr.checkType
+            ? (<Radio config={{tag: "radio"}}/>)
+            : "checkbox" === config.attr.checkType
+            ? (<Checkbox config={{tag: "checkbox"}}/>)
+            : null
+        );
+      }
+      // data col
+      for (const colItem of config.columns) {
         rowItems.push(
           cellFormat(colItem, rowData, rowIndex)
         );
       }
-      tableRowItems.push(rowItems);
+      tableRows.push(rowItems);
+      // children row
+      if (rowData.children && rowData.children instanceof Array) {
+        config.children.data = rowData.children;
+        const _rowItems = [];
+        _rowItems.push(null);
+        ["radio", "checkbox"].indexOf(config.attr.checkType) > -1
+          ? _rowItems.push(null)
+          : null;
+        _rowItems.push(config.children);
+        tableRows.push(_rowItems);
+      }
       rowIndex ++;
     }
-    setRowItems([ ...tableRowItems ]);
+    setRows([ ...tableRows ]);
   };
 
   const cellFormat = (colItem, rowData, rowIndex) => {
-    if (!config.format || !config.format.hasOwnProperty(colItem.name)) {
+    if (!config.format
+      || !config.format.hasOwnProperty(colItem.name)) {
       return rowData[colItem.name];
     }
-    return config.format[colItem.name](rowData[colItem.name], rowData, rowIndex);
+    return config.format[colItem.name](
+      rowData[colItem.name], rowData, rowIndex);
   };
 
-  const renderColGroup = (items) => {
+  const renderToolbar = () => {
+    if (!config.toolbar) {
+      return null;
+    }
+    return (
+      <Item config={ config.toolbar }/>
+    );
+  };
+
+  const renderColGroup = () => {
+    const renderFoldCol = () => {
+      if (config.children) {
+        return (
+          <col style={ { width: "50px", minWidth: "50px" }}/>
+        );
+      }
+      return null;
+    };
+    const renderCheckCol = () => {
+      if (["radio", "checkbox"].indexOf(config.attr.checkType) > -1) {
+        return (
+          <col style={ { width: "50px", minWidth: "50px" }}/>
+        );
+      }
+      return null;
+    };
+    const renderItemCols = () => {
+      return (
+        <>
+          {
+            config.columns.map((item, index) => (
+              <col key={index} width={ item.width }/>
+            ))
+          }
+        </>
+      );
+    };
     return (
       <colgroup>
-        {
-          items.map((item, index) => (
-            <col key={index} width={ item.width }/>
-          ))
-        }
+        { renderFoldCol() }
+        { renderCheckCol() }
+        { renderItemCols() }
       </colgroup>
     );
   };
 
   const renderHeader = () => {
-    if (!config.header
-      || !(config.header instanceof Array)
-      || config.header.length < 1) {
-      return null;
-    }
-  };
-
-  const renderItemsHeader = (items) => {
+    const renderComplexHeader = () => {
+      if (!config.header
+        || !(config.header instanceof Array)
+        || config.header.length < 1) {
+        return null;
+      }
+    };
+    const renderItemsHeader = () => {
+      const renderFoldCol = () => (
+        config.children
+          ? (<th><i className="fold open dk-transition-border"></i></th>)
+          : null
+      );
+      const renderCheckCol = () => (
+        "radio" === config.attr.checkType
+          ? (<th>选择</th>)
+          : "checkbox" === config.attr.checkType
+          ? (<th><Checkbox config={{tag: "checkbox"}}/></th>)
+          : null
+      );
+      const renderItems = () => {
+        return (
+          <>
+            {
+              config.columns.map((item, index) => (
+                <th key={index}>{ item.text }</th>
+              ))
+            }
+          </>
+        );
+      }
+      return (
+        <tr>
+          { renderFoldCol() }
+          { renderCheckCol() }
+          { renderItems() }
+        </tr>
+      );
+    };
     return (
-      <tr>
-        {
-          items.map((item, index) => (
-            <th key={index}>{ item.text }</th>
-          ))
-        }
-      </tr>
+      <thead>
+        { config.header ? renderComplexHeader() : renderItemsHeader() }
+      </thead>
     );
   };
 
   const renderRowItems = () => {
-    if (!rowItems || rowItems.length < 1) {
+    if (!rows || rows.length < 1) {
       return null;
     }
-    const renderCell = (component, rowIndex, colIndex) => {
-      if (component === null
-        || component === undefined
-        || ["string", "boolean", "number"].indexOf(typeof component) > -1) {
-        return component;
+    const renderCell = (colItem, rowIndex, colIndex) => {
+      if (colItem === null
+        || colItem === undefined
+        || !colItem.tag
+        || ["string", "boolean", "number"].indexOf(typeof colItem) > -1) {
+        return colItem;
       }
-      switch (component.tag) {
-        case "button": {
-          return (<Button config={ component } rowIndex={rowIndex} colIndex={colIndex}/>);
-        };
-        case "group": {
-          return (<Group config={ component } rowIndex={rowIndex} colIndex={colIndex}/>);
-        };
-        case "input": {
-          return (<Input config={ component } rowIndex={rowIndex} colIndex={colIndex}/>);
-        };
-        case "link": {
-          return (<Link config={ component } rowIndex={rowIndex} colIndex={colIndex}/>);
-        };
-        case "select": {
-          return (<Select config={ component } rowIndex={rowIndex} colIndex={colIndex}/>);
-        };
-        case "span": {
-          return (<Span config={ component } rowIndex={rowIndex} colIndex={colIndex}/>);
-        };
-        default : return component;
-      }
+      return (
+        <Item
+          config={colItem}
+          rowIndex={rowIndex} colIndex={colIndex}
+        />
+      );
     };
     return (
       <tbody>
         {
-          rowItems.map((rowItem, rowIndex) => (
+          rows.map((rowItem, rowIndex) => (
             <tr key={ rowIndex }>
               {
                 rowItem.map((colItem, colIndex) => (
-                  <td key={ colIndex }>
+                  <td
+                    key={ colIndex }
+                    colSpan={
+                      colItem && colItem.tag === "table"
+                        ? config.columns.length
+                        : 1
+                    }
+                  >
                     { renderCell(colItem, rowIndex, colIndex) }
                   </td>
                 ))
@@ -153,15 +244,11 @@ function Table(props: IProps<ITable>) {
   };
 
   const renderTableMain = () => {
-    const items = config.items[0] instanceof Array ? config.items[0] : config.items;
     return (
       <div className="table-main">
         <table>
-          { renderColGroup(items) }
-          <thead>
+          { renderColGroup() }
           { renderHeader() }
-          { renderItemsHeader(items) }
-          </thead>
           { renderRowItems() }
         </table>
       </div>
@@ -178,22 +265,27 @@ function Table(props: IProps<ITable>) {
   };
 
   const render = () => {
-    if (!config || !config.items
-      || !(config.items instanceof Array)
-      || config.items.length < 1) {
+    if (!config || !config.columns
+      || !(config.columns instanceof Array)
+      || config.columns.length < 1) {
       return null;
     }
     return (
-      <div className={`dk-table ${util.getCols(config.cols)}`} style={ { ...config.attr.style } }>
+      <div className={`dk-table ${util.getClassName(config.cols)}`}>
         <TableContext.Provider
           value={[{
-          name: config.attr.name,
-          disabled: config.attr.disabled
-        }]}>
-          { renderTableMain() }
-          { renderPager() }
-          { renderTableFixLeft() }
-          { renderTableFixRight() }
+            name: config.attr.name,
+            disabled: config.attr.disabled
+          }]}>
+          <div
+            className={`dk-table-container ${util.getClassName(config.attr.className)}`}
+            style={ { ...config.attr.style } }>
+              { renderToolbar() }
+              { renderTableMain() }
+              { renderPager() }
+              { renderTableFixLeft() }
+              { renderTableFixRight() }
+          </div>
         </TableContext.Provider>
       </div>
     );
