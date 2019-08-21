@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表格</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border: 1px solid #e2e2e2;
+      border-collapse: collapse;
+    }
+    th {
+      background: #f2f2f2;
+    }
+    th, td {
+      text-align: center;
+      line-height: 40px;
+      border: 1px solid #e2e2e2;
+      border-collapse: collapse;
+    }
+    .tal {
+      text-align: left;
+    }
+    .m10 {
+      margin: 10px;
+    }
+    input[type=text] {
+      border: 1px solid #e2e2e2;
+      padding: 8px 5px;
+      border-radius: 3px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+<table>
+  <colgroup>
+    <col style="width: 50px; min-width: 50px">
+    <col style="width: 50px; min-width: 50px">
+  </colgroup>
+  <thead>
+    <tr>
+      <th></th>
+      <th><input type="checkbox"></th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>年龄</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td><input type="checkbox"></td>
+      <td><input type="text" value="陈振兴"></td>
+      <td><input type="text" value="男"></td>
+      <td><input type="text" value="32"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td colspan="3">
+        <div class="m10">
+          <div>
+            <div class="tal">
+              <button>新增</button>
+              <button>删除</button>
+            </div>
+            <div>
+              <table>
+                <col style="width: 50px; min-width: 50px">
+                <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox">
+                  </th>
+                  <th>学期</th>
+                  <th>科目</th>
+                  <th>成绩</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td><input type="text" value="2018 上学期"></td>
+                  <td><input type="text" value="语文"></td>
+                  <td><input type="text" value="119"></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td><input type="text" value="2018 上学期"></td>
+                  <td><input type="text" value="语文"></td>
+                  <td><input type="text" value="119"></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td><input type="text" value="2018 上学期"></td>
+                  <td><input type="text" value="语文"></td>
+                  <td><input type="text" value="119"></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td><input type="text" value="2018 上学期"></td>
+                  <td><input type="text" value="语文"></td>
+                  <td><input type="text" value="119"></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><input type="checkbox"></td>
+      <td><input type="text" value="陈振兴"></td>
+      <td><input type="text" value="男"></td>
+      <td><input type="text" value="32"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td colspan="3">
+        <div class="m10">
+          <div>
+            <div class="tal">
+              <button>新增</button>
+              <button>删除</button>
+            </div>
+            <div>
+              <table>
+                <col style="width: 50px; min-width: 50px">
+                <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox">
+                  </th>
+                  <th>学期</th>
+                  <th>科目</th>
+                  <th>成绩</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td><input type="text" value="2018 上学期"></td>
+                  <td><input type="text" value="语文"></td>
+                  <td><input type="text" value="119"></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td><input type="text" value="2018 上学期"></td>
+                  <td><input type="text" value="语文"></td>
+                  <td><input type="text" value="119"></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td><input type="text" value="2018 上学期"></td>
+                  <td><input type="text" value="语文"></td>
+                  <td><input type="text" value="119"></td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td><input type="text" value="2018 上学期"></td>
+                  <td><input type="text" value="语文"></td>
+                  <td><input type="text" value="119"></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
