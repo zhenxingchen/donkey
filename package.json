@@ -6,7 +6,7 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "dev": "webpack-dev-server --config scripts/dev.js --mode=development --watch",
-    "build": "webpack --config webpack/build.js --mode=production",
+    "build": "webpack --config scripts/build.js --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +22,7 @@
   "dependencies": {
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
+    "axios": "^0.19.0",
     "css-loader": "^3.1.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
