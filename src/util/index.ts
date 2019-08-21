@@ -1,6 +1,5 @@
 /**
  * shared open util
- * @type {{}}
  */
 const util = {
 
