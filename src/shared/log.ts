@@ -1,4 +1,3 @@
-
 const handleArgs = (msg) => {
   const msgResult = [];
   for (const m of msg) {
@@ -12,13 +11,13 @@ const log = {
     console.log("[=====================>]", handleArgs(args));
   },
   debug: (...args) => {
-    console.log("[debug]", handleArgs(args));
+    console.log("[DEBUG]", handleArgs(args));
   },
   warning: (...args) => {
-    console.warn("[warning]", handleArgs(args));
+    console.warn("[WARN]", handleArgs(args));
   },
   error: (...args) => {
-    console.error("[error]", handleArgs(args));
+    console.error("[ERROR]", handleArgs(args));
   },
 };
 
