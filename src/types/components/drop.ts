@@ -1,6 +1,6 @@
 import ICols from "../layout/cols";
 import IItem from "./item";
-export default interface IDrop {
+export default interface IDrop extends ICols {
   tag?: "drop";
   attr?: {
     trigger?: "hover" | "click";
