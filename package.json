@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "with json config to build the full page",
   "main": "index.js",
+  "sideEffects": false,
   "typings": "types/index.d.ts",
   "scripts": {
     "dev": "webpack-dev-server --config scripts/dev.js --mode=development --watch",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "ts-lint": "^4.5.1",
+    "webpack-bundle-analyzer": "^3.4.1",
     "webpack-dev-server": "^3.7.2"
   }
 }
