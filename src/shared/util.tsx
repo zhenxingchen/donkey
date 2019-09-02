@@ -13,10 +13,11 @@ const util = {
       return "";
     }
     const classNameConvert = (c) => (
-      /^(tac|tar|tal)$/.test(c) ? `dk-align-${c}`
-        : /^(p|m)(t|l|r|b)?([1-9]|1[0-9]|2[0-4])$/.test(c) ? `dk-space-${c}`
-        : /^(lg|md|sm|xs)([1-9]|1[0-9]|2[0-4])$/.test(c) ? `dk-col-${c}`
-        : c
+      /^(tac|tar|tal)$/.test(c)
+      || /^(p|m)(t|l|r|b)?\d+$/.test(c)
+      || /^(w|h)(p)?\d+$/.test(c)
+      || /^(lg|md|sm|xs)\d+$/.test(c)
+        ? `dk-${c}` : c
     );
     const css = className.split(" ");
     const cs = [];
