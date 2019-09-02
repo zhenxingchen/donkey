@@ -188,7 +188,6 @@ const tableConfig = {
   ],
   pager: tablePager
 };
-
 const tableParentAndChildConfig = {
   tag: "table",
   attr: {
@@ -255,200 +254,221 @@ const tableParentAndChildConfig = {
     ]
   }
 }
-
 const formItems = [
   {
-    tag: "input",
-    label: "姓名",
-    cols: "lg6 md8 sm12",
-    attr: {
-      name: "username",
-      value: "张三",
-      disabled: true
-    }
-  },
-  {
-    tag: "group",
-    label: "性别",
-    cols: "lg6 md8 sm12",
+    tag: "block",
     items: [
       {
-        tag: "radio",
+        tag: "input",
+        label: "姓名",
+        cols: "lg6 md8 sm12",
         attr: {
-          text: "男",
-          name: "sex",
-          value: "1",
+          name: "username",
+          value: "张三",
           disabled: true
         }
       },
       {
-        tag: "radio",
-        attr: {
-          text: "女",
-          name: "sex",
-          value: "2"
-        }
-      }
-    ]
-  },
-  {
-    tag: "input",
-    label: "年龄",
-    cols: "lg6 md8 sm12",
-    attr: {
-      name: "age",
-      value: "123"
-    },
-    onBlur: function (target) {
-      console.log(this, target, target.value);
-    }
-  },
-  {
-    tag: "input",
-    label: "身份证号码",
-    cols: "lg6 md8 sm12",
-    attr: {
-      name: "idCard",
-    }
-  },
-  {
-    tag: "input",
-    label: "学号",
-    cols: "lg6 md8 sm12",
-    attr: {
-      name: "number",
-    }
-  },
-  {
-    tag: "link",
-    label: "个人相册",
-    cols: "lg6 md8 sm12",
-    text: "点我查看",
-    attr: {
-      href: "https://www.baidu.com/",
-      target: "_blank"
-    }
-  },
-  {
-    tag: "group",
-    label: "兴趣爱好",
-    cols: "lg6 md8 sm12",
-    items: [
+        tag: "group",
+        label: "性别",
+        cols: "lg6 md8 sm12",
+        items: [
+          {
+            tag: "radio",
+            attr: {
+              text: "男",
+              name: "sex",
+              value: "1",
+              disabled: true
+            }
+          },
+          {
+            tag: "radio",
+            attr: {
+              text: "女",
+              name: "sex",
+              value: "2"
+            }
+          }
+        ]
+      },
       {
-        tag: "checkbox",
+        tag: "input",
+        label: "年龄",
+        cols: "lg6 md8 sm12",
         attr: {
-          id: "JavaScript",
-          name: "interesting",
-          text: "JavaScript",
-          value: "JavaScript"
+          name: "age",
+          value: "123"
+        },
+        onBlur: function (target) {
+          console.log(this, target, target.value);
         }
       },
       {
-        tag: "checkbox",
+        tag: "input",
+        label: "身份证号码",
+        cols: "lg6 md8 sm12",
         attr: {
-          id: "Java",
-          name: "interesting",
-          text: "Java",
-          value: "Java"
+          name: "idCard",
         }
       },
       {
-        tag: "checkbox",
+        tag: "input",
+        label: "学号",
+        cols: "lg6 md8 sm12",
         attr: {
-          id: "Android",
-          name: "interesting",
-          text: "Android",
-          value: "Android"
+          name: "number",
         }
       },
       {
-        tag: "checkbox",
+        tag: "link",
+        label: "个人相册",
+        cols: "lg6 md8 sm12",
+        text: "点我查看",
         attr: {
-          id: "IOS",
-          name: "interesting",
-          value: "IOS",
-          text: "IOS",
-          disabled: true
+          href: "https://www.baidu.com/",
+          target: "_blank"
         }
-      }
-    ]
-  },
-  {
-    tag: "select",
-    label: "班级",
-    cols: "lg6 md8 sm12",
-    attr: {
-      name: "clazz"
-    },
-    ajax: {},
-    onChange: function (text) {
-    },
-    onSelect: function (target) {
-    },
-    data: [
-      {
-        text: "三年一班",
-        value: "1"
       },
       {
-        text: "三年二班",
-        value: "2"
+        tag: "group",
+        label: "兴趣爱好",
+        cols: "lg6 md8 sm12",
+        items: [
+          {
+            tag: "checkbox",
+            attr: {
+              id: "JavaScript",
+              name: "interesting",
+              text: "JavaScript",
+              value: "JavaScript"
+            }
+          },
+          {
+            tag: "checkbox",
+            attr: {
+              id: "Java",
+              name: "interesting",
+              text: "Java",
+              value: "Java"
+            }
+          },
+          {
+            tag: "checkbox",
+            attr: {
+              id: "Android",
+              name: "interesting",
+              text: "Android",
+              value: "Android"
+            }
+          },
+          {
+            tag: "checkbox",
+            attr: {
+              id: "IOS",
+              name: "interesting",
+              value: "IOS",
+              text: "IOS",
+              disabled: true
+            }
+          }
+        ]
       },
       {
-        text: "三年三班",
-        value: "3"
+        tag: "select",
+        label: "班级",
+        cols: "lg6 md8 sm12",
+        attr: {
+          name: "clazz"
+        },
+        ajax: {},
+        onChange: function (text) {
+        },
+        onSelect: function (target) {
+        },
+        data: [
+          {
+            text: "三年一班",
+            value: "1"
+          },
+          {
+            text: "三年二班",
+            value: "2"
+          },
+          {
+            text: "三年三班",
+            value: "3"
+          },
+          {
+            text: "三年四班",
+            value: "4"
+          },
+          {
+            text: "三年五班",
+            value: "5"
+          },
+          {
+            text: "三年六班",
+            value: "6"
+          },
+          {
+            text: "三年七班",
+            value: "7"
+          },
+          {
+            text: "三年八班",
+            value: "8"
+          }
+        ]
       },
       {
-        text: "三年四班",
-        value: "4"
-      },
-      {
-        text: "三年五班",
-        value: "5"
-      },
-      {
-        text: "三年六班",
-        value: "6"
-      },
-      {
-        text: "三年七班",
-        value: "7"
-      },
-      {
-        text: "三年八班",
-        value: "8"
-      }
-    ]
-  },
-  {
-    tag: "textarea",
-    label: "文本域",
-    cols: "lg6 md8 sm12",
-    attr: {
+        tag: "textarea",
+        label: "文本域",
+        cols: "lg6 md8 sm12",
+        attr: {
 
-    }
+        }
+      },
+      {
+        tag: "group",
+        label: " ",
+        cols: "lg6 md8 sm12",
+        items: [
+          {
+            tag: "button",
+            text: "查询",
+            attr: {
+              className: "blue"
+            }
+          },
+          {
+            tag: "button",
+            text: "导出",
+            attr: {
+              className: "red"
+            }
+          }
+        ]
+      },
+    ]
   },
   {
     tag: "group",
-    label: " ",
-    cols: "lg6 md8 sm12",
+    cols: "md24",
+    attr: {
+      className: "tac"
+    },
     items: [
       {
         tag: "button",
-        text: "查询",
+        text: "新增",
         attr: {
           className: "blue"
         }
-      },
-      {
-        tag: "button",
-        text: "导出",
-        attr: {
-          className: "red"
-        }
       }
     ]
   },
+  tableConfig
 ];
 
 const tabConfig = {
@@ -471,10 +491,6 @@ const config = {
         className: "p10"
       },
       items: formItems,
-      block: {
-        attr: {},
-        items: [ tableConfig ]
-      },
       data: {
         sex: "1",
         interesting: ["JavaScript", "IOS"]
@@ -585,3 +601,11 @@ const config = {
 };
 
 window.dk.start(config);
+//
+// window.dk.start({
+//   tag: "button",
+//   text: "新建",
+//   attr: {
+//     className: "tac pt10"
+//   }
+// });
