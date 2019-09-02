@@ -4,6 +4,7 @@
   "description": "with json config to build the full page",
   "main": "index.js",
   "sideEffects": false,
+  "files": ["dist/donkey.min.js"],
   "typings": "types/index.d.ts",
   "scripts": {
     "dev": "webpack-dev-server --config scripts/dev.js --mode=development --watch",
