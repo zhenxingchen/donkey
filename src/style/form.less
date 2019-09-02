@@ -1,18 +1,19 @@
 @charset "utf-8";
+@import "../theme/style";
 .dk-form-control {
-  border: 1px solid #e8e8e8;
-  padding: 0 7px;
-  height: 36px;
-  width: 180px;
   outline: none;
-  border-radius: 3px;
+  padding: 0 7px;
+  height: 31px;
+  width: 180px;
+  border: 1px solid @border-color;
+  border-radius: @border-radius;
   color: #444;
   &:hover {
-    border: 1px solid #409eff;
+    border: 1px solid @theme-color;
     box-shadow: 0 0 4px #e8e8e8;
   }
   &.error {
-    border: 1px solid #e40;
+    border: 1px solid @color-red;
   }
   &.small {
     width: 80px;
@@ -25,12 +26,10 @@
   }
 }
 .dk-form-control[disabled] {
-  border: 1px solid #e8e8e8;
-  background: #eee;
-  color: gray;
+  opacity: .5;
   &:hover {
     cursor: not-allowed;
-    border: 1px solid #e8e8e8;
+    border: 1px solid @border-color;
     box-shadow: none;
   }
 }

@@ -1,14 +1,19 @@
 @charset "utf-8";
+@import "../theme/style";
 .dk-choice {
   input { display: none; }
   &.checkbox {
     input:checked + .box {
-      .square { border: 1px solid #409eff; }
+      .square { border: 1px solid @theme-color; }
       .checked { opacity: 1; }
     }
     input[disabled] + .box {
+      opacity: .5;
+      &:hover {
+        cursor: not-allowed;
+      }
       .square {
-        border: 1px solid #e2e2e2;
+        border: 1px solid @border-color;
         &:hover { cursor: not-allowed; }
       }
       .checked {
@@ -32,13 +37,13 @@
         height: 16px;
         width: 16px;
         text-align: center;
-        border: 1px solid #e2e2e2;
-        border-radius: 3px;
+        border: 1px solid @border-color;
+        border-radius: @border-radius;
         vertical-align: middle;
         &:hover {
           cursor: pointer;
-          border: 1px solid #409eff;
-          box-shadow: 0 0 4px #e2e2e2;
+          border: 1px solid @theme-color;
+          box-shadow: 0 0 4px @border-color;
         }
         .checked {
           opacity: 0;
@@ -47,8 +52,8 @@
           left: 3px;
           width: 8px;
           height: 4px;
-          border-left: 2px solid #409eff;
-          border-bottom: 2px solid #409eff;
+          border-left: 2px solid @theme-color;
+          border-bottom: 2px solid @theme-color;
           transform: rotateZ(-45deg);
         }
         .half {
@@ -58,8 +63,8 @@
           left: 3px;
           width: 10px;
           height: 10px;
-          background: #409eff;
-          border-radius: 2px;
+          background: @theme-color;
+          border-radius: @border-radius;
         }
       }
       .text {
@@ -73,12 +78,12 @@
   }
   &.radio {
     input:checked + .box {
-      .circle { border: 1px solid #409eff; }
+      .circle { border: 1px solid @theme-color; }
       .checked { opacity: 1; }
     }
     input[disabled] + .box {
       .circle {
-        border: 1px solid #e2e2e2;
+        border: 1px solid @border-color;
         &:hover { cursor: not-allowed; }
       }
       .checked {
@@ -97,13 +102,13 @@
         height: 16px;
         width: 16px;
         text-align: center;
-        border: 1px solid #e2e2e2;
+        border: 1px solid @border-color;
         border-radius: 50%;
         vertical-align: middle;
         &:hover {
           cursor: pointer;
-          border: 1px solid #409eff;
-          box-shadow: 0 0 4px #e2e2e2;
+          border: 1px solid @theme-color;
+          box-shadow: 0 0 4px @border-color;
         }
         .checked {
           opacity: 0;
@@ -112,7 +117,7 @@
           left: 4px;
           width: 8px;
           height: 8px;
-          background: #409eff;
+          background: @theme-color;
           border-radius: 50%;
         }
       }
