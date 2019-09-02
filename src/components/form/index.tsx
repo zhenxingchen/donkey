@@ -11,18 +11,12 @@ import "./style.less";
 
 function Form(props: IProps<IForm>) {
 
-  const [config, setConfig] = React.useState(() => {
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [formData, setFormData] = React.useState({});
-
-  React.useEffect(() => {
-
-  }, [ props.config ]);
 
   React.useEffect(() => {
     eventListener();
@@ -52,24 +46,13 @@ function Form(props: IProps<IForm>) {
 
   };
 
-  const renderBlock = () => {
-    if (!config.block) {
-      return null;
-    }
-    return (<Block config={ config.block }/>);
-  };
-
   const renderItems = () => {
     if (!config.items
       || !(config.items instanceof Array)
       || config.items.length < 1) {
       return null;
     }
-    return (
-      <div className="dk-form-items">
-        <Item configs={ config.items }/>
-      </div>
-    );
+    return (<Item configs={ config.items }/>);
   };
 
   const render = () => {
@@ -77,24 +60,28 @@ function Form(props: IProps<IForm>) {
       return null;
     }
     return (
-      <div className={`dk-form ${util.getClassName(config.cols)}`} style={ {...config.attr.style} }>
-        <form
-          name={ config.attr.name }
-          action={ config.attr.action }
-          method={ config.attr.method }
-          onSubmit={ handleFormSubmit.bind(this) }
-          className={ util.getClassName(config.attr.className) }
-        >
-          <FormContext.Provider
-            value={[{
-              name: config.attr.name,
-              data: formData,
-              disabled: config.attr.disabled
-            }]}>
-            { renderItems() }
-            { renderBlock() }
-          </FormContext.Provider>
-        </form>
+      <div
+        className={`dk-form ${util.getClassName(config.cols)}`}
+        style={ {...config.attr.style} }
+      >
+        <FormContext.Provider
+          value={[{
+            name: config.attr.name,
+            data: formData,
+            disabled: config.attr.disabled
+          }]}>
+          <div className="dk-form-container">
+            <form
+              name={ config.attr.name }
+              action={ config.attr.action }
+              method={ config.attr.method }
+              onSubmit={ handleFormSubmit.bind(this) }
+              className={ util.getClassName(config.attr.className) }
+            >
+              { renderItems() }
+            </form>
+          </div>
+        </FormContext.Provider>
       </div>
     );
   };

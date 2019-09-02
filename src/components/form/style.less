@@ -1,6 +1,7 @@
 @charset "utf-8";
+@import "../../theme/style";
 .dk-form {
-  .dk-form-items {
+  .dk-form-container {
     *zoom: 1;
     &:after {
       content: '';
@@ -19,12 +20,12 @@
           right: 3px;
           top: 3px;
           content: '*';
-          color: #e40;;
+          color: @color-red
         }
       }
     }
     .dk-link, .dk-span {
-      line-height: 38px;
+      line-height: 33px;
     }
     .dk-button,
     .dk-group,
@@ -36,6 +37,14 @@
     .dk-textarea,
     .dk-upload {
       margin-bottom: 20px;
+    }
+  }
+  .dk-group, .dk-block {
+    *zoom: 1;
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
     }
   }
 }

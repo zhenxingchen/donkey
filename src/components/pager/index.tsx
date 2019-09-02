@@ -7,18 +7,13 @@ import "./style.less";
 
 function Pager(props: IProps<IPager>) {
 
-  const [config, setConfig] = React.useState(() => {
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
   const [tableContext] = React.useContext(TableContext);
-
-  React.useEffect(() => {
-  }, [ props.config ]);
 
   const render = () => {
     if (!config) {

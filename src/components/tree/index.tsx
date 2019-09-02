@@ -1,20 +1,17 @@
 import * as React from "react";
+import { FormContext } from "../../shared/context";
 import IProps from "../../types/common/props";
 import ITree from "../../types/components/tree";
 import util from "../../shared/util";
 
 function Tree(props: IProps<ITree>) {
 
-  const [config, setConfig] = React.useState(() => {
+  const [formContext] = React.useContext(FormContext);
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
     return config;
   });
-
-  React.useEffect(() => {
-  }, [ props.config ]);
 
   const render = () => {
     if (!config) {
@@ -22,7 +19,9 @@ function Tree(props: IProps<ITree>) {
     }
     return (
       <div className={`dk-tree ${util.getClassName(config.cols)}`}>
-        树节点
+        <div className="dk-tree-container">
+          树节点
+        </div>
       </div>
     );
   };

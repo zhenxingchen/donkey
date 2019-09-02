@@ -20,7 +20,6 @@ export default interface IForm extends ICols {
   onValidate?: (msg: string) => void;
   ajax?: IAjax;
   data?: {};
-  block?: IBlock;
   items: IItem[];
 }
 

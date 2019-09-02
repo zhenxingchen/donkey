@@ -9,17 +9,12 @@ import "./style.less";
 
 function Group(props: IProps<IGroup>) {
 
-  const [config, setConfig] = React.useState(() => {
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [permissionCodes, setPermissionCodes] = React.useState(null);
-
-  React.useEffect(() => {
-  }, [ props.config ]);
 
   const loadAjax = () => {
     if (!config) {
@@ -49,7 +44,9 @@ function Group(props: IProps<IGroup>) {
     }
     return (
       <div className={ `dk-group ${util.getClassName(config.cols)}` }>
-        <div className="dk-group-container" style={ {...config.attr.style} }>
+        <div
+          className={ `dk-group-container ${util.getClassName(config.attr.className)}` }
+          style={ {...config.attr.style} }>
           <GroupContext.Provider value={[ permissionCodes ]}>
             { util.getLabel(config) }
             { renderItems() }

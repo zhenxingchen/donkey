@@ -10,25 +10,13 @@ import "./style.less";
 
 function Radio(props: IProps<IRadio>) {
 
-  const [config, setConfig] = React.useState(() => {
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
+    !config.attr.id ? config.attr.id = `dk-radio-${Math.random()}` : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
-
-  React.useEffect(() => {
-    const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
-    if (!config.attr.id) {
-      config.attr.id = `dk-radio-${Math.random()}`;
-    }
-    setConfig(config);
-  }, [ props.config ]);
 
   const changeHandler = () => {
     if (formContext.data[config.attr.name] === config.attr.value) {

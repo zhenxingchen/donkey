@@ -14,18 +14,16 @@ import "./style.less";
 function Table(props: IProps<ITable>) {
 
   const [formContext] = React.useContext(FormContext);
-  const [config, setConfig] = React.useState(() => {
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [rows, setRows] = React.useState(null);
 
   React.useEffect(() => {
     convertDataToRows(config.data);
-  }, [ props.config ]);
+  }, []);
 
   const convertDataToRows = (tableData) => {
     if (!tableData

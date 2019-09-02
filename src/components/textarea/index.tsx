@@ -7,22 +7,12 @@ import "./style.less";
 
 function TextArea(props: IProps<ITextArea>) {
 
-  const [config, setConfig] = React.useState(() => {
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
-
-  React.useEffect(() => {
-    const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
-    setConfig(config);
-  }, [ props.config ]);
 
   const renderTextArea = () => {
     return (

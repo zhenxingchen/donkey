@@ -6,6 +6,7 @@ export default interface IButton extends ICols, IFormControl {
   attr?: {
     id?: string;
     title?: string;
+    theme?: "blue" | "red" | "gray" | "green" | "white";
     type?: "submit" | "reset" | "button";
     permission?: string;
     disabled?: boolean;

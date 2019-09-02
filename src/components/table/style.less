@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import "../../theme/style";
 .dk-table {
   white-space: nowrap;
   table {
@@ -53,7 +54,6 @@
         border-left: 1px solid #409eff;
         border-top: 1px solid #409eff;
         color: #fff;
-        border-radius: 0;
         padding: 0 10px;
       }
     }
@@ -63,7 +63,7 @@
     width: 16px;
     height: 16px;
     line-height: 16px;
-    border-radius: 3px;
+    border-radius: @border-radius;
     font-style: normal;
     font-weight: normal;
     text-align: center;

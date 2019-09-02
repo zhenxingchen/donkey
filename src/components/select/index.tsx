@@ -7,18 +7,13 @@ import "./style.less";
 
 function Select(props: IProps<ISelect>) {
 
-  const [config, setConfig] = React.useState(() => {
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
   const [doroDown, setDropDown] = React.useState(false);
-
-  React.useEffect(() => {
-  }, [ props.config ]);
 
   const renderOptions = () => {
     if (!doroDown) {

@@ -5,6 +5,7 @@ export default interface IBread extends ICols {
   tag: "bread";
   attr?: {
     id?: string;
+    split?: "arrow" | "slash-left" | "slash-right"
     className?: string;
     style?: {};
   },

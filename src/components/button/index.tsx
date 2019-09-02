@@ -8,18 +8,14 @@ import "./style.less";
 
 function Button(props: IProps<IButton>) {
 
-  const [config, setConfig] = React.useState(() => {
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
+    !config.attr.theme ? config.attr.theme = "blue" : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
   const [groupContext] = React.useContext(GroupContext);
-
-  React.useEffect(() => {
-  }, [ props.config ]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -36,7 +32,7 @@ function Button(props: IProps<IButton>) {
         type={ config.attr.type }
         disabled={ !!config.attr.disabled }
         style={ {...config.attr.style} }
-        className={ `dk-btn ${util.getClassName(config.attr.className)}` }
+        className={ `dk-${config.attr.theme}` }
         onClick={ handleClick.bind(this) }
       >
         { config.text }
@@ -49,8 +45,8 @@ function Button(props: IProps<IButton>) {
       return null;
     }
     return (
-      <div className={`dk-button ${util.getClassName(config.cols)}`}>
-        <div className="dk-button-container">
+      <div className={`dk-button ${util.getClassName(config.cols)}` }>
+        <div className={`dk-button-container ${util.getClassName(config.attr.className)}`}>
           { util.getLabel(config) }
           { renderButton() }
         </div>

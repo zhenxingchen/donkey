@@ -29,21 +29,17 @@ import log from "../../shared/log";
 
 function Item(props: IProps<IItem>) {
 
-  const [configs, setConfigs] = React.useState(props.configs);
-  const [config, setConfig] = React.useState(props.config);
+  const [configs] = React.useState(props.configs);
+  const [config] = React.useState(props.config);
 
-  React.useEffect(() => {
-    if (props.configs && props.configs.length > 0) {
-      setConfigs([...props.configs]);
-    } else {
-      setConfigs([]);
-    }
-  }, [props.configs]);
-
-  React.useEffect(() => {
-    setConfig(props.config);
-  }, [props.config]);
-
+  const getKey = (config, index) =>
+    (
+      config
+      && config.attr
+      && config.attr.id
+        ? config.attr.id
+        : index
+    );
   const configToComponent = (config, key) => {
     if (!config || !config.tag) {
       log.warning("the config is empty or tag name is empty", config);
@@ -51,47 +47,47 @@ function Item(props: IProps<IItem>) {
     }
     switch (config.tag) {
       case "block":
-        return (<Block config={config} key={key}/>);
+        return (<Block config={config} key={getKey(config, key)}/>);
       case "bread":
-        return (<Bread config={config} key={key}/>);
+        return (<Bread config={config} key={getKey(config, key)}/>);
       case "form":
-        return (<Form config={config} key={key}/>);
+        return (<Form config={config} key={getKey(config, key)}/>);
       case "html":
-        return (<Html config={config} key={key}/>);
+        return (<Html config={config} key={getKey(config, key)}/>);
       case "group":
-        return (<Group config={config} key={key}/>);
+        return (<Group config={config} key={getKey(config, key)}/>);
       case "iframe":
-        return (<IFrame config={config} key={key}/>);
+        return (<IFrame config={config} key={getKey(config, key)}/>);
       case "pager":
-        return (<Pager config={config} key={key}/>);
+        return (<Pager config={config} key={getKey(config, key)}/>);
       case "panel":
-        return (<Panel config={config} key={key}/>);
+        return (<Panel config={config} key={getKey(config, key)}/>);
       case "tab":
-        return (<Tab config={config} key={key}/>);
+        return (<Tab config={config} key={getKey(config, key)}/>);
       case "table":
-        return (<Table config={config} key={key}/>);
+        return (<Table config={config} key={getKey(config, key)}/>);
       case "tree":
-        return (<Tree config={config} key={key}/>);
+        return (<Tree config={config} key={getKey(config, key)}/>);
       case "button":
-        return (<Button config={config} key={key}/>);
+        return (<Button config={config} key={getKey(config, key)}/>);
       case "checkbox":
-        return (<Checkbox config={config} key={key}/>);
+        return (<Checkbox config={config} key={getKey(config, key)}/>);
       case "date":
-        return (<Date config={config} key={key}/>);
+        return (<Date config={config} key={getKey(config, key)}/>);
       case "img":
-        return (<Img config={config} key={key}/>);
+        return (<Img config={config} key={getKey(config, key)}/>);
       case "input":
-        return (<Input config={config} key={key}/>);
+        return (<Input config={config} key={getKey(config, key)}/>);
       case "link":
-        return (<Link config={config} key={key}/>);
+        return (<Link config={config} key={getKey(config, key)}/>);
       case "radio":
-        return (<Radio config={config} key={key}/>);
+        return (<Radio config={config} key={getKey(config, key)}/>);
       case "select":
-        return (<Select config={config} key={key}/>);
+        return (<Select config={config} key={getKey(config, key)}/>);
       case "span":
-        return (<Span config={config} key={key}/>);
+        return (<Span config={config} key={getKey(config, key)}/>);
       case "textarea":
-        return (<TextArea config={config} key={key}/>);
+        return (<TextArea config={config} key={getKey(config, key)}/>);
       default : {
         log.error("config.tag has no compared", config);
         return null;
@@ -103,30 +99,34 @@ function Item(props: IProps<IItem>) {
     if (!configs) {
       return null;
     }
-    const getKey = (config, index) => {
-      if (config && config.attr && config.attr.id) {
-        return config.attr.id;
-      }
-      return index;
-    };
     return (
       <>
         {
-          configs.map((config, index) => (configToComponent(config, getKey(config, index))))
+          configs.map((config, index) => (
+            configToComponent(config, getKey(config, index))
+          ))
         }
       </>
     );
   };
 
   const renderItem = () => {
+    if (!config) {
+      return null;
+    }
     return configToComponent(config, null);
   };
 
-  return (
-    <>
-      {renderItems()}
-      {renderItem()}
-    </>
-  );
+  const render = () => {
+    if (config) {
+      return renderItem();
+    } else if (configs) {
+      return renderItems();
+    }
+    return null;
+  }
+
+  return render();
 }
+
 export default Item;

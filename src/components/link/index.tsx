@@ -6,21 +6,11 @@ import "./style.less";
 
 function Link(props: IProps<ILink>) {
 
-  const [config, setConfig] = React.useState(() => {
+  const [config] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
     return config;
   });
-
-  React.useEffect(() => {
-    const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
-    setConfig(config);
-  }, [ props.config ]);
 
   const handleClick = (e) => {
     if (config.onClick && typeof config.onClick === "function") {

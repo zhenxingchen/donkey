@@ -10,17 +10,11 @@ function Input(props: IProps<IInput>) {
 
   const [config, setConfig] = React.useState(() => {
     const config = props.config;
-    if (!config.attr) {
-      config.attr = {};
-    }
+    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
   const [tableContext] = React.useContext(TableContext);
-
-  React.useEffect(() => {
-
-  }, [ props.config ]);
 
   React.useEffect(() => {
     eventListener();

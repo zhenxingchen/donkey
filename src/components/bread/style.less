@@ -1,8 +1,10 @@
 @charset "utf-8";
+@import "../../theme/style";
 .dk-bread {
-  border-bottom: 1px solid #e8e8e8;
+  background: @background-color;
+  border-bottom: 1px solid @border-color;
   padding: 0 8px;
-  .item {
+  .dk-bread-item {
     display: inline-block;
     line-height: 40px;
     &:after {
