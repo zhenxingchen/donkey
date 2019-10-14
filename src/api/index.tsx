@@ -1,15 +1,15 @@
-import { ajaxTrigger } from "./ajax";
-import { configUpdate } from "./config";
-import { fetch } from "./fetch";
+import * as ajax from "./ajax";
+import * as config from "./config";
+import * as form from "./form";
 import * as json from "./json";
-import { start } from "./start";
+import * as start from "./start";
 import * as table from "./table";
 
 export default {
-  ajaxTrigger,
-  configUpdate,
-  fetch,
+  ...ajax,
+  ...config,
+  ...form,
   ...json,
-  start,
+  ...start,
   ...table
 };
