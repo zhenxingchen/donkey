@@ -1,8 +1,7 @@
 import * as React from "react";
 import { FormContext } from "../../shared/context";
 import bus from "../../shared/bus";
-import log from "../../shared/log";
-import util from "../../shared/util";
+import { Layout } from "../../utils";
 import IProps from "../../types/common/props";
 import IRadio from "../../types/components/radio";
 
@@ -33,8 +32,14 @@ function Radio(props: IProps<IRadio>) {
       return null;
     }
     return (
-      <div className={`dk-radio ${util.getClassName(config.cols)}`}>
-        <div className="dk-choice radio">
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           <input
             id={ config.attr.id }
             name={ config.attr.name }

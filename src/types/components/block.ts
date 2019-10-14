@@ -1,11 +1,13 @@
-import ICols from "../layout/cols";
+import ILayout from "../common/layout";
 import IItem from "./item";
-export default interface IBlock extends ICols {
+
+/**
+ * 块
+ */
+export default interface IBlock extends ILayout {
   tag?: "block";
   attr?: {
     id?: string;
-    className?: string;
-    style?: {};
   };
   items?: IItem[]
 }

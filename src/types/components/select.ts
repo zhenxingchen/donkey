@@ -1,9 +1,9 @@
 import IAjax from "../common/ajax";
-import ICols from "../layout/cols";
+import ILayout from "../common/layout";
 import IValidate from "../common/validte";
-import { IFormControl } from "./form";
+import { IFormItem } from "./form";
 /**
- * select
+ * 下拉框
  * - support multiple
  * - support search
  * - support remote search
@@ -12,7 +12,7 @@ import { IFormControl } from "./form";
  * - support data convert
  * - support react in chain, one to many, many to one, many to many
  */
-export default interface ISelect extends ICols, IFormControl {
+export default interface ISelect extends ILayout, IFormItem {
   tag?: "select";
   attr?: {
     id?: string;
@@ -33,12 +33,10 @@ export default interface ISelect extends ICols, IFormControl {
     parentId?: string | string[];
     parentName?: string | string[];
     parentNameAlias?: string | string[];
-    className?: string;
-    style?: {};
   };
   onChange?: (text: string) => boolean | any;
   onSelect?: (record: {}, records: {} | {}[]) => boolean | any;
   ajax?: IAjax;
-  data: any[];
+  options: any[];
   validate?: IValidate;
 }

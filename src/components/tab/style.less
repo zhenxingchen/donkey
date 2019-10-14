@@ -1,6 +1,10 @@
 @charset "utf-8";
 @import "../../theme/style";
 .dk-tab {
+  .dk-tab-container {
+    position: relative;
+    display: inline-block;
+  }
   .tab-nav {
     ul, li {
       list-style: none;
@@ -9,7 +13,7 @@
       display: inline-block;
       padding: 0 24px;
       line-height: 45px;
-      border-bottom: 1px solid @border-color;
+      border-bottom: 1px solid @border-color-hover;
       margin-bottom: -1px;
       &:hover {
         cursor: pointer;
@@ -23,7 +27,7 @@
   }
   .tab-container {
     background: #fff;
-    border-top: 1px solid @border-color;
+    border-top: 1px solid @border-color-hover;
     li {
       display: none;
       height: 200px;

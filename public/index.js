@@ -10,7 +10,10 @@ const breadConfig = {
       tag: "span",
       text: "列表页"
     }
-  ]
+  ],
+  layout: {
+
+  }
 };
 const tableToolbar = {
   tag: "block",
@@ -474,7 +477,12 @@ const formItems = [
 const tabConfig = {
   tag: "tab",
   attr: {},
-  items: []
+  items: [
+    {
+      tag: "block",
+      title: "",
+    }
+  ]
 };
 
 const config = {
@@ -601,6 +609,8 @@ const config = {
 };
 
 window.dk.start(config);
+
+//
 //
 // window.dk.start({
 //   tag: "button",

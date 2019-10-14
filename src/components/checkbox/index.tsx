@@ -3,7 +3,7 @@ import ICheckbox from "../../types/components/checkbox";
 import IProps from "../../types/common/props";
 import {FormContext} from "../../shared/context";
 import bus from "../../shared/bus";
-import util from "../../shared/util";
+import { Layout } from "../../utils";
 import "./style.less";
 
 function Checkbox(props: IProps<ICheckbox>) {
@@ -30,8 +30,14 @@ function Checkbox(props: IProps<ICheckbox>) {
       return null;
     }
     return (
-      <div className={`dk-checkbox ${util.getClassName(config.cols)}`}>
-        <div className="dk-choice checkbox">
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           <input
             id={ config.attr.id }
             name={ config.attr.name }
@@ -45,10 +51,10 @@ function Checkbox(props: IProps<ICheckbox>) {
             onChange={ changeHandler.bind(this) }
           />
           <label className="box" htmlFor={ config.attr.id }>
-            <span className="square dk-transition-border">
-              <i className="checked dk-transition-opacity"></i>
-              <i className="half dk-transition-opacity"></i>
-            </span>
+          <span className="square dk-transition-border">
+            <i className="checked dk-transition-opacity"></i>
+            <i className="half dk-transition-opacity"></i>
+          </span>
             { config.attr.text ? (<span className="text">{ config.attr.text }</span>) : null }
           </label>
         </div>

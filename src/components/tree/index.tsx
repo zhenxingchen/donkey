@@ -2,7 +2,7 @@ import * as React from "react";
 import { FormContext } from "../../shared/context";
 import IProps from "../../types/common/props";
 import ITree from "../../types/components/tree";
-import util from "../../shared/util";
+import { Label, Layout } from "../../utils";
 
 function Tree(props: IProps<ITree>) {
 
@@ -18,8 +18,15 @@ function Tree(props: IProps<ITree>) {
       return null;
     }
     return (
-      <div className={`dk-tree ${util.getClassName(config.cols)}`}>
-        <div className="dk-tree-container">
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        { Label(config) }
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           树节点
         </div>
       </div>

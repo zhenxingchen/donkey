@@ -1,7 +1,11 @@
-import ICols from "../layout/cols";
+import ILayout from "../common/layout";
 import IValidate from "../common/validte";
-import { IFormControl } from "./form";
-export default interface ITextArea extends ICols, IFormControl {
+import { IFormItem } from "./form";
+
+/**
+ * 文本域
+ */
+export default interface ITextArea extends ILayout, IFormItem {
   tag?: "textarea";
   attr?: {
     id?: string;
@@ -11,8 +15,6 @@ export default interface ITextArea extends ICols, IFormControl {
     rows?: number;
     maxLength?: number;
     disabled?: boolean;
-    className?: string;
-    style?: {};
   }
   onBlur?: (target: HTMLInputElement) => void | boolean;
   onFocus?: (target: HTMLInputElement) => void | boolean;

@@ -1,11 +1,19 @@
+import { IFormItem } from "./form";
 import IAjax from "../common/ajax";
-import ICols from "../layout/cols";
-export default interface ITree extends ICols {
+import ILayout from "../common/layout";
+
+/**
+ * 树
+ */
+export default interface ITree extends ILayout, IFormItem {
   tag?: "tree";
   attr?: {
     id?: string;
-    className?: string;
-    style?: {};
+    name?: string;
+    value?: string | string[];
+    type?: "checkbox" | "radio";
+    association?: ""
   };
+  ajax?: IAjax;
   data: {}[];
 }

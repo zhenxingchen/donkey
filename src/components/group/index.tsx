@@ -3,7 +3,7 @@ import { GroupContext } from "../../shared/context";
 import IProps from "../../types/common/props";
 import IGroup from "../../types/components/group";
 import Item from "../item";
-import util from "../../shared/util";
+import { Label, Layout } from "../../utils";
 
 import "./style.less";
 
@@ -43,12 +43,16 @@ function Group(props: IProps<IGroup>) {
       return null;
     }
     return (
-      <div className={ `dk-group ${util.getClassName(config.cols)}` }>
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        { Label(config) }
         <div
-          className={ `dk-group-container ${util.getClassName(config.attr.className)}` }
-          style={ {...config.attr.style} }>
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           <GroupContext.Provider value={[ permissionCodes ]}>
-            { util.getLabel(config) }
             { renderItems() }
           </GroupContext.Provider>
         </div>

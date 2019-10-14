@@ -1,12 +1,14 @@
-import ICols from "../layout/cols";
-export default interface IHtml extends ICols {
+import ILayout from "../common/layout";
+
+/**
+ * 原生 html
+ */
+export default interface IHtml extends ILayout {
   tag?: "html";
   attr?: {
     id?: string;
     scriptUrl?: string | [];
     styleUrl?: string | [];
-    className?: string;
-    style?: {};
   };
   onLoad?: () => void;
   onError?: () => void;

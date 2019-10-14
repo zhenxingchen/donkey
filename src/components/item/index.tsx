@@ -24,6 +24,7 @@ import Radio from "../radio";
 import Select from "../select";
 import Span from "../span";
 import TextArea from "../textarea";
+import Upload from "../upload";
 
 import log from "../../shared/log";
 
@@ -88,12 +89,14 @@ function Item(props: IProps<IItem>) {
         return (<Span config={config} key={getKey(config, key)}/>);
       case "textarea":
         return (<TextArea config={config} key={getKey(config, key)}/>);
+      case "upload":
+        return (<Upload config={config} key={getKey(config, key)}/>);
       default : {
         log.error("config.tag has no compared", config);
         return null;
       }
     }
-  }
+  };
 
   const renderItems = () => {
     if (!configs) {
@@ -124,7 +127,7 @@ function Item(props: IProps<IItem>) {
       return renderItems();
     }
     return null;
-  }
+  };
 
   return render();
 }

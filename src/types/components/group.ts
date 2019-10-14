@@ -1,15 +1,17 @@
 import IAjax from "../common/ajax";
-import ICols from "../layout/cols";
+import ILayout from "../common/layout";
 import IItem from "./item";
 import IValidate from "../common/validte";
-import { IFormControl } from "./form";
-export default interface IGroup extends ICols, IFormControl {
+import { IFormItem } from "./form";
+
+/**
+ * 组
+ */
+export default interface IGroup extends ILayout, IFormItem {
   tag?: "group";
   attr?: {
     id?: string;
     name?: string;
-    className?: string;
-    style?: {};
   },
   items: IItem[];
   permissionAjax?: string | IAjax

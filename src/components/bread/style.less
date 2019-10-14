@@ -2,35 +2,15 @@
 @import "../../theme/style";
 .dk-bread {
   background: @background-color;
-  border-bottom: 1px solid @border-color;
-  padding: 0 8px;
-  .dk-bread-item {
+  border-bottom: 1px solid @border-color-hover;
+  .dk-bread-container {
+    position: relative;
     display: inline-block;
+    padding: 0 8px;
     line-height: 40px;
-    &:after {
-      margin: 0 8px;
-      color: #999;
-    }
-    &.arrow {
-      &:after {
-        content: '>';
-      }
-    }
-    &.slash-left {
-      &:after {
-        content: '/';
-      }
-    }
-    &.slash-right {
-      &:after {
-        content: '\\';
-      }
-    }
-    &:last-child {
-      &:after {
-        content: '';
-      }
-    }
+  }
+  .dk-bread-split {
+    padding: 0 5px;
   }
   .dk-link, .dk-span {
     display: inline-block;

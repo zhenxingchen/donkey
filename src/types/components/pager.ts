@@ -1,5 +1,9 @@
-import ICols from "../layout/cols";
-export default interface Pager extends ICols {
+import ILayout from "../common/layout";
+
+/**
+ * 分页
+ */
+export default interface Pager extends ILayout {
   tag?: "pager",
   attr?: {
     id?: string;
@@ -8,8 +12,6 @@ export default interface Pager extends ICols {
     total?: number;
     jump?: boolean;
     rowsOption?: number[];
-    className?: string;
-    style?: {};
   }
   statistic: (page: number, rows: number, total: number) => string;
   onPageChange: (pageCurr: number, pageTo: number) => void | boolean;

@@ -1,7 +1,11 @@
-import ICols from "../layout/cols";
+import ILayout from "../common/layout";
 import IValidate from "../common/validte";
-import { IFormControl } from "./form";
-export default interface IInput extends ICols, IFormControl {
+import { IFormItem } from "./form";
+
+/**
+ * 文本框
+ */
+export default interface IInput extends ILayout, IFormItem {
   tag?: "input";
   attr?: {
     id?: string;
@@ -14,8 +18,6 @@ export default interface IInput extends ICols, IFormControl {
     readonly?: boolean;
     autoComplete?: "off" | "on";
     clear?: boolean;
-    className?: string;
-    style?: {};
   };
   onBlur?: (target: HTMLInputElement) => void | boolean;
   onChange?: (target: HTMLInputElement) => void | boolean;

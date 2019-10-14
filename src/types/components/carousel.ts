@@ -1,10 +1,13 @@
-import ICols from "../layout/cols";
+import ILayout from "../common/layout";
 import IItem from "../components/item";
-export default interface ICarousel extends ICols {
+
+/**
+ * 轮播
+ */
+export default interface ICarousel extends ILayout {
   tag: "carousel";
   attr?: {
-    className?: string;
-    style?: {};
+    id?: string;
   };
   items?: IItem[];
   onChange?: (index: number) => void;

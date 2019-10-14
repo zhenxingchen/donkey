@@ -2,7 +2,7 @@ import * as React from "react";
 import IPanel from "../../types/components/panel";
 import IProps from "../../types/common/props";
 import Item from "../item";
-import util from "../../shared/util";
+import { Layout } from "../../utils";
 import "./style.less";
 
 function Panel(props: IProps<IPanel>) {
@@ -40,10 +40,14 @@ function Panel(props: IProps<IPanel>) {
       return null;
     }
     return (
-      <div className={`dk-panel ${util.getClassName(config.cols)}`}>
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
         <div
-          className={`dk-panel-container ${util.getClassName(config.attr.className)}`}
-          style={ {...config.attr.style} }>
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           { renderTop() }
           { renderContent() }
         </div>

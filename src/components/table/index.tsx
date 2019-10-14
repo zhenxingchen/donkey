@@ -1,13 +1,12 @@
 import * as React from "react";
-import { FormContext } from "../../shared/context";
-import { TableContext } from "../../shared/context";
+import { FormContext, TableContext} from "../../shared/context";
 import IProps from "../../types/common/props";
 import ITable from "../../types/components/table";
 import Checkbox from "../checkbox";
 import Item from "../item";
 import Pager from "../pager";
 import Radio from "../radio";
-import util from "../../shared/util";
+import { Layout } from "../../utils";
 
 import "./style.less";
 
@@ -269,15 +268,19 @@ function Table(props: IProps<ITable>) {
       return null;
     }
     return (
-      <div className={`dk-table ${util.getClassName(config.cols)}`}>
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
         <TableContext.Provider
           value={[{
             name: config.attr.name,
             disabled: config.attr.disabled
           }]}>
           <div
-            className={`dk-table-container ${util.getClassName(config.attr.className)}`}
-            style={ { ...config.attr.style } }>
+            className={Layout.containerClassName(config)}
+            style={Layout.containerStyle(config)}
+          >
               { renderToolbar() }
               { renderTableMain() }
               { renderPager() }

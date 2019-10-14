@@ -1,5 +1,9 @@
-import ICols from "../layout/cols";
-export default interface IImg extends ICols {
+import { IFormItem } from "./form";
+import ILayout from "../common/layout";
+/**
+ * 图片
+ */
+export default interface IImg extends ILayout,IFormItem {
   tag?: "img";
   attr?: {
     id?: string;
@@ -7,8 +11,7 @@ export default interface IImg extends ICols {
     alt?: string;
     width?: number | string;
     height?: number | string;
-    className?: string;
-    style?: {};
   };
   onLoad?: () => void;
+  onClose?: () => void;
 }

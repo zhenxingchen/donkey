@@ -1,17 +1,19 @@
-import ICols from "../layout/cols";
-import { IFormControl } from "./form";
-export default interface IButton extends ICols, IFormControl {
+import ILayout from "../common/layout";
+import { IFormItem } from "./form";
+
+/**
+ * 按钮
+ */
+export default interface IButton extends ILayout, IFormItem {
   tag?: "button";
   text?: string;
   attr?: {
     id?: string;
     title?: string;
-    theme?: "blue" | "red" | "gray" | "green" | "white";
+    color?: "blue" | "red" | "gray" | "green" | "white";
     type?: "submit" | "reset" | "button";
     permission?: string;
     disabled?: boolean;
-    className?: string;
-    style?: {};
   },
   onClick?: (target: HTMLButtonElement) => void | boolean;
 }

@@ -4,62 +4,87 @@
   .dk-select-container {
     position: relative;
     display: inline-block;
-    .options {
-      position: absolute;
-      z-index: 99;
-      width: calc(100% - 2px);
-      box-shadow: 0 4px 8px @border-color;
-      border: 1px solid @border-color;
-      color: @font-color;
-      background: #fff;
-      border-radius: @border-radius;
-      min-height: 196px;
-      overflow-y: auto;
-      ul {
+  }
+  .dk-select-input {
+
+  }
+  .dk-down {
+    display: inline-block;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    right: 12px;
+    top: 14px;
+    border-bottom: 1px solid @border-color-hover;
+    border-right: 1px solid @border-color-hover;
+    transform: rotateZ(45deg);
+    transition: 0.2s;
+    &.up {
+      transform: rotateZ(225deg);
+      top: 18px;
+    }
+  }
+  .dk-select-options {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    color: @font-color;
+    background: #fff;
+    box-shadow: @box-shadow-pop;
+    border: 1px solid @border-color;
+    border-radius: @border-radius-size;
+    box-sizing: border-box;
+    overflow-y: auto;
+    ul {
+      list-style: none;
+      li {
         list-style: none;
-        li {
-          list-style: none;
-          line-height: 33px;
-          padding: 0 8px;
-          &:hover {
-            cursor: pointer;
-            background: @background-color;
-          }
-          &.curr {
-            color: @theme-color;
-          }
-          .checked {
-            float: right;
-            margin-top: 13px;
-            display: inline-block;
-            width: 8px;
-            height: 4px;
-            border-left: 2px solid @theme-color;
-            border-bottom: 2px solid @theme-color;
-            transform: rotateZ(-45deg);
-          }
+        line-height: 40px;
+        padding: 0 8px;
+        &:hover {
+          cursor: pointer;
+          background: @background-color;
         }
-      }
-      .page {
-        text-align: center;
-        border-top: 1px solid @border-color;
-        line-height: 33px;
-        a {
+        &.curr {
+          color: @theme-color;
+        }
+        .checked {
+          float: right;
+          margin-top: 13px;
           display: inline-block;
-          width: 50px;
-          text-decoration: none;
-          color: #444;
-          &:hover {
-            color: @theme-color;
-          }
-          &.pre {
-            float: left;
-          }
-          &.next {
-            float: right;
-          }
+          width: 8px;
+          height: 4px;
+          border-left: 2px solid @theme-color;
+          border-bottom: 2px solid @theme-color;
+          transform: rotateZ(-45deg);
         }
       }
     }
+    .dk-page {
+      text-align: center;
+      border-top: 1px solid @border-color;
+      box-sizing: border-box;
+      line-height: 40px;
+      a {
+        display: inline-block;
+        width: 50px;
+        text-decoration: none;
+        color: #444;
+        &:hover {
+          color: @theme-color;
+        }
+        &.pre {
+          float: left;
+        }
+        &.next {
+          float: right;
+        }
+      }
+    }
+  }
+  .dk-options-empty {
+    color: @color-gray;
+    text-align: center;
+    padding: 50px 0;
   }
 }

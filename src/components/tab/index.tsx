@@ -2,7 +2,7 @@ import * as React from "react";
 import { FormContext} from "../../shared/context";
 import IProps from "../../types/common/props";
 import ITab from "../../types/components/tab";
-import util from "../../shared/util";
+import { Layout } from "../../utils";
 import "./style.less";
 
 function Tab(props: IProps<ITab>) {
@@ -14,13 +14,27 @@ function Tab(props: IProps<ITab>) {
   });
   const [formContext] = React.useContext(FormContext);
 
+  const renderTabNav = () => {
+
+  };
+
+  const renderTabContent = () => {
+
+  };
+
   const render = () => {
     if (!config) {
       return null;
     }
     return (
-      <div className={`dk-tab ${util.getClassName(config.cols)}`}>
-        <div className={`dk-tab-container ${util.getClassName(config.attr.className)}`}>
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           <div className="tab-nav">
             <ul>
               <li>页签一</li>

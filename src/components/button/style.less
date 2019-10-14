@@ -1,12 +1,17 @@
 @charset "utf-8";
 @import "../../theme/style.less";
 .dk-button {
-  display: inline-block;
+  .dk-button-container {
+    position: relative;
+    display: inline-block;
+  }
   button {
-    height: 33px;
+    height: 40px;
     padding: 0 18px;
-    border-radius: @border-radius;
+    min-width: 80px;
+    border-radius: @border-radius-size;
     border: 1px solid;
+    box-sizing: border-box;
     outline: none;
     &:hover {
       cursor: pointer;
@@ -45,9 +50,9 @@
     }
     &.dk-white {
       background: @color-white;
-      border-color: @border-color;
+      border-color: @border-color-hover;
       &:hover {
-        box-shadow: 0 0 4px @border-color;
+        box-shadow: 0 0 4px @border-color-hover;
       }
     }
   }

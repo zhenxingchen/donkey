@@ -1,9 +1,12 @@
 import IAjax from "../common/ajax";
-import ICols from "../layout/cols";
+import ILayout from "../common/layout";
 import IItem from "./item";
 import IPager from "./pager";
 
-export default interface ITable extends ICols {
+/**
+ * 表格
+ */
+export default interface ITable extends ILayout {
   tag?: "table";
   attr?: {
     id?: string;
@@ -14,8 +17,6 @@ export default interface ITable extends ICols {
     fixed?: boolean;
     border?: boolean;
     zebra?: boolean;
-    className?: string;
-    style?: {};
   };
   toolbar?: IItem;
   columns: ITableColumns[];
@@ -26,11 +27,11 @@ export default interface ITable extends ICols {
   };
   pager?: IPager;
   children?: ITable;
+  data?: [];
+  ajax?: IAjax;
   onCheck?: (rowData: {}, rowIndex: number) => void;
   unCheck?: (rowData: {}, rowIndex: number) => void;
   onCheckAll?: (rowData: {}[]) => void;
-  data?: [];
-  ajax?: IAjax;
 }
 
 interface ITableHeader {

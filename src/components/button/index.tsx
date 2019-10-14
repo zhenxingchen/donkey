@@ -1,9 +1,8 @@
 import * as React from "react";
-import { FormContext } from "../../shared/context";
-import { GroupContext} from "../../shared/context";
+import { FormContext, GlobalContext, GroupContext } from "../../shared/context";
 import IProps from "../../types/common/props";
 import IButton from "../../types/components/button";
-import util from "../../shared/util";
+import { Label, Layout } from "../../utils";
 import "./style.less";
 
 function Button(props: IProps<IButton>) {
@@ -11,10 +10,12 @@ function Button(props: IProps<IButton>) {
   const [config] = React.useState(() => {
     const config = props.config;
     !config.attr ? config.attr = {} : "";
-    !config.attr.theme ? config.attr.theme = "blue" : "";
+    !config.attr.color ? config.attr.color = "blue" : "";
+    !config.attr.type ? config.attr.type = "button" : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
+  const [globalContext] = React.useContext(GlobalContext);
   const [groupContext] = React.useContext(GroupContext);
 
   const handleClick = (e) => {
@@ -31,8 +32,8 @@ function Button(props: IProps<IButton>) {
       <button
         type={ config.attr.type }
         disabled={ !!config.attr.disabled }
-        style={ {...config.attr.style} }
-        className={ `dk-${config.attr.theme}` }
+        className={ `dk-${config.attr.color} ${Layout.componentClassName(config)}` }
+        style={ Layout.componentStyle(config) }
         onClick={ handleClick.bind(this) }
       >
         { config.text }
@@ -45,9 +46,15 @@ function Button(props: IProps<IButton>) {
       return null;
     }
     return (
-      <div className={`dk-button ${util.getClassName(config.cols)}` }>
-        <div className={`dk-button-container ${util.getClassName(config.attr.className)}`}>
-          { util.getLabel(config) }
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        { Label(config) }
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           { renderButton() }
         </div>
       </div>

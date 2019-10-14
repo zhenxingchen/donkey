@@ -14,7 +14,6 @@ import ITree from "./tree";
 import IButton from "./button";
 import ICheckbox from "./checkbox";
 import IDate from "./date";
-import IDrop from "./drop";
 import IImg from "./img";
 import IInput from "./input";
 import ILink from "./link";
@@ -28,11 +27,14 @@ import ITextArea from "./textarea";
 import ITransfer from "./transfer";
 import IUpload from "./upload";
 
+/**
+ * 组件
+ */
 declare type IItem =
   IBlock | IBread | ICarousel | IForm | IGroup | IHtml
   | IIFrame | IPager | IPanel | ITab | ITable | ITree
-  | IButton | ICheckbox | IDrop | IDate | IImg | IInput
-  | ILink | IProgress | IRadio | ISelect | ISlide | ISpan
-  | ISwitch | ITextArea | ITransfer | IUpload;
+  | IButton | ICheckbox | IDate | IImg | IInput
+  | ILink | IProgress | IRadio | ISelect | ISlide
+  | ISpan | ISwitch | ITextArea | ITransfer | IUpload;
 
 export default IItem;

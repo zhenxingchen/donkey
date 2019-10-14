@@ -1,7 +1,11 @@
-import ICols from "../layout/cols";
+import ILayout from "../common/layout";
 import IValidate from "../common/validte";
-import { IFormControl } from "./form";
-export default interface IDate extends ICols, IFormControl {
+import { IFormItem } from "./form";
+
+/**
+ * 日期
+ */
+export default interface IDate extends ILayout, IFormItem {
   tag?: "date";
   attr?: {
     id?: string;
@@ -9,15 +13,11 @@ export default interface IDate extends ICols, IFormControl {
     value?: string | number | Date;
     readonly?: boolean;
     disabled?: boolean;
-    className?: string;
-    style?: {};
-  };
-  config?: {
     type?: "date" | "time" | "week" | "date-time" | "date-range" | "time-range" | "week-range" | "date-time-range";
+    forbidden?: string | string[] | Date | Date[] | number | number[];
     format?: string;
     max?: Date | string | number;
     min?: Date | string | number;
-    disabled?: string | string[] | Date | Date[] | number | number[];
   };
   onBlur?: (target: HTMLInputElement) => boolean | void;
   onChange?: (target: HTMLInputElement) => boolean | void;

@@ -2,49 +2,7 @@
 @import "../../theme/style";
 .dk-form {
   .dk-form-container {
-    *zoom: 1;
-    &:after {
-      content: '';
-      display: block;
-      clear: both;
-    }
-    .label-for {
-      position: relative;
-      display: inline-block;
-      width: 70px;
-      padding-right: 10px;
-      text-align: right;
-      &.required {
-        &:after {
-          position: absolute;
-          right: 3px;
-          top: 3px;
-          content: '*';
-          color: @color-red
-        }
-      }
-    }
-    .dk-link, .dk-span {
-      line-height: 33px;
-    }
-    .dk-button,
-    .dk-group,
-    .dk-input,
-    .dk-link,
-    .dk-span,
-    .dk-select,
-    .dk-selects,
-    .dk-textarea,
-    .dk-upload {
-      margin-bottom: 20px;
-    }
-  }
-  .dk-group, .dk-block {
-    *zoom: 1;
-    &:after {
-      content: '';
-      display: block;
-      clear: both;
-    }
+    position: relative;
+    display: inline-block;
   }
 }

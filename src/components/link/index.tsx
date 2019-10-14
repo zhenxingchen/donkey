@@ -1,7 +1,7 @@
 import * as React from "react";
 import IProps from "../../types/common/props";
 import ILink from "../../types/components/link";
-import util from "../../shared/util";
+import { Label, Layout } from "../../utils";
 import "./style.less";
 
 function Link(props: IProps<ILink>) {
@@ -25,8 +25,8 @@ function Link(props: IProps<ILink>) {
         id={ config.attr.id }
         href={ config.attr.href }
         target={ config.attr.target }
-        style={ {...config.attr.style} }
-        className={ config.attr.className }
+        className={ Layout.componentClassName(config) }
+        style={ Layout.componentStyle(config) }
         onClick={ handleClick.bind(this) }
       >
         { config.text }
@@ -39,9 +39,17 @@ function Link(props: IProps<ILink>) {
       return null;
     }
     return (
-      <div className={`dk-link ${util.getClassName(config.cols)}`}>
-        { util.getLabel(config) }
-        { renderLink() }
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        { Label(config) }
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
+          { renderLink() }
+        </div>
       </div>
     );
   };

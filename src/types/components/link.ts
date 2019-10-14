@@ -1,14 +1,16 @@
-import ICols from "../layout/cols";
-import { IFormControl } from "./form";
-export default interface ILink extends ICols, IFormControl {
+import ILayout from "../common/layout";
+import { IFormItem } from "./form";
+
+/**
+ * 超链接
+ */
+export default interface ILink extends ILayout, IFormItem {
   tag?: "link";
   text?: string;
   attr?: {
     id?: string;
     href?: string;
     target?: string;
-    className?: string;
-    style?: {};
   };
   onClick?: (target: HTMLLinkElement) => boolean | void;
 }

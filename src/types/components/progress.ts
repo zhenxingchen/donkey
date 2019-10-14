@@ -1,7 +1,10 @@
-import ICols from "../layout/cols";
-import { IFormControl } from "./form";
+import ILayout from "../common/layout";
+import { IFormItem } from "./form";
 
-export default interface IProgress extends ICols, IFormControl {
+/**
+ * 进度条
+ */
+export default interface IProgress extends ILayout, IFormItem {
   tag?: "progress";
   attr?: {
     id?: string;

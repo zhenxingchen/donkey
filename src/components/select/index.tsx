@@ -2,7 +2,7 @@ import * as React from "react";
 import { FormContext } from "../../shared/context";
 import IProps from "../../types/common/props";
 import ISelect from "../../types/components/select";
-import util from "../../shared/util";
+import { Label, Layout } from "../../utils";
 import "./style.less";
 
 function Select(props: IProps<ISelect>) {
@@ -10,50 +10,67 @@ function Select(props: IProps<ISelect>) {
   const [config] = React.useState(() => {
     const config = props.config;
     !config.attr ? config.attr = {} : "";
+    !config.attr.textField ? config.attr.textField = "text" : "";
+    !config.attr.valueField ? config.attr.valueField = "value" : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
-  const [doroDown, setDropDown] = React.useState(false);
+  const [optionsVisible, setOptionsVisible] = React.useState(false);
 
   const renderOptions = () => {
-    if (!doroDown) {
+    if (!optionsVisible) {
       return null;
     }
+    if (!config.options || config.options.length < 1) {
+      return (
+        <div className="dk-options">
+          <div className={"dk-options-empty"}>暂无数据</div>
+        </div>
+      );
+    }
     return (
-      <div className="options">
+      <div className="dk-select-options">
         <ul>
           {
-            config.data.map((option, index) => (
-              <li key={index} className={""}>
-                { option.text }
+            config.options.map(option => (
+              <li key={option[config.attr.valueField]}>
+                { option[config.attr.textField] }
                 <i className="checked"></i>
               </li>
             ))
           }
         </ul>
-        <div className="page">
+        <div className="dk-page">
           <a className="pre" href="#">&lt;</a>
           <span>1 / 23</span>
           <a className="next" href="#">&gt;</a>
         </div>
       </div>
     );
-  }
+  };
 
   const render = () => {
     if (!config) {
       return null;
     }
     return (
-      <div className={`dk-select ${util.getClassName(config.cols)}`}>
-        { util.getLabel(config) }
-        <div className="dk-select-container">
-          <input
-            className={`dk-form-control dk-transition-border ${config.attr.className}`}
-            type="text"
-            onFocus={() => setDropDown(true)}
-            onBlur={() => setDropDown(false)}
-          />
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        { Label(config) }
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
+            <div
+              className={`dk-form-control dk-transition-border ${Layout.componentClassName(config)}`}
+              style={ Layout.componentStyle(config) }
+              onClick={() => setOptionsVisible(true)}
+            >
+              <div className="dk-select-input"></div>
+              <i className={`dk-down ${optionsVisible ? "up" : ""}`}></i>
+            </div>
           { renderOptions() }
         </div>
       </div>

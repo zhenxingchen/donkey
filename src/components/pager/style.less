@@ -1,10 +1,14 @@
 @charset "utf-8";
 @import "../../theme/style";
 .dk-pager {
+  .dk-pager-container {
+    position: relative;
+    display: inline-block;
+  }
   a {
     display: inline-block;
-    border: 1px solid @border-color;
-    border-radius: @border-radius;
+    border: 1px solid @border-color-hover;
+    border-radius: @border-radius-size;
     padding: 7px 12px;
     color: #666;
     margin-right: 8px;
@@ -24,7 +28,7 @@
       cursor: not-allowed;
       &:hover {
         box-shadow: none;
-        border: 1px solid @border-color;
+        border: 1px solid @border-color-hover;
       }
     }
     &.dot {

@@ -2,7 +2,7 @@ import * as React from "react";
 import IProps from "../../types/common/props";
 import IBread from "../../types/components/bread";
 import Item from "../item";
-import util from "../../shared/util";
+import { Layout } from "../../utils";
 import "./style.less";
 
 function Bread(props: IProps<IBread>) {
@@ -10,9 +10,20 @@ function Bread(props: IProps<IBread>) {
   const [config] = React.useState(() => {
     const config = props.config;
     !config.attr ? config.attr = {} : "";
-    !config.attr.split ? config.attr.split = "arrow" : "";
+    !config.attr.split ? config.attr.split = ">" : "";
     return config;
   });
+
+  const renderSplit = (index: number) => {
+    if (index === config.items.length - 1) {
+      return null;
+    }
+    return (
+      <span className={"dk-bread-split"}>
+        { config.attr.split }
+      </span>
+    );
+  };
 
   const renderItems = () => {
     if (!config.items
@@ -24,9 +35,10 @@ function Bread(props: IProps<IBread>) {
       <>
         {
           config.items.map((item, index) => (
-            <div className={ `dk-bread-item ${config.attr.split}` } key={index}>
+            <>
               <Item config={ item }/>
-            </div>
+              { renderSplit(index) }
+            </>
           ))
         }
       </>
@@ -38,10 +50,14 @@ function Bread(props: IProps<IBread>) {
       return null;
     }
     return (
-      <div className={ `dk-bread ${util.getClassName(config.cols)}` }>
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
         <div
-          className={ `dk-bread-container ${util.getClassName(config.attr.className)}` }
-          style={ config.attr.style }>
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           { renderItems() }
         </div>
       </div>

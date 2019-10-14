@@ -4,9 +4,8 @@ import bus from "../../shared/bus";
 import { FormContext } from "../../shared/context";
 import IProps from "../../types/common/props";
 import IForm from "../../types/components/form";
-import Block from "../block";
 import Item from "../item";
-import util from "../../shared/util";
+import { Layout } from "../../utils";
 import "./style.less";
 
 function Form(props: IProps<IForm>) {
@@ -43,7 +42,8 @@ function Form(props: IProps<IForm>) {
   };
 
   const handleFormSubmit = (e) => {
-
+    console.log("form submit");
+    return true;
   };
 
   const renderItems = () => {
@@ -61,8 +61,8 @@ function Form(props: IProps<IForm>) {
     }
     return (
       <div
-        className={`dk-form ${util.getClassName(config.cols)}`}
-        style={ {...config.attr.style} }
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
       >
         <FormContext.Provider
           value={[{
@@ -70,13 +70,15 @@ function Form(props: IProps<IForm>) {
             data: formData,
             disabled: config.attr.disabled
           }]}>
-          <div className="dk-form-container">
+          <div
+            className={Layout.containerClassName(config)}
+            style={Layout.containerStyle(config)}
+          >
             <form
               name={ config.attr.name }
               action={ config.attr.action }
               method={ config.attr.method }
               onSubmit={ handleFormSubmit.bind(this) }
-              className={ util.getClassName(config.attr.className) }
             >
               { renderItems() }
             </form>

@@ -2,7 +2,7 @@ import * as React from "react";
 import IProps from "../../types/common/props";
 import IBlock from "../../types/components/block";
 import Item from "../item";
-import util from "../../shared/util";
+import { Layout } from "../../utils";
 
 import "./style.less";
 
@@ -21,7 +21,10 @@ function Block(props: IProps<IBlock>) {
       return null;
     }
     return (
-      <div className={`dk-block-container ${util.getClassName(config.attr.className)}`}>
+      <div
+        className={Layout.containerClassName(config)}
+        style={Layout.containerStyle(config)}
+      >
         <Item configs={ config.items }/>
       </div>
     );
@@ -33,8 +36,8 @@ function Block(props: IProps<IBlock>) {
     }
     return (
       <div
-        className={ `dk-block ${util.getClassName(config.cols)}` }
-        style={ {...config.attr.style} }
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
       >
         { renderItems() }
       </div>

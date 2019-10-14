@@ -2,6 +2,10 @@
 @import "../../theme/style";
 .dk-table {
   white-space: nowrap;
+  .dk-table-container {
+    position: relative;
+    display: inline-block;
+  }
   table {
     border: 1px solid #e8e8e8;
     border-collapse: collapse;
@@ -63,7 +67,7 @@
     width: 16px;
     height: 16px;
     line-height: 16px;
-    border-radius: @border-radius;
+    border-radius: @border-radius-size;
     font-style: normal;
     font-weight: normal;
     text-align: center;

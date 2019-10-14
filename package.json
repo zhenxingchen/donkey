@@ -4,12 +4,15 @@
   "description": "with json config to build the full page",
   "main": "index.js",
   "sideEffects": false,
-  "files": ["dist/donkey.min.js"],
+  "files": [
+    "dist/donkey.min.js"
+  ],
   "typings": "types/index.d.ts",
   "scripts": {
     "dev": "webpack-dev-server --config scripts/dev.js --mode=development --watch",
     "build": "webpack --config scripts/build.js --mode=production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -32,6 +35,7 @@
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.1.2",
     "rxjs": "^6.5.2",
     "style-loader": "^0.23.1",
     "ts-loader": "^6.0.4",
@@ -40,7 +44,13 @@
     "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
-    "ts-lint": "^4.5.1",
+    "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "@typescript-eslint/parser": "^2.3.1",
+    "eslint": "5.16.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "prettier": "^1.18.2",
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-dev-server": "^3.7.2"
   }

@@ -1,19 +1,19 @@
 import IAjax from "../common/ajax";
-import IBlock from "./block";
-import ICols from "../layout/cols";
 import IItem from "./item";
+import ILayout from "../common/layout";
 
-export default interface IForm extends ICols {
+/**
+ * 表单
+ */
+export default interface IForm extends ILayout {
   tag?: "form";
   attr?: {
     id?: string;
     name?: string;
     action?: string;
-    method?: "get" | "GET" | "post" | "POST";
+    method?: string;
     load?: true;
     disabled?: boolean;
-    className?: string;
-    style?: {};
   };
   onSubmit?: (formData: object) => boolean | {};
   onSuccess?: (result: object) => void | {};
@@ -23,6 +23,8 @@ export default interface IForm extends ICols {
   items: IItem[];
 }
 
-export interface IFormControl {
+export interface IFormItem {
   label?: string;
+  labelStyle?: {};
+
 }

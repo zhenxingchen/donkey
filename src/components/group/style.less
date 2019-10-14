@@ -1,10 +1,16 @@
 @charset "utf-8";
 .dk-group {
   vertical-align: top;
+  .dk-group-container {
+    position: relative;
+    display: inline-block;
+  }
   .dk-group-items {
     display: inline-block;
+    white-space: normal;
     .dk-button,
     .dk-checkbox,
+    .dk-img,
     .dk-input,
     .dk-link,
     .dk-radio,
@@ -14,7 +20,7 @@
     .dk-textarea,
     .dk-upload {
       display: inline-block;
-      margin-right: 8px;
+      margin-right: 10px;
     }
   }
 }

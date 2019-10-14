@@ -2,7 +2,7 @@ import * as React from "react";
 import { FormContext, TableContext } from "../../shared/context";
 import IProps from "../../types/common/props";
 import IPager from "../../types/components/pager";
-import util from "../../shared/util";
+import { Layout } from "../../utils";
 import "./style.less";
 
 function Pager(props: IProps<IPager>) {
@@ -20,10 +20,13 @@ function Pager(props: IProps<IPager>) {
       return null;
     }
     return (
-      <div className={ `dk-pager ${util.getClassName(config.cols)}` }>
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
         <div
-          className={`dk-pager-container ${util.getClassName(config.attr.className)}`}
-          style={ {...config.attr.style}}>
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}>
           <a className="dk-transition-border" href="">&lt;</a>
           <a className="dk-transition-border" href="">1</a>
           <a className="dk-transition-border dot" href="">···</a>

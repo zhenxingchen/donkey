@@ -20,7 +20,7 @@ function EventBus() {
   };
   this.off = (name: string) => {
     delete this.events[name];
-  }
+  };
 }
 
 export default new EventBus();

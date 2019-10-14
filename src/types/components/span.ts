@@ -1,12 +1,14 @@
-import ICols from "../layout/cols";
-import { IFormControl } from "./form";
-export default interface ISpan extends ICols, IFormControl {
+import ILayout from "../common/layout";
+import { IFormItem } from "./form";
+
+/**
+ * 文本
+ */
+export default interface ISpan extends ILayout, IFormItem {
   tag: "span";
   text?: string;
   attr?: {
     id?: string;
-    className?: string;
-    style?: {};
   }
   onClick?: (target: HTMLSpanElement) => void;
 }

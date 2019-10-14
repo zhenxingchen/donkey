@@ -2,7 +2,7 @@ import * as React from "react";
 
 import IImg from "../../types/components/img";
 import IProps from "../../types/common/props";
-import util from "../../shared/util";
+import { Label, Layout } from "../../utils";
 
 import "./style.less";
 
@@ -16,7 +16,12 @@ function Img(props: IProps<IImg>) {
 
   const renderImg = () => {
     return (
-      <img src={ config.attr.src } alt={ config.attr.alt }/>
+      <img
+        width={ config.attr.width }
+        height={ config.attr.height }
+        src={ config.attr.src }
+        alt={ config.attr.alt }
+      />
     );
   };
 
@@ -25,9 +30,15 @@ function Img(props: IProps<IImg>) {
       return null;
     }
     return (
-      <div className={`dk-img ${util.getClassName(config.cols)}`}>
-        <div className="dk-img-container">
-          { util.getLabel(config) }
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        { Label(config) }
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           { renderImg() }
         </div>
       </div>

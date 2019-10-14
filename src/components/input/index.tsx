@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormContext, TableContext } from "../../shared/context";
 import bus from "../../shared/bus";
-import util from "../../shared/util";
+import { Label, Layout } from "../../utils";
 import IProps from "../../types/common/props";
 import IInput from "../../types/components/input";
 import "./style.less";
@@ -57,9 +57,10 @@ function Input(props: IProps<IInput>) {
         value={ config.attr.value }
         disabled={ !!config.attr.disabled }
         readOnly={ !!config.attr.readonly }
+        maxLength={ config.attr.maxLength }
         autoComplete={ config.attr.autoComplete ? config.attr.autoComplete : "off" }
-        style={ {...config.attr.style} }
-        className={ `dk-form-control dk-transition-border ${config.attr.className ? config.attr.className : ""}` }
+        className={ `dk-form-control dk-transition-border ${Layout.componentClassName(config)}` }
+        style={ Layout.componentStyle(config) }
         onBlur={ eventHandler.bind(this, "onBlur") }
         onChange={ eventHandler.bind(this, "onChange") }
         onFocus={ eventHandler.bind(this, "onFocus") }
@@ -72,9 +73,15 @@ function Input(props: IProps<IInput>) {
       return null;
     }
     return (
-      <div className={`dk-input ${util.getClassName(config.cols)}`}>
-        <div className="dk-input-container">
-          { util.getLabel(config) }
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        { Label(config) }
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
           { renderInput() }
         </div>
       </div>

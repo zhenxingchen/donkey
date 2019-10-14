@@ -1,4 +1,4 @@
-import ICols from "../layout/cols";
-export default interface IBanner extends ICols {
+import ILayout from "../common/layout";
+export default interface IBanner extends ILayout {
   tag?: "banner";
 }

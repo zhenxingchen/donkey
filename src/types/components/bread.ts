@@ -1,13 +1,15 @@
-import ICols from "../layout/cols";
+import ILayout from "../common/layout";
 import ILink from "./link";
 import ISpan from "./span";
-export default interface IBread extends ICols {
+
+/**
+ * 面包屑
+ */
+export default interface IBread extends ILayout {
   tag: "bread";
   attr?: {
     id?: string;
-    split?: "arrow" | "slash-left" | "slash-right"
-    className?: string;
-    style?: {};
+    split?: string;
   },
   items: (ILink | ISpan)[]
 }

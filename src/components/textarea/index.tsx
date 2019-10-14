@@ -2,7 +2,7 @@ import * as React from "react";
 import { FormContext } from "../../shared/context";
 import IProps from "../../types/common/props";
 import ITextArea from "../../types/components/textarea";
-import util from "../../shared/util";
+import { Label, Layout } from "../../utils";
 import "./style.less";
 
 function TextArea(props: IProps<ITextArea>) {
@@ -21,8 +21,9 @@ function TextArea(props: IProps<ITextArea>) {
         name={ config.attr.name }
         cols={ config.attr.cols }
         rows={ config.attr.rows }
-        className={ `${config.attr.className} dk-form-control dk-transition-border` }
-      ></textarea>
+        className={`dk-form-control dk-transition-border ${Layout.componentClassName(config)}`}
+        style={Layout.componentStyle(config)}
+      />
     );
   };
 
@@ -31,9 +32,17 @@ function TextArea(props: IProps<ITextArea>) {
       return null;
     }
     return (
-      <div className={`dk-textarea ${util.getClassName(config.cols)}`}>
-        { util.getLabel(config) }
-        { renderTextArea() }
+      <div
+        className={Layout.rootClassName(config)}
+        style={Layout.rootStyle(config)}
+      >
+        { Label(config) }
+        <div
+          className={Layout.containerClassName(config)}
+          style={Layout.containerStyle(config)}
+        >
+          { renderTextArea() }
+        </div>
       </div>
     );
   };
