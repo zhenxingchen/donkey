@@ -1,13 +1,29 @@
 import * as React from "react";
+import IAjax, { IAjaxTrigger } from "@types-common/ajax";
+import Axios from "axios";
 
-export function ajax() {
+/**
+ * ajax or ajax trigger
+ */
+export function ajax(ajax: IAjax | IAjaxTrigger) {
+  if (!ajax) {
+    return false;
+  }
+  // ajax
+  if (ajax.hasOwnProperty("url")) {
+    Axios.request({
 
+    });
+  }
+  // trigger
+  else if (ajax.hasOwnProperty("id")) {
+
+  }
 }
 
-export function ajaxTrigger() {
-
-}
-
-export function fetch() {
+/**
+ * 异步加载文件
+ */
+export function fetch(url: string | string[], onLoad?: () => void) {
 
 }

@@ -1,7 +1,8 @@
 import * as React from "react";
-import ISpan from "../../types/components/span";
-import IProps from "../../types/common/props";
-import { Label, Layout } from "../../utils";
+import { Label, Layout } from "@util";
+import ISpan from "@types-component/span";
+import IProps from "@types-common/props";
+import Item from "@components/item";
 import "./style.less";
 
 function Span(props: IProps<ISpan>) {
@@ -30,7 +31,7 @@ function Span(props: IProps<ISpan>) {
             className={`${Layout.componentClassName(config)}`}
             style={Layout.componentStyle(config)}
           >
-            { config.text }
+            { config.items ? <Item configs={config.items}/> : config.text }
           </span>
         </div>
       </div>

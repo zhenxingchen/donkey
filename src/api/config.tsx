@@ -1,13 +1,16 @@
 import * as React from "react";
 
-export function configUpdate() {
-  
+import { updateSubject, insertSubject, removeSubject } from "@shared/subject";
+
+export function update(params) {
+  console.log("update send subscribe...");
+  updateSubject.next(params);
 }
 
-export function configInsert() {
-
+export function insert(params) {
+  insertSubject.next(params);
 }
 
-export function configDelete() {
-
+export function remove(params) {
+  removeSubject.next(params);
 }

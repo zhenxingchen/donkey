@@ -1,8 +1,9 @@
 import * as React from "react";
-import { FormContext, GlobalContext, GroupContext } from "../../shared/context";
-import IProps from "../../types/common/props";
-import IButton from "../../types/components/button";
-import { Label, Layout } from "../../utils";
+import { FormContext, GlobalContext, GroupContext } from "@shared/context";
+import { Label, Layout } from "@util";
+import IProps from "@types-common/props";
+import IButton from "@types-component/button";
+import Item from "@components/item";
 import "./style.less";
 
 function Button(props: IProps<IButton>) {
@@ -19,12 +20,10 @@ function Button(props: IProps<IButton>) {
   const [groupContext] = React.useContext(GroupContext);
 
   const handleClick = (e) => {
-    e.preventDefault();
-    // TODO append form to the config, like config.form = { ...formContext };
     if (config.onClick && typeof config.onClick === "function") {
       return config.onClick(e.target) ? true : false;
     }
-    return false;
+    return true;
   };
 
   const renderButton = () => {
@@ -36,7 +35,7 @@ function Button(props: IProps<IButton>) {
         style={ Layout.componentStyle(config) }
         onClick={ handleClick.bind(this) }
       >
-        { config.text }
+        { config.items ? <Item configs={ config.items }/> : config.text }
       </button>
     );
   };

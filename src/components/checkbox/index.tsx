@@ -1,9 +1,9 @@
 import * as React from "react";
-import ICheckbox from "../../types/components/checkbox";
-import IProps from "../../types/common/props";
-import {FormContext} from "../../shared/context";
-import bus from "../../shared/bus";
-import { Layout } from "../../utils";
+import ICheckbox from "@types-component/checkbox";
+import IProps from "@types-common/props";
+import { FormContext } from "@shared/context";
+import bus from "@shared/bus";
+import { Layout } from "@util";
 import "./style.less";
 
 function Checkbox(props: IProps<ICheckbox>) {
@@ -44,10 +44,11 @@ function Checkbox(props: IProps<ICheckbox>) {
             value={ config.attr.value }
             type="checkbox"
             checked={
+              formContext &&
               formContext.data[config.attr.name] &&
               formContext.data[config.attr.name].indexOf(config.attr.value) > -1
             }
-            disabled={ !!config.attr.disabled || formContext.disabled }
+            disabled={ !!config.attr.disabled || (formContext && formContext.disabled) }
             onChange={ changeHandler.bind(this) }
           />
           <label className="box" htmlFor={ config.attr.id }>

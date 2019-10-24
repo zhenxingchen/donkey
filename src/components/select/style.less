@@ -1,31 +1,16 @@
 @charset "utf-8";
-@import "../../theme/style.less";
+@import "../../theme/style";
 .dk-select {
   .dk-select-container {
     position: relative;
     display: inline-block;
   }
   .dk-select-input {
-
-  }
-  .dk-down {
-    display: inline-block;
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    right: 12px;
-    top: 14px;
-    border-bottom: 1px solid @border-color-hover;
-    border-right: 1px solid @border-color-hover;
-    transform: rotateZ(45deg);
-    transition: 0.2s;
-    &.up {
-      transform: rotateZ(225deg);
-      top: 18px;
-    }
   }
   .dk-select-options {
     position: absolute;
+    left: 0;
+    top: 34px;
     z-index: 99;
     width: 100%;
     color: @font-color;
@@ -39,7 +24,8 @@
       list-style: none;
       li {
         list-style: none;
-        line-height: 40px;
+        line-height: @height-form-item;
+        color: rgba(0,0,0, 0.65);
         padding: 0 8px;
         &:hover {
           cursor: pointer;
@@ -48,43 +34,41 @@
         &.curr {
           color: @theme-color;
         }
-        .checked {
-          float: right;
-          margin-top: 13px;
-          display: inline-block;
-          width: 8px;
-          height: 4px;
-          border-left: 2px solid @theme-color;
-          border-bottom: 2px solid @theme-color;
-          transform: rotateZ(-45deg);
-        }
-      }
-    }
-    .dk-page {
-      text-align: center;
-      border-top: 1px solid @border-color;
-      box-sizing: border-box;
-      line-height: 40px;
-      a {
-        display: inline-block;
-        width: 50px;
-        text-decoration: none;
-        color: #444;
-        &:hover {
-          color: @theme-color;
-        }
-        &.pre {
-          float: left;
-        }
-        &.next {
-          float: right;
-        }
       }
     }
   }
-  .dk-options-empty {
+  .dk-select-options-empty {
     color: @color-gray;
     text-align: center;
     padding: 50px 0;
+  }
+  .dk-select-page {
+    text-align: center;
+    border-top: 1px solid @border-color;
+    box-sizing: border-box;
+    line-height: @height-form-item;
+    a {
+      display: inline-block;
+      width: 50px;
+      text-decoration: none;
+      color: #444;
+      &:hover {
+        color: @theme-color;
+      }
+      &.pre {
+        float: left;
+      }
+      &.next {
+        float: right;
+      }
+    }
+  }
+  /* cover default style */
+  .dk-arrow-split-y {
+    float: right;
+    margin-top: -2px;
+  }
+  .dk-check {
+    float: right;
   }
 }

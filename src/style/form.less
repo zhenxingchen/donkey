@@ -4,22 +4,31 @@
 .dk-form-item {
   position: relative;
   margin: 0 0 20px 0;
-  line-height: 40px;
+  line-height: @height-form-item;
   white-space: nowrap;
   .dk-label {
     display: inline-block;
-    line-height: 40px;
+    line-height: @height-form-item;
     min-width: 100px;
     margin-right: 10px;
     text-align: right;
     vertical-align: top;
-    &.dk-required {
+    &.dk-required-before {
+      &:before {
+        position: absolute;
+        color: #e40;
+        content: "*";
+        margin-top: 3px;
+        margin-left: -10px;
+      }
+    }
+    &.dk-required-after {
       &:after {
         position: absolute;
         color: #e40;
         content: "*";
         margin-top: 3px;
-        margin-left: 2px;
+        margin-right: 1px;
       }
     }
   }
@@ -32,11 +41,12 @@
   border: 1px solid @border-color;
   box-sizing: border-box;
   border-radius: @border-radius-size;
+  background: #fff;
   color: #444;
   outline: none;
   padding: 0 10px;
   width: 200px;
-  height: 40px;
+  height: @height-form-item;
   vertical-align: middle;
   &[type=number] {
     padding-right: 0;

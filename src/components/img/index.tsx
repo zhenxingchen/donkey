@@ -1,8 +1,7 @@
 import * as React from "react";
-
-import IImg from "../../types/components/img";
-import IProps from "../../types/common/props";
-import { Label, Layout } from "../../utils";
+import IImg from "@types-component/img";
+import IProps from "@types-common/props";
+import { Label, Layout } from "@util";
 
 import "./style.less";
 

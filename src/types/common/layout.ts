@@ -14,8 +14,8 @@ export default interface ILayout {
     // for component
     componentClassName?: string;
     componentStyle?: {};
-    // for other
-    otherClassName?: string;
-    otherStyle?: {};
+    // for label
+    labelClassName?: string;
+    labelStyle?: {}
   }
 }

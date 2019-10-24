@@ -1,7 +1,8 @@
 import * as React from "react";
-import IProps from "../../types/common/props";
-import ILink from "../../types/components/link";
-import { Label, Layout } from "../../utils";
+import { Label, Layout } from "@util";
+import IProps from "@types-common/props";
+import ILink from "@types-component/link";
+import Item from "@components/item";
 import "./style.less";
 
 function Link(props: IProps<ILink>) {
@@ -19,21 +20,6 @@ function Link(props: IProps<ILink>) {
     }
   };
 
-  const renderLink = () => {
-    return (
-      <a
-        id={ config.attr.id }
-        href={ config.attr.href }
-        target={ config.attr.target }
-        className={ Layout.componentClassName(config) }
-        style={ Layout.componentStyle(config) }
-        onClick={ handleClick.bind(this) }
-      >
-        { config.text }
-      </a>
-    );
-  }
-
   const render = () => {
     if (!config) {
       return null;
@@ -48,7 +34,16 @@ function Link(props: IProps<ILink>) {
           className={Layout.containerClassName(config)}
           style={Layout.containerStyle(config)}
         >
-          { renderLink() }
+          <a
+            id={ config.attr.id }
+            href={ config.attr.href }
+            target={ config.attr.target }
+            className={ Layout.componentClassName(config) }
+            style={ Layout.componentStyle(config) }
+            onClick={ handleClick.bind(this) }
+          >
+            { config.items ? <Item configs={ config.items }/> : config.text }
+          </a>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 import * as React from "react";
-import IProps from "../../types/common/props";
-import IDate from "../../types/components/date";
+import IProps from "@types-common/props";
+import IDate from "@types-component/date";
 import "./style.less";
 
 function Date(props: IProps<IDate>) {

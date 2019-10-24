@@ -1,0 +1,42 @@
+@charset "utf-8";
+@import "../../theme/style";
+.dk-tabs {
+  .dk-tabs-container {
+    position: relative;
+  }
+  .dk-tabs-nav {
+    ul, li {
+      list-style: none;
+    }
+    li {
+      display: inline-block;
+      padding: 0 24px;
+      line-height: 45px;
+      border-bottom: 1px solid @border-color;
+      margin-bottom: -1px;
+      &:hover {
+        cursor: pointer;
+        color: @theme-color;
+      }
+      &.curr {
+        color: @theme-color;
+        border-bottom: 1px solid @theme-color;
+      }
+      &.disabled {
+        cursor: not-allowed;
+        color: @color-disabled;
+      }
+    }
+  }
+  .dk-tabs-contain {
+    background: #fff;
+    border-top: 1px solid @border-color;
+    li {
+      display: none;
+      clear: both;
+      &.curr {
+        display: block;
+      }
+    }
+  }
+}

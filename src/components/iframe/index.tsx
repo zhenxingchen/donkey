@@ -1,6 +1,6 @@
 import * as React from "react";
-import IProps from "../../types/common/props";
-import IIFrame from "../../types/components/iframe";
+import IProps from "@types-common/props";
+import IIFrame from "@types-component/iframe";
 
 import "./style.less";
 

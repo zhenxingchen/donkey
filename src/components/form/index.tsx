@@ -1,11 +1,13 @@
 import * as React from "react";
-import log from "../../shared/log";
-import bus from "../../shared/bus";
-import { FormContext } from "../../shared/context";
-import IProps from "../../types/common/props";
-import IForm from "../../types/components/form";
-import Item from "../item";
-import { Layout } from "../../utils";
+import { FormContext } from "@shared/context";
+import { Layout } from "@util";
+import { updateSubject } from "@shared/subject";
+import IProps from "@types-common/props";
+import IForm from "@types-component/form";
+import Item from "@components/item";
+import log from "@shared/log";
+import bus from "@shared/bus";
+
 import "./style.less";
 
 function Form(props: IProps<IForm>) {
@@ -22,6 +24,11 @@ function Form(props: IProps<IForm>) {
   }, []);
 
   const eventListener = () => {
+
+    updateSubject.subscribe({
+      next: (params) => console.log("form receive subscribe", params)
+    });
+
     bus.on("dk-form-data-report", (result) => {
       if (!result
         || !result.formName

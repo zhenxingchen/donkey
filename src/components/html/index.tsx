@@ -1,6 +1,6 @@
 import * as React from "react";
-import IProps from "../../types/common/props";
-import IHtml from "../../types/components/html";
+import IProps from "@types-common/props";
+import IHtml from "@types-component/html";
 
 import "./style.less";
 

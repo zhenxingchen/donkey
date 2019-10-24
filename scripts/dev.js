@@ -1,5 +1,6 @@
 'use strict';
 const path = require("path");
+const { alias, rules } = require("./base");
 
 module.exports = {
   entry: path.resolve(__dirname, "../src/index.tsx"),
@@ -8,17 +9,13 @@ module.exports = {
     filename: "donkey.js"
   },
   resolve: {
-    extensions: [ ".ts", ".tsx", ".js" ]
+    extensions: [".ts", ".tsx", ".js"],
+    alias
   },
-  module: {
-    rules: [
-      { test: /\.tsx?$/, loader: "ts-loader" },
-      { test: /\.less$/, use: [ "style-loader", "css-loader", "less-loader" ]}
-    ]
-  },
+  module: { rules },
   devServer: {
     contentBase: path.resolve(__dirname, "../public/"),
-    publicPath: '/',
+    publicPath: "/",
     compress: true,
     port: 9000
   }

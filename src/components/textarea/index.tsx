@@ -1,8 +1,8 @@
 import * as React from "react";
-import { FormContext } from "../../shared/context";
-import IProps from "../../types/common/props";
-import ITextArea from "../../types/components/textarea";
-import { Label, Layout } from "../../utils";
+import { FormContext } from "@shared/context";
+import IProps from "@types-common/props";
+import ITextArea from "@types-component/textarea";
+import { Label, Layout } from "@util";
 import "./style.less";
 
 function TextArea(props: IProps<ITextArea>) {

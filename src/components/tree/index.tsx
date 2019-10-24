@@ -1,8 +1,8 @@
 import * as React from "react";
-import { FormContext } from "../../shared/context";
-import IProps from "../../types/common/props";
-import ITree from "../../types/components/tree";
-import { Label, Layout } from "../../utils";
+import { FormContext } from "@shared/context";
+import IProps from "@types-common/props";
+import ITree from "@types-component/tree";
+import { Label, Layout } from "@util";
 
 function Tree(props: IProps<ITree>) {
 

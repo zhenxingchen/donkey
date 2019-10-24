@@ -1,9 +1,10 @@
 import * as React from "react";
-import { FormContext, TableContext } from "../../shared/context";
-import bus from "../../shared/bus";
-import { Label, Layout } from "../../utils";
-import IProps from "../../types/common/props";
-import IInput from "../../types/components/input";
+import { FormContext, TableContext } from "@shared/context";
+import { Label, Layout } from "@util";
+import { updateSubject } from "@shared/subject";
+import bus from "@shared/bus";
+import IProps from "@types-common/props";
+import IInput from "@types-component/input";
 import "./style.less";
 
 function Input(props: IProps<IInput>) {
@@ -18,6 +19,9 @@ function Input(props: IProps<IInput>) {
 
   React.useEffect(() => {
     eventListener();
+    updateSubject.subscribe({
+      next: (params) => console.log("input receive subscribe", params, config.attr.name)
+    });
   }, []);
 
   const eventListener = () => {
@@ -42,10 +46,17 @@ function Input(props: IProps<IInput>) {
     }
     config.attr.value = value;
     setConfig({ ...config });
-    bus.emit("dk-form-data-report", {
-      formName: formContext.name,
-      data: { [config.attr.name]: config.attr.value }
-    });
+    if (tableContext && tableContext.name) {
+      bus.emit("dk-table-data-report", {
+        tableName: tableContext.name,
+        data: { [config.attr.name]: config.attr.value }
+      });
+    } else if (formContext && formContext.name) {
+      bus.emit("dk-form-data-report", {
+        formName: formContext.name,
+        data: { [config.attr.name]: config.attr.value }
+      });
+    }
   };
 
   const renderInput = () => {
@@ -58,7 +69,7 @@ function Input(props: IProps<IInput>) {
         disabled={ !!config.attr.disabled }
         readOnly={ !!config.attr.readonly }
         maxLength={ config.attr.maxLength }
-        autoComplete={ config.attr.autoComplete ? config.attr.autoComplete : "off" }
+        autoComplete={ config.attr.autoComplete ? "on" : "off" }
         className={ `dk-form-control dk-transition-border ${Layout.componentClassName(config)}` }
         style={ Layout.componentStyle(config) }
         onBlur={ eventHandler.bind(this, "onBlur") }

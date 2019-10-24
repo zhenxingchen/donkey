@@ -11,3 +11,8 @@ export default interface IAjax {
   error?: (error?: object) => void;
   status?: (code: number) => void;
 }
+
+export interface IAjaxTrigger {
+  id: string;
+  data?: {};
+}

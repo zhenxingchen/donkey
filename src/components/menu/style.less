@@ -1,0 +1,52 @@
+@charset "utf-8";
+@import "../../theme/style";
+.dk-menu {
+  .dk-menu-node {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    padding: 0 10px;
+    color: #444;
+    background: @background-color;
+    &:hover {
+      cursor: pointer;
+      background: #f8f8f8;
+      color: @theme-color;
+      .dk-menu-parent {
+        &::before {
+          background: @theme-color;
+        }
+        &::after {
+          background: @theme-color;
+        }
+      }
+    }
+    &.dk-menu-selected {
+      color: @theme-color;
+      background: #e6f7ff;
+      .dk-menu-parent {
+        &::before {
+          color: @theme-color;
+        }
+        &::after {
+          color: @theme-color;
+        }
+      }
+    }
+    .dk-arrow-split-y {
+      float: right;
+    }
+  }
+  .dk-menu-children {
+    overflow: hidden;
+    background: #fff;
+    .dk-menu-node {
+      background: #fff;
+      &:hover {
+        background: #f8f8f8;
+        color: @theme-color;
+      }
+    }
+  }
+}

@@ -1,8 +1,8 @@
 import * as React from "react";
-import { FormContext, TableContext } from "../../shared/context";
-import IProps from "../../types/common/props";
-import IPager from "../../types/components/pager";
-import { Layout } from "../../utils";
+import { FormContext, TableContext } from "@shared/context";
+import IProps from "@types-common/props";
+import IPager from "@types-component/pager";
+import { Layout } from "@util";
 import "./style.less";
 
 function Pager(props: IProps<IPager>) {

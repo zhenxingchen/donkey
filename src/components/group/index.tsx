@@ -1,9 +1,9 @@
 import * as React from "react";
-import { GroupContext } from "../../shared/context";
-import IProps from "../../types/common/props";
-import IGroup from "../../types/components/group";
-import Item from "../item";
-import { Label, Layout } from "../../utils";
+import { GroupContext } from "@shared/context";
+import IProps from "@types-common/props";
+import IGroup from "@types-component/group";
+import Item from "@components/item";
+import { Label, Layout } from "@util";
 
 import "./style.less";
 

@@ -1,10 +1,19 @@
 /**
  * bread
  */
-var config = {
+const config = {
   tag: "bread",
   attr: {
-    id: "bread"
+    id: "bread",
+    type: "hidden",
+    split: "/"
+  },
+  layout: {
+    rootStyle: {
+      background: "#333",
+      color: "#fff",
+      borderBottom: "0"
+    }
   },
   items: [
     {
@@ -14,20 +23,23 @@ var config = {
         componentStyle: {
           color: "#fff"
         }
+      },
+      onClick: function(e) {
+        lv.sss({
+          start: "sss",
+          end: "dd"
+        })
       }
+    },
+    {
+      tag: "span",
+      text: " > "
     },
     {
       tag: "span",
       text: "列表页"
     }
-  ],
-  layout: {
-    rootStyle: {
-      background: "#333",
-      color: "#fff",
-      borderBottom: "0"
-    }
-  }
+  ]
 };
 
 window.dk.start(config);

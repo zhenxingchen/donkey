@@ -1,13 +1,10 @@
 import * as React from "react";
-import { FormContext, TableContext} from "../../shared/context";
-import IProps from "../../types/common/props";
-import ITable from "../../types/components/table";
-import Checkbox from "../checkbox";
-import Item from "../item";
-import Pager from "../pager";
-import Radio from "../radio";
-import { Layout } from "../../utils";
-
+import { FormContext, TableContext} from "@shared/context";
+import { Layout } from "@util";
+import IProps from "@types-common/props";
+import ITable from "@types-component/table";
+import Pager from "@components/pager";
+import Item from "@components/item";
 import "./style.less";
 
 function Table(props: IProps<ITable>) {
@@ -53,9 +50,9 @@ function Table(props: IProps<ITable>) {
         && ["radio", "checkbox"].indexOf(config.attr.checkType) > -1) {
         rowItems.push(
           "radio" === config.attr.checkType
-            ? (<Radio config={{tag: "radio"}}/>)
+            ? (<i className={"dk-check-radio"}></i>)
             : "checkbox" === config.attr.checkType
-            ? (<Checkbox config={{tag: "checkbox"}}/>)
+            ? (<i className={"dk-check-box"}></i>)
             : null
         );
       }
@@ -83,12 +80,10 @@ function Table(props: IProps<ITable>) {
   };
 
   const cellFormat = (colItem, rowData, rowIndex) => {
-    if (!config.format
-      || !config.format.hasOwnProperty(colItem.name)) {
+    if (!colItem.format) {
       return rowData[colItem.name];
     }
-    return config.format[colItem.name](
-      rowData[colItem.name], rowData, rowIndex);
+    return colItem.format(rowData[colItem.name], rowData, rowIndex);
   };
 
   const renderToolbar = () => {
@@ -155,7 +150,7 @@ function Table(props: IProps<ITable>) {
         "radio" === config.attr.checkType
           ? (<th>选择</th>)
           : "checkbox" === config.attr.checkType
-          ? (<th><Checkbox config={{tag: "checkbox"}}/></th>)
+          ? (<th><i className={"dk-check-box"}></i></th>)
           : null
       );
       const renderItems = () => {

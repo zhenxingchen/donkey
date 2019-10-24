@@ -1,5 +1,6 @@
 const path = require("path");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const { alias, rules } = require("./base");
 
 module.exports = {
   entry: {
@@ -10,15 +11,9 @@ module.exports = {
     filename: "donkey.min.js"
   },
   resolve: {
-    extensions: [ ".ts", ".tsx", ".js" ]
+    extensions: [".ts", ".tsx", ".js"],
+    alias
   },
-  module: {
-    rules: [
-      { test: /\.tsx?$/, loader: "ts-loader" },
-      { test: /\.less$/, use: [ "style-loader", "css-loader", "less-loader" ]}
-    ]
-  },
-  plugins: [
-    new BundleAnalyzerPlugin()
-  ]
-}
+  module: { rules },
+  plugins: [new BundleAnalyzerPlugin()]
+};

@@ -1,8 +1,8 @@
 import * as React from "react";
-import IProps from "../../types/common/props";
-import IBlock from "../../types/components/block";
-import Item from "../item";
-import { Layout } from "../../utils";
+import { Layout } from "@util";
+import IProps from "@types-common/props";
+import IBlock from "@types-component/block";
+import Item from "@components/item";
 
 import "./style.less";
 

@@ -1,9 +1,9 @@
 import * as React from "react";
-import { FormContext } from "../../shared/context";
-import bus from "../../shared/bus";
-import { Layout } from "../../utils";
-import IProps from "../../types/common/props";
-import IRadio from "../../types/components/radio";
+import { FormContext } from "@shared/context";
+import bus from "@shared/bus";
+import { Layout } from "@util";
+import IProps from "@types-common/props";
+import IRadio from "@types-component/radio";
 
 import "./style.less";
 

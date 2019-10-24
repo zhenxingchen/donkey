@@ -5,6 +5,7 @@
   .dk-table-container {
     position: relative;
     display: inline-block;
+    width: 100%;
   }
   table {
     border: 1px solid #e8e8e8;
@@ -30,7 +31,7 @@
     }
     th {
       background: #f8f8f8;
-      height: 45px;
+      height: @height-table-th;
       border-right: 1px solid #e8e8e8;
       &.sort {
         user-select: none;
@@ -43,7 +44,7 @@
       }
     }
     td {
-      height: 45px;
+      height: @height-table-td;
       white-space: nowrap;
       border-right: 1px solid #e8e8e8;
       &.wrap {

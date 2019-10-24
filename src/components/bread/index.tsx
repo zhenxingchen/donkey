@@ -1,8 +1,8 @@
 import * as React from "react";
-import IProps from "../../types/common/props";
-import IBread from "../../types/components/bread";
-import Item from "../item";
-import { Layout } from "../../utils";
+import IProps from "@types-common/props";
+import IBread from "@types-component/bread";
+import Item from "@components/item";
+import { Layout } from "@util";
 import "./style.less";
 
 function Bread(props: IProps<IBread>) {
