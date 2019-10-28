@@ -1,7 +1,39 @@
 @charset "utf-8";
-.dk-icon {
-  display: inline-block;
-  .dk-icon-container {
+@import "../../theme/style";
+
+@toast: ~"@{prefix}-toast";
+
+.@{toast} {
+  position: fixed;
+  margin: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 80px;
+  height: 0;
+  text-align: center;
+  &-container {
     display: inline-block;
+    padding: 10px;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    background: #fff;
+    .fa {
+      font-size: 18px;
+      margin-right: 5px;
+      vertical-align: top;
+      &.info {
+        color: @theme-color;
+      }
+      &.warn {
+        color: yellow;
+      }
+      &.error {
+        color: red;
+      }
+      &.success {
+        color: red;
+      }
+    }
   }
 }

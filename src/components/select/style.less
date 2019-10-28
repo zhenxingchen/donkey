@@ -1,13 +1,16 @@
 @charset "utf-8";
 @import "../../theme/style";
-.dk-select {
-  .dk-select-container {
+
+@select: ~"@{prefix}-select";
+
+.@{select} {
+  &-container {
     position: relative;
     display: inline-block;
   }
-  .dk-select-input {
+  &-input {
   }
-  .dk-select-options {
+  &-options {
     position: absolute;
     left: 0;
     top: 34px;
@@ -37,12 +40,12 @@
       }
     }
   }
-  .dk-select-options-empty {
+  &-options-empty {
     color: @color-gray;
     text-align: center;
     padding: 50px 0;
   }
-  .dk-select-page {
+  &-page {
     text-align: center;
     border-top: 1px solid @border-color;
     box-sizing: border-box;
@@ -63,12 +66,12 @@
       }
     }
   }
-  /* cover default style */
-  .dk-arrow-split-y {
+  /* override */
+  .@{prefix}-arrow-split-y {
     float: right;
     margin-top: -2px;
   }
-  .dk-check {
+  .@{prefix}-check {
     float: right;
   }
 }

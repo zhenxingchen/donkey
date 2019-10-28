@@ -1,8 +1,11 @@
 @charset "utf-8";
 @import "../../theme/style";
-.dk-table {
+
+@table: ~"@{prefix}-table";
+
+.@{table} {
   white-space: nowrap;
-  .dk-table-container {
+  &-container {
     position: relative;
     display: inline-block;
     width: 100%;

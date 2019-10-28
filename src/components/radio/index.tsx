@@ -49,10 +49,11 @@ function Radio(props: IProps<IRadio>) {
             disabled={ !!config.attr.disabled || formContext.disabled }
             onChange={ changeHandler }
           />
-          <label className="box" htmlFor={ config.attr.id }>
-            <span className="circle dk-transition-border">
+          <label htmlFor={ config.attr.id }>
+            {/*<span className="circle dk-transition-border">
               <i className="checked dk-transition-opacity"/>
-            </span>
+            </span>*/}
+            <i className={"dk-check-radio dk-check-radio-checked"}/>
             { config.attr.text ? (<span className="text">{ config.attr.text }</span>) : null }
           </label>
         </div>

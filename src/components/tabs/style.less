@@ -1,10 +1,13 @@
 @charset "utf-8";
 @import "../../theme/style";
-.dk-tabs {
-  .dk-tabs-container {
+
+@tabs: ~"@{prefix}-tabs";
+
+.@{tabs} {
+  &-container {
     position: relative;
   }
-  .dk-tabs-nav {
+  &-nav {
     ul, li {
       list-style: none;
     }
@@ -28,7 +31,7 @@
       }
     }
   }
-  .dk-tabs-contain {
+  &-contain {
     background: #fff;
     border-top: 1px solid @border-color;
     li {

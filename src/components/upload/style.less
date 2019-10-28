@@ -1,11 +1,14 @@
 @charset "utf-8";
 @import "../../style/index";
-.dk-upload {
-  .dk-upload-container {
+
+@upload: ~"@{prefix}-upload";
+
+.@{upload} {
+  &-container {
     position: relative;
     display: inline-block;
   }
-  .dk-upload-text {
+  &-text {
     color: @theme-color;
     &:hover {
       cursor: pointer;

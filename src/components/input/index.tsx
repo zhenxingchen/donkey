@@ -20,7 +20,7 @@ function Input(props: IProps<IInput>) {
   React.useEffect(() => {
     eventListener();
     updateSubject.subscribe({
-      next: (params) => console.log("input receive subscribe", params, config.attr.name)
+      next: (params) => console.log("input receive subscribe", params, config.attr.name, Date.now())
     });
   }, []);
 
@@ -76,6 +76,18 @@ function Input(props: IProps<IInput>) {
         onChange={ eventHandler.bind(this, "onChange") }
         onFocus={ eventHandler.bind(this, "onFocus") }
       />
+    );
+  };
+
+  const renderNumberStep = () => {
+    if (config.attr.type !== 'number') {
+      return null;
+    }
+    return (
+      <div className="step">
+        <i className="dk-angle ____up"></i>
+        <i className="dk-angle ____down"></i>
+      </div>
     );
   };
 

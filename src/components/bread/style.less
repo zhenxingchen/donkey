@@ -1,18 +1,28 @@
 @charset "utf-8";
 @import "../../theme/style";
-.dk-bread {
+
+@bread: ~"@{prefix}-bread";
+
+.@{bread} {
+  position: relative;
   background: @background-color;
-  border-bottom: 1px solid @border-color-hover;
-  .dk-bread-container {
-    position: relative;
-    display: inline-block;
+  border-bottom: 1px solid @border-color;
+  &-container {
     padding: 0 8px;
     line-height: 40px;
   }
-  .dk-bread-split {
+  &-item {
+    display: inline-block;
+  }
+  &-split {
     padding: 0 5px;
   }
-  .dk-link, .dk-span {
+  .@{prefix}-link,
+  .@{prefix}-span,
+  .@{prefix}-icon {
     display: inline-block;
+  }
+  .@{prefix}-icon {
+    margin-right: 8px;
   }
 }

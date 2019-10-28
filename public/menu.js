@@ -11,6 +11,7 @@ var menuConfig = {
   data: [
     {
       text: "北京",
+      icon: "fa-bell",
       childrenOpen: false,
       children: [
         { text: "朝阳区", href: "https://www.baidu.com/" },
@@ -21,6 +22,7 @@ var menuConfig = {
     },
     {
       text: "上海",
+      icon: "fa-bell",
       childrenOpen: false,
       children: [
         {
@@ -33,6 +35,7 @@ var menuConfig = {
     },
     {
       text: "天津",
+      icon: "fa-bell",
       childrenOpen: false,
       children: [
         {
@@ -45,6 +48,7 @@ var menuConfig = {
     },
     {
       text: "重庆",
+      icon: "fa-bell",
       childrenOpen: false,
       children: [
         {
@@ -57,10 +61,12 @@ var menuConfig = {
     },
     {
       text: "湖北省",
+      icon: "fa-bell",
       childrenOpen: false,
       children: [
         {
           text: "武汉市",
+          icon: "fa-bell",
           childrenOpen: false,
           children: [
             { text: "武昌区" },
@@ -70,6 +76,7 @@ var menuConfig = {
         },
         {
           text: "黄冈市",
+          icon: "fa-bell",
           childrenOpen: false,
           children: [
             { text: "罗田县" },

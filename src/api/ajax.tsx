@@ -22,7 +22,7 @@ export function ajax(ajax: IAjax | IAjaxTrigger) {
 }
 
 /**
- * 异步加载文件
+ * fetch js or css
  */
 export function fetch(url: string | string[], onLoad?: () => void) {
 

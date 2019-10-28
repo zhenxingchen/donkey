@@ -1,7 +1,18 @@
 @charset "utf-8";
-.dk-checkbox {
-  .dk-checkbox-container {
+@import "../../theme/style";
+
+@checkbox: ~"@{prefix}-checkbox";
+
+.@{checkbox} {
+
+  &-container {
     position: relative;
     display: inline-block;
   }
+
+  .@{prefix}-check-box {
+    float: left;
+    margin: 8px 6px 0 0;
+  }
+
 }

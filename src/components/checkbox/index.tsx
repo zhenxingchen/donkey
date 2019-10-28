@@ -51,11 +51,12 @@ function Checkbox(props: IProps<ICheckbox>) {
             disabled={ !!config.attr.disabled || (formContext && formContext.disabled) }
             onChange={ changeHandler.bind(this) }
           />
-          <label className="box" htmlFor={ config.attr.id }>
-          <span className="square dk-transition-border">
-            <i className="checked dk-transition-opacity"></i>
-            <i className="half dk-transition-opacity"></i>
-          </span>
+          <label htmlFor={ config.attr.id }>
+            {/*<span className="square dk-transition-border">
+              <i className="checked dk-transition-opacity"></i>
+              <i className="half dk-transition-opacity"></i>
+            </span>*/}
+            <i className={"dk-check-box ____checked-line"}/>
             { config.attr.text ? (<span className="text">{ config.attr.text }</span>) : null }
           </label>
         </div>

@@ -1,38 +1,32 @@
-var frameConfig = {
+const frameConfig = {
   tag: "frame",
+  attr: {},
+
+  // 第一种方式
+  logo: {},
+  banner: {
+    nav: {},
+    toolbar: {}
+  },
+  menu: {},
+  tabs: {},
+
+  // 第二种方式
   items: [
     {
+      tag: "logo"
+    },
+    {
       tag: "banner",
-      items: [
-        {
-          tag: "img",
-          attr: {
-            id: "",
-            text: "",
-            src: ""
-          }
-        },
-        {
-          tag: "group"
-        }
-      ]
+      items: [{ tag: "logo" }, { tag: "nav" }]
     },
     {
       tag: "menu",
-      attr: {
-        conflict: false,
-        textField: "text",
-        iconField: "icon",
-        hrefField: "value",
-        childrenField: "children"
-      },
-      data: [
-        {
-          text: "",
-          href: "",
-
-        }
-      ]
+      items: [{ tag: "logo" }]
+    },
+    {
+      tag: "tabs",
+      items: []
     }
   ]
 };

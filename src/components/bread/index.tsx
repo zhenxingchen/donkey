@@ -2,7 +2,7 @@ import * as React from "react";
 import IProps from "@types-common/props";
 import IBread from "@types-component/bread";
 import Item from "@components/item";
-import { Layout } from "@util";
+import { Layout, Key } from "@util";
 import "./style.less";
 
 function Bread(props: IProps<IBread>) {
@@ -10,7 +10,6 @@ function Bread(props: IProps<IBread>) {
   const [config] = React.useState(() => {
     const config = props.config;
     !config.attr ? config.attr = {} : "";
-    !config.attr.split ? config.attr.split = ">" : "";
     return config;
   });
 
@@ -35,10 +34,13 @@ function Bread(props: IProps<IBread>) {
       <>
         {
           config.items.map((item, index) => (
-            <>
+            <div
+              className={"dk-bread-item"}
+              key={Key(item, index)}
+            >
               <Item config={ item }/>
-              { renderSplit(index) }
-            </>
+              { item.tag !== 'icon' ? renderSplit(index) : null }
+            </div>
           ))
         }
       </>

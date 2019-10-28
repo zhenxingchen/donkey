@@ -1,4 +1,5 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const alias = {
   "@": path.resolve(__dirname, "../src/"),
@@ -11,9 +12,28 @@ const alias = {
 };
 
 const rules = [
-  { test: /\.tsx?$/, loader: "ts-loader" },
-  { test: /\.less$/, use: ["style-loader", "css-loader", "less-loader"] },
-  { test: /\.css/, use: ["style-loader", "css-loader"] }
+  {
+    test: /\.tsx?$/,
+    loader: "ts-loader"
+  },
+  {
+    test: /\.less$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      // "style-loader",
+      "css-loader",
+      "postcss-loader",
+      "less-loader"
+    ]
+  },
+  {
+    test: /\.css/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      // "style-loader",
+      "css-loader"
+    ]
+  }
 ];
 
 module.exports = {

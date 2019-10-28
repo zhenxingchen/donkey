@@ -44,14 +44,21 @@ function Menu(props: IProps<IMenu>) {
     setConfig({ ...config });
   };
 
-  const renderChildrenFlag = (node) => {
+  const renderIcon = (node) => {
+    if (!node || !node[iconField]) {
+      return null;
+    }
+    return (<i className={`fa ${node[iconField]}`}></i>)
+  };
+
+  const renderArrow = (node) => {
     if (hasChildren(node)) {
       const cls = [];
-      cls.push("dk-arrow-split-y");
+      cls.push("dk-arrow-y");
       cls.push(
         node["childrenOpen"]
-          ? "dk-arrow-split-y-up"
-          : "dk-arrow-split-y-down"
+          ? "____up"
+          : "____down"
       );
       return <i className={cls.join(" ")}/>;
     }
@@ -82,12 +89,13 @@ function Menu(props: IProps<IMenu>) {
             <div className="dk-menu-child" key={ index }>
               <a
                 className={'dk-menu-node'}
-                style={ {paddingLeft: level * config.attr.offset} }
+                style={ {paddingLeft: level * config.attr.offset + 10} }
                 href={ node[hrefField] }
                 onClick={ nodeClickHandler.bind(this, node) }
               >
+                { renderIcon(node) }
                 { node[textField] }
-                { renderChildrenFlag(node) }
+                { renderArrow(node) }
               </a>
               { renderChildren(node, level + 1) }
             </div>
@@ -107,9 +115,6 @@ function Menu(props: IProps<IMenu>) {
           className={Layout.containerClassName(config)}
           style={Layout.containerStyle(config)}
         >
-          <div className="dk-check"></div>
-          <div className="dk-check-box dk-check-box-checked-fill"></div>
-          <div className="dk-check-radio dk-check-radio-checked"></div>
           {
             config.data.map((node, index) =>
               <div className="dk-menu-root" key={ index }>
@@ -118,8 +123,9 @@ function Menu(props: IProps<IMenu>) {
                   href={ node[hrefField] }
                   onClick={ nodeClickHandler.bind(this, node) }
                 >
+                  { renderIcon(node) }
                   { node[textField] }
-                  { renderChildrenFlag(node) }
+                  { renderArrow(node) }
                 </a>
                 { renderChildren(node, 1) }
               </div>

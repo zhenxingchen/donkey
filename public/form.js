@@ -1,4 +1,27 @@
-const config = {
+const breadConfig = {
+  tag: "bread",
+  attr: {
+    split: ">"
+  },
+  items: [
+    {
+      tag: "icon",
+      attr: {
+        name: "fa-coffee"
+      }
+    },
+    {
+      tag: "span",
+      text: "实验室"
+    },
+    {
+      tag: "span",
+      text: "表单"
+    }
+  ]
+};
+
+const formConfig = {
   tag: "form",
   attr: {
     name: "searchForm",
@@ -7,7 +30,7 @@ const config = {
   },
   layout: {
     containerStyle: {
-      margin: "10px"
+      padding: "15px 10px"
     }
   },
   items: [
@@ -391,4 +414,4 @@ const config = {
   ]
 };
 
-window.dk.render(config);
+window.dk.render([breadConfig, formConfig]);

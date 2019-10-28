@@ -1,7 +1,10 @@
 @charset "utf-8";
 @import "../../theme/style";
-.dk-button {
-  .dk-button-container {
+
+@button: ~"@{prefix}-button";
+
+.@{button} {
+  &-container {
     position: relative;
     display: inline-block;
   }
@@ -13,54 +16,56 @@
     border: 1px solid;
     box-sizing: border-box;
     outline: none;
+    &[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      &:hover {
+        box-shadow: none;
+      }
+    }
     &:hover {
       cursor: pointer;
     }
-    &.dk-blue {
-      color: @color-white;
-      background-color: @color-blue;
-      border-color: @color-blue;
-      &:hover {
-        box-shadow: 0 0 4px @color-blue;
+    &.@{prefix-inner} {
+      &blue {
+        color: @color-white;
+        background-color: @color-blue;
+        border-color: @color-blue;
+        &:hover {
+          box-shadow: 0 0 4px @color-blue;
+        }
       }
-    }
-    &.dk-red {
-      color: @color-white;
-      background-color: @color-red;
-      border-color: @color-red;
-      &:hover {
-        box-shadow: 0 0 4px @color-red;
+      &red {
+        color: @color-white;
+        background-color: @color-red;
+        border-color: @color-red;
+        &:hover {
+          box-shadow: 0 0 4px @color-red;
+        }
       }
-    }
-    &.dk-green {
-      color: @color-white;
-      background: @color-green;
-      border-color: @color-green;
-      &:hover {
-        box-shadow: 0 0 4px @color-green;
+      &green {
+        color: @color-white;
+        background: @color-green;
+        border-color: @color-green;
+        &:hover {
+          box-shadow: 0 0 4px @color-green;
+        }
       }
-    }
-    &.dk-gray {
-      color: @color-white;
-      background: @color-gray;
-      border-color: @color-gray;
-      &:hover {
-        box-shadow: 0 0 4px @color-gray;
+      &gray {
+        color: @color-white;
+        background: @color-gray;
+        border-color: @color-gray;
+        &:hover {
+          box-shadow: 0 0 4px @color-gray;
+        }
       }
-    }
-    &.dk-white {
-      background: @color-white;
-      border-color: @border-color-hover;
-      &:hover {
-        box-shadow: 0 0 4px @border-color-hover;
+      &white {
+        background: @color-white;
+        border-color: @border-color-hover;
+        &:hover {
+          box-shadow: 0 0 4px @border-color-hover;
+        }
       }
-    }
-  }
-  button[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-    &:hover {
-      box-shadow: none;
     }
   }
 }

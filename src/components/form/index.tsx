@@ -21,14 +21,13 @@ function Form(props: IProps<IForm>) {
 
   React.useEffect(() => {
     eventListener();
-  }, []);
-
-  const eventListener = () => {
-
     updateSubject.subscribe({
       next: (params) => console.log("form receive subscribe", params)
     });
+    return () => updateSubject.unsubscribe();
+  }, []);
 
+  const eventListener = () => {
     bus.on("dk-form-data-report", (result) => {
       if (!result
         || !result.formName

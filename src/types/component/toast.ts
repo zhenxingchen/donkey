@@ -2,9 +2,9 @@
  * 吐司
  */
 export default interface IToast {
-  tag: "toast";
-  attr?: {
-    id?: string;
-    visible?: boolean;
-  }
+  message?: string;
+  delay?: number;
+  icon?: string;
+  theme?: "white" | "dark";
+  type?: "error" | "success" | "warn" | "info";
 }

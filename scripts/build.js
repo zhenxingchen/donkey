@@ -1,6 +1,8 @@
 const path = require("path");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const { alias, rules } = require("./base");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -14,6 +16,16 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js"],
     alias
   },
-  module: { rules },
-  plugins: [new BundleAnalyzerPlugin()]
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "donkey.min.css",
+      hmr: false,
+      reloadAll: false
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessor: require("cssnano")
+    }),
+    new BundleAnalyzerPlugin()
+  ],
+  module: { rules }
 };

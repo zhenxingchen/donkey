@@ -1,7 +1,10 @@
 @charset "utf-8";
 @import "../../theme/style";
-.dk-pager {
-  .dk-pager-container {
+
+@pager: ~"@{prefix}-pager";
+
+.@{pager} {
+  &-container {
     position: relative;
     display: inline-block;
   }

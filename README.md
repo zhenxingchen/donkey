@@ -34,9 +34,9 @@ npm run dev
 npm run build
 ```
 
-### 优化备忘
+### 常用插件
 
-- 每个组件只负责自己内部的样式，外层大框架样式抽离统一调整
-- 主题颜色单独一个 less 文件定义
-- 表单布局单独一个 less 文件定义
-- 组件再进一步细化
+- [awesome-font-icons-en_US](https://fontawesome.com/icons)
+- [awesome-font-icons-zh_CN](http://www.fontawesome.com.cn/faicons/)
+- [animate.css](https://daneden.github.io/animate.css/)
+

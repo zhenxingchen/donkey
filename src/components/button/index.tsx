@@ -31,7 +31,7 @@ function Button(props: IProps<IButton>) {
       <button
         type={ config.attr.type }
         disabled={ !!config.attr.disabled }
-        className={ `dk-${config.attr.color} ${Layout.componentClassName(config)}` }
+        className={ `____${config.attr.color} ${Layout.componentClassName(config)}` }
         style={ Layout.componentStyle(config) }
         onClick={ handleClick.bind(this) }
       >

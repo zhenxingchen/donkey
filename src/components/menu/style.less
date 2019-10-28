@@ -1,7 +1,10 @@
 @charset "utf-8";
 @import "../../theme/style";
-.dk-menu {
-  .dk-menu-node {
+
+@menu: ~"@{prefix}-menu";
+
+.@{menu} {
+  &-node {
     display: block;
     height: 40px;
     line-height: 40px;
@@ -13,7 +16,7 @@
       cursor: pointer;
       background: #f8f8f8;
       color: @theme-color;
-      .dk-menu-parent {
+      .@{prefix}-menu-parent {
         &::before {
           background: @theme-color;
         }
@@ -21,32 +24,36 @@
           background: @theme-color;
         }
       }
-    }
-    &.dk-menu-selected {
-      color: @theme-color;
-      background: #e6f7ff;
-      .dk-menu-parent {
-        &::before {
-          color: @theme-color;
-        }
-        &::after {
-          color: @theme-color;
-        }
-      }
-    }
-    .dk-arrow-split-y {
-      float: right;
     }
   }
-  .dk-menu-children {
+  &-selected {
+    color: @theme-color;
+    background: #e6f7ff;
+    .@{menu}-parent {
+      &::before {
+        color: @theme-color;
+      }
+      &::after {
+        color: @theme-color;
+      }
+    }
+  }
+  &-children {
     overflow: hidden;
     background: #fff;
-    .dk-menu-node {
+    .@{menu}-node {
       background: #fff;
       &:hover {
         background: #f8f8f8;
         color: @theme-color;
       }
     }
+  }
+  /* override */
+  .fa {
+    margin-right: 5px;
+  }
+  .@{prefix}-arrow-y {
+    float: right;
   }
 }

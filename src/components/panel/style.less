@@ -1,20 +1,24 @@
 @charset "utf-8";
-.dk-panel {
-  .dk-panel-container {
+@import "../../theme/style";
+
+@panel: ~"@{prefix}-panel";
+
+.@{panel} {
+  &-container {
     position: relative;
     display: inline-block;
   }
-  .dk-panel-header {
+  &-header {
     height: 44px;
     line-height: 44px;
     background: #f8f8f8;
     border-bottom: 1px solid #e8e8e8;
     padding: 0 15px;
   }
-  .dk-panel-body {
+  &-body {
     background: #fff;
   }
-  .dk-panel-footer {
+  &-footer {
     background: #f8f8f8;
   }
 }

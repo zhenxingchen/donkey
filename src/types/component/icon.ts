@@ -7,6 +7,8 @@ export default interface IIcon extends ILayout, IFormItem {
     id?: string;
     name?: string;
     src?: string;
+    width?: number;
+    height?: number;
   };
   onClick?: (config: IIcon) => void;
 }

@@ -23,7 +23,7 @@ function Frame(props: IProps<IFrame>) {
           className={Layout.containerClassName(config)}
           style={Layout.containerStyle(config)}
         >
-            frame
+          frame
         </div>
       </div>
     );

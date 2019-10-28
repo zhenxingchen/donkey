@@ -7,10 +7,18 @@ html, body {
   width: 100%;
   height: 100%;
   font-size: 14px;
-  color: #444;
+  color: rgba(0,0,0,0.65);
 }
-/*ie clear*/
+/* ie clear */
 input::-ms-clear {
   width: 0;
   height: 0;
+}
+/* number arrow */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
 }
