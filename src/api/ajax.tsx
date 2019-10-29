@@ -5,7 +5,7 @@ import Axios from "axios";
 /**
  * ajax or ajax trigger
  */
-export function ajax(ajax: IAjax | IAjaxTrigger) {
+function ajax(ajax: IAjax | IAjaxTrigger) {
   if (!ajax) {
     return false;
   }
@@ -21,9 +21,4 @@ export function ajax(ajax: IAjax | IAjaxTrigger) {
   }
 }
 
-/**
- * fetch js or css
- */
-export function fetch(url: string | string[], onLoad?: () => void) {
-
-}
+export default ajax;

@@ -1,4 +1,5 @@
 import * as React from "react";
+import Constant from "@shared/constant";
 import IConfig from "@types-component/item";
 
 const REG = {
@@ -12,14 +13,18 @@ const _cols = (config: IConfig) => {
   const css = config.cols.split(" ");
   const cs = [];
   for (const c of css) {
-    cs.push(REG.COLS.test(c) ? `dk-${c}` : c);
+    cs.push(
+      REG.COLS.test(c)
+      ? `${Constant.prefix}-${c}`
+      : c
+    );
   }
   return cs.length > 0 ? cs.join(" ") : null;
 };
 
 const _formItem = (config: IConfig) => {
   return config && config.hasOwnProperty("label")
-    ? "dk-form-item"
+    ? `${Constant.prefix}-form-item`
     : null;
 };
 
@@ -27,12 +32,12 @@ const Layout = {
 
   labelClassName: (config: IConfig) => {
     const className = [];
-    className.push("dk-label");
+    className.push(`${Constant.prefix}-label`);
     if (
       config["validate"]
       && config["validate"]["required"]
     ) {
-      className.push("dk-required-after");
+      className.push(`${Constant.prefix}-required-after`);
     }
     config && config.layout && config.layout.labelClassName
       ? className.push(config.layout.labelClassName)
@@ -48,7 +53,7 @@ const Layout = {
 
   rootClassName: (config: IConfig) => {
     const className = [];
-    className.push(`dk-${config.tag}`);
+    className.push(`${Constant.prefix}-${config.tag}`);
     const formItem = _formItem(config);
     const cols = _cols(config);
     formItem ? className.push(formItem) : "";
@@ -67,7 +72,7 @@ const Layout = {
 
   containerClassName: (config: IConfig) => {
     const className = [];
-    className.push(`dk-${config.tag}-container`);
+    className.push(`${Constant.prefix}-${config.tag}-container`);
     config && config.layout && config.layout.containerClassName
       ? className.push(config.layout.containerClassName)
       : "";

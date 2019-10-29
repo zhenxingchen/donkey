@@ -14,25 +14,29 @@
   text-align: center;
   &-container {
     display: inline-block;
-    padding: 10px;
-    box-shadow: 4px 4px 20px rgba(0,0,0,0.15);
-    border-radius: 4px;
-    background: #fff;
-    .fa {
-      font-size: 18px;
-      margin-right: 5px;
-      vertical-align: top;
-      &.info {
-        color: @theme-color;
-      }
-      &.warn {
-        color: yellow;
-      }
-      &.error {
-        color: red;
-      }
-      &.success {
-        color: red;
+    .@{prefix-inner}item {
+      padding: 10px;
+      margin: 20px 0;
+      box-shadow: 4px 4px 20px rgba(0,0,0,0.15);
+      border-radius: 4px;
+      background: #fff;
+      .fa {
+        font-size: 18px;
+        margin-right: 5px;
+        vertical-align: top;
+        color: #999;
+        &.info {
+          color: @theme-color;
+        }
+        &.warn {
+          color: yellow;
+        }
+        &.error {
+          color: red;
+        }
+        &.success {
+          color: red;
+        }
       }
     }
   }
