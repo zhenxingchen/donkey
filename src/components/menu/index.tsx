@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Layout } from "@util";
+import Constant from "@shared/constant";
 import IProps from "@types-common/props";
 import IMenu from "@types-component/menu";
 
@@ -9,7 +10,6 @@ function Menu(props: IProps<IMenu>) {
 
   const [config, setConfig] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : null;
     !config.attr.offset ? config.attr.offset = 10 : null;
     return config;
   });
@@ -54,11 +54,11 @@ function Menu(props: IProps<IMenu>) {
   const renderArrow = (node) => {
     if (hasChildren(node)) {
       const cls = [];
-      cls.push("dk-arrow-y");
+      cls.push(Constant.icon.arrowY.main);
       cls.push(
         node["childrenOpen"]
-          ? "____up"
-          : "____down"
+          ? Constant.icon.arrowY.up
+          : Constant.icon.arrowY.down
       );
       return <i className={cls.join(" ")}/>;
     }
@@ -107,32 +107,24 @@ function Menu(props: IProps<IMenu>) {
 
   const render = () => {
     return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          {
-            config.data.map((node, index) =>
-              <div className="dk-menu-root" key={ index }>
-                <a
-                  className={'dk-menu-node'}
-                  href={ node[hrefField] }
-                  onClick={ nodeClickHandler.bind(this, node) }
-                >
-                  { renderIcon(node) }
-                  { node[textField] }
-                  { renderArrow(node) }
-                </a>
-                { renderChildren(node, 1) }
-              </div>
-            )
-          }
-        </div>
-      </div>
+      <>
+        {
+          config.data.map((node, index) =>
+            <div className="dk-menu-root" key={ index }>
+              <a
+                className={'dk-menu-node'}
+                href={ node[hrefField] }
+                onClick={ nodeClickHandler.bind(this, node) }
+              >
+                { renderIcon(node) }
+                { node[textField] }
+                { renderArrow(node) }
+              </a>
+              { renderChildren(node, 1) }
+            </div>
+          )
+        }
+      </>
     );
   };
 

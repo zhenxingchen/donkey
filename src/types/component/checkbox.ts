@@ -1,10 +1,7 @@
-import ILayout from "@types-common/layout";
 import { IFormItem } from "@types-component/form";
+import ILayout from "@types-common/layout";
 
-/**
- * 复选框
- */
-export default interface ICheckbox extends ILayout, IFormItem {
+interface ICheckbox extends ILayout, IFormItem {
   tag: "checkbox";
   attr?: {
     id?: string;
@@ -18,3 +15,4 @@ export default interface ICheckbox extends ILayout, IFormItem {
   };
   onClick?: (target: HTMLInputElement) => boolean;
 }
+export default ICheckbox;

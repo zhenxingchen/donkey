@@ -1,12 +1,8 @@
 import IAjax from "@types-common/ajax";
 import IItem from "@types-component/item";
 import ILayout from "@types-common/layout";
-import { IFormItem } from "@types-component/form";
 
-/**
- * 面包屑
- */
-export default interface IBread extends ILayout, IFormItem {
+interface IBread extends ILayout {
   tag: "bread";
   attr?: {
     id?: string;
@@ -16,3 +12,6 @@ export default interface IBread extends ILayout, IFormItem {
   items?: IItem[];
   ajax?: IAjax;
 }
+
+export default IBread;
+

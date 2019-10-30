@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FormContext, GlobalContext, GroupContext } from "@shared/context";
 import { Label, Layout } from "@util";
+import Constant from "@shared/constant";
 import IProps from "@types-common/props";
 import IButton from "@types-component/button";
 import Item from "@components/item";
@@ -10,7 +11,6 @@ function Button(props: IProps<IButton>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     !config.attr.color ? config.attr.color = "blue" : "";
     !config.attr.type ? config.attr.type = "button" : "";
     return config;
@@ -20,22 +20,33 @@ function Button(props: IProps<IButton>) {
   const [groupContext] = React.useContext(GroupContext);
 
   const handleClick = (e) => {
-    if (config.onClick && typeof config.onClick === "function") {
+    if (
+      config.onClick
+      && typeof config.onClick === "function"
+    ) {
       return config.onClick(e.target) ? true : false;
     }
     return true;
   };
 
   const renderButton = () => {
+    const componentCls = [];
+    componentCls.push(Constant.btn.main);
+    componentCls.push(`____${config.attr.color}`);
+    componentCls.push(Layout.componentClassName(config));
     return (
       <button
         type={ config.attr.type }
         disabled={ !!config.attr.disabled }
-        className={ `____${config.attr.color} ${Layout.componentClassName(config)}` }
+        className={ componentCls.join(" ") }
         style={ Layout.componentStyle(config) }
         onClick={ handleClick.bind(this) }
       >
-        { config.items ? <Item configs={ config.items }/> : config.text }
+        {
+          config.items
+            ? <Item configs={ config.items }/>
+            : config.text
+        }
       </button>
     );
   };
@@ -44,20 +55,7 @@ function Button(props: IProps<IButton>) {
     if (!config) {
       return null;
     }
-    return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        { Label(config) }
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          { renderButton() }
-        </div>
-      </div>
-    );
+    return renderButton();
   };
 
   return render();

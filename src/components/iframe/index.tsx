@@ -8,7 +8,6 @@ function IFrame(props: IProps<IIFrame>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -16,11 +15,7 @@ function IFrame(props: IProps<IIFrame>) {
     if (!config) {
       return null;
     }
-    return (
-      <div className="dk-iframe">
-
-      </div>
-    );
+    return (<>iframe</>);
   };
 
   return render();

@@ -8,7 +8,6 @@ function Html(props: IProps<IHtml>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -16,11 +15,7 @@ function Html(props: IProps<IHtml>) {
     if (!config) {
       return null;
     }
-    return (
-      <div className="dk-html">
-
-      </div>
-    );
+    return (<>html</>);
   };
 
   return render();

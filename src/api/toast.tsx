@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Doc } from "@util";
-import IToast from "@types-component/toast";
+import Constant from "@shared/constant";
 import log from "@shared/log";
+import IToast from "@types-component/toast";
 import Toast from "@components/toast";
 
 function toast(param?: IToast | string) {
@@ -22,7 +23,7 @@ function toast(param?: IToast | string) {
   }
   // validate message
   if (!config.message) {
-    log.error("dk.toast need a message");
+    log.error(`${Constant.cls.prefix}.toast need a message`);
     return false;
   }
   const target = Doc.append(<Toast {...config}/>);

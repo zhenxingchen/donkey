@@ -3,7 +3,6 @@ import { GroupContext } from "@shared/context";
 import IProps from "@types-common/props";
 import IGroup from "@types-component/group";
 import Item from "@components/item";
-import { Label, Layout } from "@util";
 
 import "./style.less";
 
@@ -11,7 +10,6 @@ function Group(props: IProps<IGroup>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [permissionCodes, setPermissionCodes] = React.useState(null);
@@ -43,20 +41,9 @@ function Group(props: IProps<IGroup>) {
       return null;
     }
     return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        { Label(config) }
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          <GroupContext.Provider value={[ permissionCodes ]}>
-            { renderItems() }
-          </GroupContext.Provider>
-        </div>
-      </div>
+      <GroupContext.Provider value={[ permissionCodes ]}>
+        { renderItems() }
+      </GroupContext.Provider>
     );
   };
 

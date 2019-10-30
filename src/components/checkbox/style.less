@@ -10,7 +10,19 @@
     display: inline-block;
   }
 
-  .@{prefix}-check-box {
+  input {
+    display: none;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  input[disabled] + label {
+    cursor: not-allowed;
+  }
+  /* override */
+  .@{icon-checkbox} {
     float: left;
     margin: 8px 6px 0 0;
   }

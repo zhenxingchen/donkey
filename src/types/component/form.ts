@@ -2,10 +2,7 @@ import IAjax from "@types-common/ajax";
 import IItem from "@types-component/item";
 import ILayout from "@types-common/layout";
 
-/**
- * 表单
- */
-export default interface IForm extends ILayout, IFormItem {
+interface IForm extends ILayout {
   tag: "form";
   attr?: {
     id?: string;
@@ -27,3 +24,5 @@ export default interface IForm extends ILayout, IFormItem {
 export interface IFormItem {
   label?: string;
 }
+
+export default IForm;

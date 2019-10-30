@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FormContext, TableContext} from "@shared/context";
 import { Layout } from "@util";
+import Constant from "@shared/constant";
 import IProps from "@types-common/props";
 import ITable from "@types-component/table";
 import Pager from "@components/pager";
@@ -12,7 +13,6 @@ function Table(props: IProps<ITable>) {
   const [formContext] = React.useContext(FormContext);
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [rows, setRows] = React.useState(null);
@@ -50,9 +50,9 @@ function Table(props: IProps<ITable>) {
         && ["radio", "checkbox"].indexOf(config.attr.checkType) > -1) {
         rowItems.push(
           "radio" === config.attr.checkType
-            ? (<i className={"dk-check-radio"}></i>)
+            ? (<i className={Constant.icon.radio.main}/>)
             : "checkbox" === config.attr.checkType
-            ? (<i className={"dk-check-box"}></i>)
+            ? (<i className={Constant.icon.checkbox.main}/>)
             : null
         );
       }
@@ -150,7 +150,7 @@ function Table(props: IProps<ITable>) {
         "radio" === config.attr.checkType
           ? (<th>选择</th>)
           : "checkbox" === config.attr.checkType
-          ? (<th><i className={"dk-check-box"}></i></th>)
+          ? (<th><i className={ Constant.icon.checkbox.main }></i></th>)
           : null
       );
       const renderItems = () => {
@@ -263,27 +263,17 @@ function Table(props: IProps<ITable>) {
       return null;
     }
     return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        <TableContext.Provider
-          value={[{
-            name: config.attr.name,
-            disabled: config.attr.disabled
-          }]}>
-          <div
-            className={Layout.containerClassName(config)}
-            style={Layout.containerStyle(config)}
-          >
-              { renderToolbar() }
-              { renderTableMain() }
-              { renderPager() }
-              { renderTableFixLeft() }
-              { renderTableFixRight() }
-          </div>
-        </TableContext.Provider>
-      </div>
+      <TableContext.Provider
+        value={[{
+          name: config.attr.name,
+          disabled: config.attr.disabled
+        }]}>
+        { renderToolbar() }
+        { renderTableMain() }
+        { renderPager() }
+        { renderTableFixLeft() }
+        { renderTableFixRight() }
+      </TableContext.Provider>
     );
   };
 

@@ -1,10 +1,12 @@
 export default interface IGlobal {
   // root document id
-  root: string,
-  // css-prefix
-  prefix: string;
-  // css-inner-prefix
-  prefixInner: string;
+  root: string;
+  // global ajax header
+  ajaxHeader?: {};
+  // before ajax start handler
+  ajaxStart?: (data?: {}) => boolean | void;
+  // after ajax end handler
+  ajaxEnd?: (result?: {}) => boolean | void;
   // default theme
   theme?: "blue";
   // international language

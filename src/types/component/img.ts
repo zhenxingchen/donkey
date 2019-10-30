@@ -1,9 +1,7 @@
 import { IFormItem } from "@types-component/form";
 import ILayout from "@types-common/layout";
-/**
- * 图片
- */
-export default interface IImg extends ILayout,IFormItem {
+
+interface IImg extends ILayout,IFormItem {
   tag: "img";
   attr?: {
     id?: string;
@@ -16,3 +14,5 @@ export default interface IImg extends ILayout,IFormItem {
   onLoad?: () => void;
   onClose?: () => void;
 }
+
+export default IImg;

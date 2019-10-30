@@ -5,6 +5,7 @@ export default interface IAjax {
   url: string;
   method?: string;
   data?: {};
+  dataFlat?: boolean;
   load?: boolean;
   headers?: {};
   success?: (result?: object) => any;

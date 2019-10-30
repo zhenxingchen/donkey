@@ -1,13 +1,10 @@
+import { IFormItem } from "./form";
 import IAjax from "@types-common/ajax";
 import IItem from "./item";
 import ILayout from "@types-common/layout";
 import IValidate from "@types-common/validte";
-import { IFormItem } from "./form";
 
-/**
- * 文件上传
- */
-export default interface IUpload extends ILayout, IFormItem {
+interface IUpload extends ILayout, IFormItem {
   tag?: "upload";
   text: string;
   attr?: {
@@ -26,3 +23,5 @@ export default interface IUpload extends ILayout, IFormItem {
   onValidate: (msg: string) => void;
   items?: IItem[]
 }
+
+export default IUpload;

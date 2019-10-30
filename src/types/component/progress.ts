@@ -1,10 +1,7 @@
-import ILayout from "@types-common/layout";
 import { IFormItem } from "./form";
+import ILayout from "@types-common/layout";
 
-/**
- * 进度条
- */
-export default interface IProgress extends ILayout, IFormItem {
+interface IProgress extends ILayout, IFormItem {
   tag: "progress";
   attr?: {
     id?: string;
@@ -12,3 +9,5 @@ export default interface IProgress extends ILayout, IFormItem {
     visible?: boolean;
   };
 }
+
+export default IProgress;

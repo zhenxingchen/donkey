@@ -9,7 +9,6 @@ function Icon(props: IProps<IIcon>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -18,22 +17,11 @@ function Icon(props: IProps<IIcon>) {
       return null;
     }
     return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
+      <i
+        className={`fa ${config.attr.name} ${Layout.componentClassName(config)}`}
+        style={Layout.containerStyle(config)}
       >
-        { Label(config) }
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          <i
-            className={`fa ${config.attr.name} ${Layout.componentClassName(config)}`}
-            style={Layout.containerStyle(config)}
-          >
-          </i>
-        </div>
-      </div>
+      </i>
     );
   };
 

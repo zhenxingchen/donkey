@@ -1,11 +1,7 @@
-import { IFormItem } from "@types-component/form";
 import IAjax from "@types-common/ajax";
 import ILayout from "@types-common/layout";
 
-/**
- * 目录
- */
-export default interface IMenu extends IFormItem, ILayout {
+interface IMenu extends ILayout {
   tag?: "menu";
   attr?: {
     id?: string;
@@ -19,3 +15,5 @@ export default interface IMenu extends IFormItem, ILayout {
   data?: {}[];
   ajax?: IAjax;
 }
+
+export default IMenu;

@@ -7,7 +7,6 @@ function Date(props: IProps<IDate>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -15,11 +14,7 @@ function Date(props: IProps<IDate>) {
     if (!config) {
       return null;
     }
-    return (
-      <div className="dk-date">
-
-      </div>
-    );
+    return (<>Date</>);
   };
 
   return render();

@@ -3,12 +3,12 @@ import IProps from "@types-common/props";
 import ITooltip from "@types-component/tooltip";
 
 import "./style.less";
+import { Layout } from "@util";
 
 function Tooltip(props: IProps<ITooltip>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -16,11 +16,7 @@ function Tooltip(props: IProps<ITooltip>) {
     if (!config) {
       return null;
     }
-    return (
-      <div className="dk-tooltip">
-        tooltip
-      </div>
-    );
+    return (<>tooltip</>);
   };
 
   return render();

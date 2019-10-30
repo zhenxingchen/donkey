@@ -2,10 +2,10 @@
 @import "../theme/style";
 /* 表单元素：处理 label、margin-bottom */
 .dk-form-item {
-  position: relative;
   margin: 0 0 20px 0;
   line-height: @height-form-item;
   white-space: nowrap;
+  //background: #f2f2f2;
   .dk-label {
     display: inline-block;
     line-height: @height-form-item;
@@ -32,6 +32,11 @@
       }
     }
   }
+  /* override */
+  .dk-switch-container {
+    position: absolute;
+    top: 6px;
+  }
 }
 
 /* input、select、textarea 默认样式*/
@@ -47,7 +52,7 @@
   padding: 0 10px;
   width: 200px;
   height: @height-form-item;
-  vertical-align: middle;
+  vertical-align: top;
   &[type=number] {
     padding-right: 0;
   }
@@ -63,6 +68,7 @@
     color: #999;
   }
 }
+
 textarea.dk-form-control {
   height: 80px;
 }

@@ -41,15 +41,22 @@
     }
   }
   &-options-empty {
-    color: @color-gray;
     text-align: center;
-    padding: 50px 0;
+    padding: 30px 0;
+    color: #e2e2e2;
+    .fa {
+      font-size: 50px;
+    }
+    span {
+      display: block;
+    }
   }
   &-page {
     text-align: center;
     border-top: 1px solid @border-color;
     box-sizing: border-box;
     line-height: @height-form-item;
+    font-size: 12px;
     a {
       display: inline-block;
       width: 50px;
@@ -67,11 +74,11 @@
     }
   }
   /* override */
-  .@{prefix}-arrow-split-y {
+  .@{icon-arrow-y} {
     float: right;
     margin-top: -2px;
   }
-  .@{prefix}-check {
+  .@{icon-check} {
     float: right;
   }
 }

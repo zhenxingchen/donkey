@@ -1,9 +1,7 @@
 import { IFormItem } from "@types-component/form";
 import ILayout from "@types-common/layout";
-/**
- * 切换开关
- */
-export default interface ISwitch extends ILayout, IFormItem {
+
+interface ISwitch extends ILayout, IFormItem {
   tag: "switch";
   attr?: {
     id?: string;
@@ -11,3 +9,5 @@ export default interface ISwitch extends ILayout, IFormItem {
   };
   onChange?: (from, to) => boolean;
 }
+
+export default ISwitch;

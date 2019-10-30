@@ -1,7 +1,7 @@
-import ILayout from "@types-common/layout";
 import { IFormItem } from "./form";
+import ILayout from "@types-common/layout";
 
-export default interface IIcon extends ILayout, IFormItem {
+interface IIcon extends ILayout, IFormItem {
   tag: "icon";
   attr?: {
     id?: string;
@@ -12,3 +12,5 @@ export default interface IIcon extends ILayout, IFormItem {
   };
   onClick?: (config: IIcon) => void;
 }
+
+export default IIcon;

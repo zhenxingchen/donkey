@@ -2,9 +2,6 @@ import * as React from "react";
 import { Layout } from "@util";
 import IConfig from "@types-component/item";
 
-/**
- * label convert
- */
 export default (config: IConfig) => {
   if (!config || !config.hasOwnProperty('label')) {
     return null;
@@ -13,9 +10,9 @@ export default (config: IConfig) => {
     <label
       className={ Layout.labelClassName(config) }
       style={ Layout.labelStyle(config) }
-      htmlFor={ config.attr.id ? config.attr.id : "" }
+      htmlFor={ config.attr.id }
     >
-      { config.label }
+      { config["label"] }
     </label>
   );
 };

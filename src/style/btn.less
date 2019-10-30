@@ -1,0 +1,62 @@
+@charset "utf-8";
+@import "../theme/style";
+
+.@{btn} {
+  height: @height-form-item;
+  padding: 0 15px;
+  border-radius: @border-radius-size;
+  border: 1px solid;
+  box-sizing: border-box;
+  outline: none;
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    &:hover {
+      box-shadow: none;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.@{prefix-inner} {
+    &blue {
+      color: @color-white;
+      background-color: @color-blue;
+      border-color: @color-blue;
+      &:hover {
+        box-shadow: 0 0 4px @color-blue;
+      }
+    }
+    &red {
+      color: @color-white;
+      background-color: @color-red;
+      border-color: @color-red;
+      &:hover {
+        box-shadow: 0 0 4px @color-red;
+      }
+    }
+    &green {
+      color: @color-white;
+      background: @color-green;
+      border-color: @color-green;
+      &:hover {
+        box-shadow: 0 0 4px @color-green;
+      }
+    }
+    &gray {
+      color: @color-white;
+      background: @color-gray;
+      border-color: @color-gray;
+      &:hover {
+        box-shadow: 0 0 4px @color-gray;
+      }
+    }
+    &white {
+      background: @color-white;
+      border-color: @border-color-hover;
+      &:hover {
+        box-shadow: 0 0 4px @border-color-hover;
+      }
+    }
+  }
+}

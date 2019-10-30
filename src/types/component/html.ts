@@ -1,10 +1,7 @@
-import ILayout from "@types-common/layout";
 import { IFormItem } from "@types-component/form";
+import ILayout from "@types-common/layout";
 
-/**
- * 原生 html
- */
-export default interface IHtml extends ILayout, IFormItem {
+interface IHtml extends ILayout, IFormItem {
   tag: "html";
   attr?: {
     id?: string;
@@ -15,3 +12,5 @@ export default interface IHtml extends ILayout, IFormItem {
   onLoad?: () => void;
   onError?: () => void;
 }
+
+export default IHtml;

@@ -1,8 +1,76 @@
 @charset "utf-8";
 @import "../../theme/style";
-.@{prefix}-modal {
-  .@{prefix}-modal-container {
+
+@modal: ~"@{prefix}-modal";
+
+.@{modal} {
+  .@{modal}-container {
     position: relative;
+  }
+  .@{modal}-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .@{modal}-body {
+    position: fixed;
+    width: 350px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.15);
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 25px;
+    &.@{prefix-inner}top {
+      top: 100px;
+      bottom: auto;
+    }
+    &.@{prefix-inner}center {
+      top: 0;
+      bottom: 0;
+    }
+    &.@{prefix-inner}bottom {
+      top: auto;
+      bottom: 100px;
+    }
+  }
+  .@{modal}-header {
+    font-size: 0;
+    clear: both;
+    overflow: hidden;
+    .@{prefix-inner}title {
+      float: left;
+      font-weight: bold;
+      span {
+        font-size: 14px;
+      }
+    }
+    .@{prefix-inner}close {
+      float: right;
+      margin-top: 4px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .@{modal}-content {
+    margin-top: 15px;
+    padding-left: 30px;
+  }
+  .@{modal}-footer {
+    margin-top: 15px;
+    text-align: right;
+  }
+  /* override */
+  .fa {
     display: inline-block;
+    width: 30px;
+    font-size: 18px;
+    color: #faad14;
+    text-align: center;
   }
 }

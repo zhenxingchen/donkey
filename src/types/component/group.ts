@@ -1,13 +1,10 @@
+import { IFormItem } from "@types-component/form";
 import IAjax from "@types-common/ajax";
 import ILayout from "@types-common/layout";
 import IItem from "@types-component/item";
 import IValidate from "@types-common/validte";
-import { IFormItem } from "@types-component/form";
 
-/**
- * 组
- */
-export default interface IGroup extends ILayout, IFormItem {
+interface IGroup extends ILayout, IFormItem {
   tag: "group";
   attr?: {
     id?: string;
@@ -18,3 +15,5 @@ export default interface IGroup extends ILayout, IFormItem {
   permissionAjax?: string | IAjax
   validate?: IValidate;
 }
+
+export default IGroup;

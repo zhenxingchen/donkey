@@ -4,12 +4,21 @@
 @radio: ~"@{prefix}-radio";
 
 .@{radio} {
-  &-container {
-    position: relative;
+  position: relative;
+  .@{radio}-container {
     display: inline-block;
   }
+  input {
+    display: none;
+  }
+  label {
+    cursor: pointer;
+  }
+  input[disabled] + label {
+    cursor: not-allowed;
+  }
   /* override */
-  .@{prefix}-check-radio {
+  .@{icon-radio} {
     float: left;
     margin: 8px 6px 0 0;
   }

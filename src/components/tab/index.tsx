@@ -15,25 +15,12 @@ function Tab(props: IProps<ITab>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
 
   const render = () => {
-    return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          <Item configs={ config.items }/>
-        </div>
-      </div>
-    );
+    return (<Item configs={ config.items }/>);
   };
 
   return render();

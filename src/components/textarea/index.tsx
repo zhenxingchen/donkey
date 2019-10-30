@@ -9,7 +9,6 @@ function TextArea(props: IProps<ITextArea>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
@@ -31,20 +30,7 @@ function TextArea(props: IProps<ITextArea>) {
     if (!config) {
       return null;
     }
-    return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        { Label(config) }
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          { renderTextArea() }
-        </div>
-      </div>
-    );
+    return renderTextArea();
   };
 
   return render();

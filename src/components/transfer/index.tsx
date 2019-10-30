@@ -9,7 +9,6 @@ function Transfer(props: IProps<ITransfer>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -17,20 +16,7 @@ function Transfer(props: IProps<ITransfer>) {
     if (!config) {
       return null;
     }
-    return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        { Label(config) }
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          transfer
-        </div>
-      </div>
-    );
+    return (<>transfer</>);
   };
 
   return render();

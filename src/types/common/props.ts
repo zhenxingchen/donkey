@@ -1,4 +1,7 @@
+
 export default interface IProps<T> {
+  // for container
+  children?: any;
   // for config
   config?: T;
   // for config items

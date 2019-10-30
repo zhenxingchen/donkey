@@ -1,15 +1,16 @@
 import * as React from "react";
+import { Label, Layout } from "@util";
 import { FormContext } from "@shared/context";
+import Constant from "@shared/constant";
 import IProps from "@types-common/props";
 import ISelect from "@types-component/select";
-import { Label, Layout } from "@util";
+
 import "./style.less";
 
 function Select(props: IProps<ISelect>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     !config.attr.textField ? config.attr.textField = "text" : "";
     !config.attr.valueField ? config.attr.valueField = "value" : "";
     return config;
@@ -31,27 +32,37 @@ function Select(props: IProps<ISelect>) {
     }
     if (!config.options || config.options.length < 1) {
       return (
-        <div className="dk-select-options">
-          <div className={"dk-select-options-empty"}>暂无数据</div>
+        <div className={`${Constant.cls.prefix}-select-options`}>
+          <div className={`${Constant.cls.prefix}-select-options-empty`}>
+            <i className={"fa fa-inbox"}></i>
+            <span>暂无数据</span>
+          </div>
         </div>
       );
     }
+    const optionsCls = `${Constant.cls.prefix}-select-options`;
+    const pagePreCls = `${Constant.icon.arrow.main} ${Constant.icon.arrow.left}`;
+    const pageNextCls = `${Constant.icon.arrow.main} ${Constant.icon.arrow.right}`;
     return (
-      <div className="dk-select-options">
+      <div className={optionsCls}>
         <ul>
           {
             config.options.map(option => (
               <li key={option[config.attr.valueField]}>
                 { option[config.attr.textField] }
-                <i className="dk-check"></i>
+                <i className={ Constant.icon.check.main }></i>
               </li>
             ))
           }
         </ul>
-        <div className="dk-select-page">
-          <a className="pre" href="#">&lt;</a>
+        <div className={`${Constant.cls.prefix}-select-page`}>
+          <a className="pre">
+            <i className={ pagePreCls }/>
+          </a>
           <span>1 / 23</span>
-          <a className="next" href="#">&gt;</a>
+          <a className="next">
+            <i className={ pageNextCls }/>
+          </a>
         </div>
       </div>
     );
@@ -61,34 +72,29 @@ function Select(props: IProps<ISelect>) {
     if (!config) {
       return null;
     }
+    const componentCls = [];
+    componentCls.push(`${Constant.cls.prefix}-form-control`);
+    componentCls.push(`${Constant.cls.prefix}-transition-border`);
+    componentCls.push(Layout.componentClassName(config));
+    const arrowCls = [];
+    arrowCls.push(Constant.icon.arrowY.main);
+    optionsVisible
+      ? arrowCls.push(Constant.icon.arrowY.up)
+      : arrowCls.push(Constant.icon.arrowY.down);
     return (
       <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
+        className={ componentCls.join(" ") }
+        style={ Layout.componentStyle(config) }
+        onClick={
+          (e) => {
+            setOptionsVisible(true);
+            e.nativeEvent.stopImmediatePropagation();
+          }
+        }
       >
-        { Label(config) }
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-            <div
-              className={`dk-form-control dk-transition-border ${Layout.componentClassName(config)}`}
-              style={ Layout.componentStyle(config) }
-              onClick={
-                (e) => {
-                  setOptionsVisible(true);
-                  e.stopPropagation();
-                  e.nativeEvent.stopImmediatePropagation();
-                  e.preventDefault();
-                  return false;
-                }
-              }
-            >
-              <div className="dk-select-input"></div>
-              <div className={`dk-arrow-split-y ${optionsVisible ? "dk-arrow-split-y-up" : "dk-arrow-split-y-down"}`}></div>
-              { renderOptions() }
-            </div>
-        </div>
+        <div className={`${Constant.cls.prefix}-select-input`}/>
+        <i className={ arrowCls.join(" ") }/>
+        { renderOptions() }
       </div>
     );
   };

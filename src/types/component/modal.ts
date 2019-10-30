@@ -1,10 +1,18 @@
-/**
- * 模态框
- */
-export default interface IModal {
+import ILayout from "@types-common/layout";
+import IItem from "@types-component/item";
+
+interface IModal extends ILayout {
   tag: "modal";
   attr?: {
     id?: string;
-    visible?: boolean;
-  }
+    position?: "top" | "center" | "bottom";
+    icon?: string;
+    title?: string;
+    content?: string;
+    close?: boolean;
+    mask?: boolean;
+  };
+  footer?: IItem[];
 }
+
+export default IModal;

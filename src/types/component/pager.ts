@@ -1,10 +1,6 @@
 import ILayout from "@types-common/layout";
-import { IFormItem } from "@types-component/form";
 
-/**
- * 分页
- */
-export default interface Pager extends ILayout, IFormItem {
+interface Pager extends ILayout {
   tag: "pager",
   attr?: {
     id?: string;
@@ -19,3 +15,5 @@ export default interface Pager extends ILayout, IFormItem {
   onPageChange: (pageCurr: number, pageTo: number) => void | boolean;
   onRowsChange: (rowCurr: number, rowsTo: number) => void | boolean;
 }
+
+export default Pager;

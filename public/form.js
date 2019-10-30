@@ -153,7 +153,7 @@ const formConfig = {
       label: "头像",
       cols: "lg6 md8 sm12 xs24",
       attr: {
-        src: "https://s.cn.bing.net/th?id=ODL.c37cac848b0f77eadb9ef8fcb7daa866&w=146&h=146&c=7&rs=1&qlt=80&pid=RichNav",
+        src: "http://doctest.luckincoffee.com/images/logo.png",
         height: "33px"
       }
     },
@@ -205,6 +205,14 @@ const formConfig = {
           }
         }
       ]
+    },
+    {
+      tag: "switch",
+      label: "三好学生",
+      cols: "lg6 md8 sm12 xs24",
+      attr: {
+        name: "good"
+      }
     },
     {
       tag: "group",
@@ -302,18 +310,15 @@ const formConfig = {
             color: "blue"
           },
           layout: {
-            rootStyle: {
-              margin: "5px"
+            componentStyle: {
+              width: "34px",
+              height: "33px",
+              borderRadius: "33px",
+              textAlign: "center",
+              padding: 0
             }
           },
           items: [
-            {
-              tag: "span",
-              text: "查询",
-              layout: {
-                rootStyle: { marginRight: "10px" }
-              }
-            },
             {
               tag: "icon",
               attr: {
@@ -396,7 +401,30 @@ const formConfig = {
             return ["", "男", "女"][value];
           }
         },
-        { text: "详细资料", name: "detail" }
+        {
+          text: "详细资料",
+          name: "detail",
+          format: function(value, obj) {
+            return {
+              tag: "link",
+              items: [
+                {
+                  tag: "icon",
+                  attr: {
+                    name: "fa-address-card"
+                  }
+                },
+                {
+                  tag: "span",
+                  text: "查看",
+                  layout: {
+                    rootStyle: { marginLeft: "10px" }
+                  }
+                }
+              ]
+            };
+          }
+        }
       ],
       data: [
         { username: "张三", age: "33", sex: "1", detail: "" },

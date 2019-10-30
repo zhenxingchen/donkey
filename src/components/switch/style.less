@@ -4,8 +4,59 @@
 @switch: ~"@{prefix}-switch";
 
 .@{switch} {
-  &-container {
+  position: relative;
+  vertical-align: top;
+  .@{switch}-container {
     position: relative;
     display: inline-block;
+  }
+  .@{switch}-box {
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 22px;
+    border: 1px solid #eee;
+    background: #aaa;
+    color: #fff;
+    box-sizing: border-box;
+    transition: background-color .2s;
+    &:hover {
+      cursor: pointer;
+    }
+    &.@{prefix-inner}checked {
+      background: @theme-color;
+      .@{switch}-dot {
+        left: calc(100% - 18px);
+      }
+      .@{switch}-text {
+        right: auto;
+        left: 8px;
+      }
+    }
+    &.@{prefix-inner}disabled {
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+  .@{switch}-dot {
+    position: absolute;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 0 8px #888;
+    top: 2px;
+    left: 2px;
+    transition: left .2s;
+  }
+  .@{switch}-text {
+    position: absolute;
+    display: inline-block;
+    font-size: 12px;
+    top: 2px;
+    right: 8px;
+    line-height: normal;
   }
 }

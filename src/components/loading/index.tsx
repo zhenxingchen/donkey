@@ -8,7 +8,6 @@ function Loading(props: IProps<ILoading>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -16,11 +15,7 @@ function Loading(props: IProps<ILoading>) {
     if (!config) {
       return null;
     }
-    return (
-      <div className="dk-loading">
-        loading
-      </div>
-    );
+    return (<>loading</>);
   };
 
   return render();

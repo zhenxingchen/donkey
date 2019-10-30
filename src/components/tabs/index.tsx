@@ -17,7 +17,6 @@ function Tabs(props: IProps<ITabs>) {
 
   const [config, setConfig] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     !config.attr.selected
       ? config.attr.selected = config.items[0].attr.id
       : "";
@@ -90,18 +89,10 @@ function Tabs(props: IProps<ITabs>) {
       return null;
     }
     return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          { renderTabNav() }
-          { renderTabContent() }
-        </div>
-      </div>
+      <>
+        { renderTabNav() }
+        { renderTabContent() }
+      </>
     );
   }
 

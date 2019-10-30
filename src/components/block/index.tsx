@@ -10,7 +10,6 @@ function Block(props: IProps<IBlock>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -34,14 +33,7 @@ function Block(props: IProps<IBlock>) {
     if (!config) {
       return null;
     }
-    return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        { renderItems() }
-      </div>
-    );
+    return renderItems();
   }
 
   return render();

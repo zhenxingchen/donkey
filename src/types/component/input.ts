@@ -2,10 +2,7 @@ import { IFormItem } from "@types-component/form";
 import ILayout from "@types-common/layout";
 import IValidate from "@types-common/validte";
 
-/**
- * 文本框
- */
-export default interface IInput extends ILayout, IFormItem {
+interface IInput extends ILayout, IFormItem {
   tag: "input";
   attr?: {
     id?: string;
@@ -27,3 +24,5 @@ export default interface IInput extends ILayout, IFormItem {
   form?: {};
   table?: {};
 }
+
+export default IInput;

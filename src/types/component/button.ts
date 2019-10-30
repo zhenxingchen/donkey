@@ -1,11 +1,8 @@
-import ILayout from "@types-common/layout";
 import { IFormItem } from "@types-component/form";
 import IItem from "@types-component/item";
+import ILayout from "@types-common/layout";
 
-/**
- * 按钮
- */
-export default interface IButton extends ILayout, IFormItem {
+interface IButton extends ILayout, IFormItem {
   tag: "button";
   text?: string;
   attr?: {
@@ -20,3 +17,5 @@ export default interface IButton extends ILayout, IFormItem {
   onClick?: (target: HTMLButtonElement) => void | boolean;
   items?: IItem[];
 }
+
+export default IButton;

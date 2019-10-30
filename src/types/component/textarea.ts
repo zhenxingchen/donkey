@@ -1,11 +1,8 @@
+import { IFormItem } from "@types-component/form";
 import ILayout from "@types-common/layout";
 import IValidate from "@types-common/validte";
-import { IFormItem } from "@types-component/form";
 
-/**
- * 文本域
- */
-export default interface ITextArea extends ILayout, IFormItem {
+interface ITextArea extends ILayout, IFormItem {
   tag: "textarea";
   attr?: {
     id?: string;
@@ -23,3 +20,5 @@ export default interface ITextArea extends ILayout, IFormItem {
   onInput?: (target: HTMLInputElement) => void | boolean;
   validate?: IValidate;
 }
+
+export default ITextArea;

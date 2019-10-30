@@ -1,10 +1,7 @@
-import ILayout from "@types-common/layout";
 import { IFormItem } from "@types-component/form";
+import ILayout from "@types-common/layout";
 
-/**
- * 单选框
- */
-export default interface IRadio extends ILayout, IFormItem {
+interface IRadio extends ILayout, IFormItem {
   tag: "radio";
   attr?: {
     id?: string;
@@ -17,3 +14,5 @@ export default interface IRadio extends ILayout, IFormItem {
   },
   onChange?: (target: HTMLInputElement) => boolean | void;
 }
+
+export default IRadio;

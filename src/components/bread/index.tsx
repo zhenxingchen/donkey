@@ -1,15 +1,14 @@
 import * as React from "react";
+import { Key } from "@util";
 import IProps from "@types-common/props";
 import IBread from "@types-component/bread";
 import Item from "@components/item";
-import { Layout, Key } from "@util";
 import "./style.less";
 
 function Bread(props: IProps<IBread>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -51,19 +50,7 @@ function Bread(props: IProps<IBread>) {
     if (!config) {
       return null;
     }
-    return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          { renderItems() }
-        </div>
-      </div>
-    );
+    return renderItems();
   };
 
   return render();

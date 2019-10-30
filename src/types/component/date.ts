@@ -1,11 +1,8 @@
+import { IFormItem } from "@types-component/form";
 import ILayout from "@types-common/layout";
 import IValidate from "@types-common/validte";
-import { IFormItem } from "@types-component/form";
 
-/**
- * 日期
- */
-export default interface IDate extends ILayout, IFormItem {
+interface IDate extends ILayout, IFormItem {
   tag: "date";
   attr?: {
     id?: string;
@@ -25,3 +22,5 @@ export default interface IDate extends ILayout, IFormItem {
   onFocus?: (target: HTMLInputElement) => boolean | void;
   validate?: IValidate;
 }
+
+export default IDate;

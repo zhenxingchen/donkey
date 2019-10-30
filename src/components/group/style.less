@@ -4,13 +4,11 @@
 @group: ~"@{prefix}-group";
 
 .@{group} {
-  vertical-align: top;
-  &-container {
-    position: relative;
+  position: relative;
+  .@{group}-container {
     display: inline-block;
   }
-  &-items {
-    display: inline-block;
+  .@{group}-items {
     white-space: normal;
     .@{prefix}-button,
     .@{prefix}-checkbox,

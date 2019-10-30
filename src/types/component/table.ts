@@ -2,12 +2,8 @@ import IAjax from "@types-common/ajax";
 import ILayout from "@types-common/layout";
 import IItem from "@types-component/item";
 import IPager from "@types-component/pager";
-import { IFormItem } from "@types-component/form";
 
-/**
- * 表格
- */
-export default interface ITable extends ILayout, IFormItem {
+interface ITable extends ILayout {
   tag: "table";
   attr?: {
     id?: string;
@@ -54,3 +50,5 @@ interface ITableColumns {
   format?: (value: any, rowData: object, rowIndex: number) =>
       IItem | boolean | string | number | null | Date;
 }
+
+export default ITable;

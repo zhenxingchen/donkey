@@ -1,9 +1,10 @@
+import { IFormItem } from "@types-component/form";
 import IAjax from "@types-common/ajax";
 import ILayout from "@types-common/layout";
 import IValidate from "@types-common/validte";
-import { IFormItem } from "@types-component/form";
+
 /**
- * 下拉框
+ * select
  * - support multiple
  * - support search
  * - support remote search
@@ -12,7 +13,7 @@ import { IFormItem } from "@types-component/form";
  * - support data convert
  * - support react in chain, one to many, many to one, many to many
  */
-export default interface ISelect extends ILayout, IFormItem {
+interface ISelect extends ILayout, IFormItem {
   tag: "select";
   attr?: {
     id?: string;
@@ -41,3 +42,5 @@ export default interface ISelect extends ILayout, IFormItem {
   options: any[];
   validate?: IValidate;
 }
+
+export default ISelect;

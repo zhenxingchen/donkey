@@ -1,11 +1,7 @@
 import ILayout from "@types-common/layout";
 import IItem from "@types-component/item";
-import { IFormItem } from "@types-component/form";
 
-/**
- * 轮播
- */
-export default interface ICarousel extends ILayout, IFormItem {
+interface ICarousel extends ILayout {
   tag: "carousel";
   attr?: {
     id?: string;
@@ -14,3 +10,5 @@ export default interface ICarousel extends ILayout, IFormItem {
   items?: IItem[];
   onChange?: (index: number) => void;
 }
+
+export default ICarousel;

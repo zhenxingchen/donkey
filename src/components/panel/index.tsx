@@ -9,7 +9,6 @@ function Panel(props: IProps<IPanel>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -40,18 +39,10 @@ function Panel(props: IProps<IPanel>) {
       return null;
     }
     return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          { renderTop() }
-          { renderContent() }
-        </div>
-      </div>
+      <>
+        { renderTop() }
+        { renderContent() }
+      </>
     );
   };
 

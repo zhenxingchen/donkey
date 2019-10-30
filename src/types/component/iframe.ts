@@ -1,10 +1,6 @@
 import ILayout from "@types-common/layout";
-import { IFormItem } from "@types-component/form";
 
-/**
- * iframe
- */
-export default interface IIFrame extends ILayout, IFormItem {
+interface IIFrame extends ILayout {
   tag: "iframe";
   attr?: {
     id?: string;
@@ -14,3 +10,5 @@ export default interface IIFrame extends ILayout, IFormItem {
   };
   onLoad?: () => void;
 }
+
+export default IIFrame;

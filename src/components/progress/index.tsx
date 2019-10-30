@@ -9,7 +9,6 @@ function Progress(props: IProps<IProgress>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr ? config.attr = {} : "";
     return config;
   });
 
@@ -17,20 +16,7 @@ function Progress(props: IProps<IProgress>) {
     if (!config) {
       return null;
     }
-    return (
-      <div
-        className={Layout.rootClassName(config)}
-        style={Layout.rootStyle(config)}
-      >
-        { Label(config) }
-        <div
-          className={Layout.containerClassName(config)}
-          style={Layout.containerStyle(config)}
-        >
-          progress
-        </div>
-      </div>
-    );
+    return (<>progress</>);
   };
 
   return render();

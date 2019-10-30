@@ -15,7 +15,7 @@ const _cols = (config: IConfig) => {
   for (const c of css) {
     cs.push(
       REG.COLS.test(c)
-      ? `${Constant.prefix}-${c}`
+      ? `${Constant.cls.prefix}-${c}`
       : c
     );
   }
@@ -24,7 +24,7 @@ const _cols = (config: IConfig) => {
 
 const _formItem = (config: IConfig) => {
   return config && config.hasOwnProperty("label")
-    ? `${Constant.prefix}-form-item`
+    ? `${Constant.cls.prefix}-form-item`
     : null;
 };
 
@@ -32,12 +32,12 @@ const Layout = {
 
   labelClassName: (config: IConfig) => {
     const className = [];
-    className.push(`${Constant.prefix}-label`);
+    className.push(`${Constant.cls.prefix}-label`);
     if (
       config["validate"]
       && config["validate"]["required"]
     ) {
-      className.push(`${Constant.prefix}-required-after`);
+      className.push(`${Constant.cls.prefix}-required-after`);
     }
     config && config.layout && config.layout.labelClassName
       ? className.push(config.layout.labelClassName)
@@ -53,7 +53,7 @@ const Layout = {
 
   rootClassName: (config: IConfig) => {
     const className = [];
-    className.push(`${Constant.prefix}-${config.tag}`);
+    className.push(`${Constant.cls.prefix}-${config.tag}`);
     const formItem = _formItem(config);
     const cols = _cols(config);
     formItem ? className.push(formItem) : "";
@@ -72,7 +72,7 @@ const Layout = {
 
   containerClassName: (config: IConfig) => {
     const className = [];
-    className.push(`${Constant.prefix}-${config.tag}-container`);
+    className.push(`${Constant.cls.prefix}-${config.tag}-container`);
     config && config.layout && config.layout.containerClassName
       ? className.push(config.layout.containerClassName)
       : "";
