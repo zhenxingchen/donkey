@@ -153,7 +153,7 @@ const formConfig = {
       label: "头像",
       cols: "lg6 md8 sm12 xs24",
       attr: {
-        src: "http://doctest.luckincoffee.com/images/logo.png",
+        src: "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=4230941942,666991723&fm=58",
         height: "33px"
       }
     },
