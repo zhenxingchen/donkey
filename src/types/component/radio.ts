@@ -1,17 +1,13 @@
-import { IFormItem } from "@types-component/form";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import ILayout from "@types-common/layout";
 
-interface IRadio extends ILayout, IFormItem {
+interface IRadio extends IComponent, IFormItem, ILayout {
   tag: "radio";
-  attr?: {
-    id?: string;
-    name?: string;
-    nameAlias?: string;
-    text?: string | boolean | number;
-    value?: any;
-    disabled?: boolean;
-    visible?: boolean;
-  },
+  name?: string;
+  nameAlias?: string;
+  text?: string | boolean | number;
+  value?: string | number | boolean;
   onChange?: (target: HTMLInputElement) => boolean | void;
 }
 

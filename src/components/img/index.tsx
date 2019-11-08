@@ -14,10 +14,10 @@ function Img(props: IProps<IImg>) {
   const renderImg = () => {
     return (
       <img
-        width={ config.attr.width }
-        height={ config.attr.height }
-        src={ config.attr.src }
-        alt={ config.attr.alt }
+        width={ config.width }
+        height={ config.height }
+        src={ config.src }
+        alt={ config.alt }
       />
     );
   };

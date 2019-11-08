@@ -1,13 +1,10 @@
-import { IFormItem } from "./form";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import ILayout from "@types-common/layout";
 
-interface IProgress extends ILayout, IFormItem {
+interface IProgress extends IComponent, IFormItem, ILayout {
   tag: "progress";
-  attr?: {
-    id?: string;
-    name?: string;
-    visible?: boolean;
-  };
+  name?: string;
 }
 
 export default IProgress;

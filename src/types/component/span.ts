@@ -1,14 +1,11 @@
-import { IFormItem } from "@types-component/form";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import IItem from "@types-component/item";
 import ILayout from "@types-common/layout";
 
-interface ISpan extends ILayout, IFormItem {
+interface ISpan extends IComponent, IFormItem, ILayout {
   tag: "span";
   text?: string;
-  attr?: {
-    id?: string;
-    visible?: boolean;
-  };
   items?: IItem[];
   onClick?: (target: HTMLSpanElement) => void;
 }

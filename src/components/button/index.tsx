@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormContext, GlobalContext, GroupContext } from "@shared/context";
-import { Label, Layout } from "@util";
-import Constant from "@shared/constant";
+import { Layout } from "@util";
+import { CLS } from "@shared/constant";
 import IProps from "@types-common/props";
 import IButton from "@types-component/button";
 import Item from "@components/item";
@@ -11,8 +11,8 @@ function Button(props: IProps<IButton>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
-    !config.attr.color ? config.attr.color = "blue" : "";
-    !config.attr.type ? config.attr.type = "button" : "";
+    !config.color ? config.color = "blue" : "";
+    !config.type ? config.type = "button" : "";
     return config;
   });
   const [formContext] = React.useContext(FormContext);
@@ -31,13 +31,13 @@ function Button(props: IProps<IButton>) {
 
   const renderButton = () => {
     const componentCls = [];
-    componentCls.push(Constant.btn.main);
-    componentCls.push(`____${config.attr.color}`);
+    componentCls.push(CLS.btn.main);
+    componentCls.push(CLS.btn[config.color]);
     componentCls.push(Layout.componentClassName(config));
     return (
       <button
-        type={ config.attr.type }
-        disabled={ !!config.attr.disabled }
+        type={ config.type }
+        disabled={ !!config.disabled }
         className={ componentCls.join(" ") }
         style={ Layout.componentStyle(config) }
         onClick={ handleClick.bind(this) }

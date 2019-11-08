@@ -4,9 +4,6 @@
 @modal: ~"@{prefix}-modal";
 
 .@{modal} {
-  .@{modal}-container {
-    position: relative;
-  }
   .@{modal}-mask {
     position: fixed;
     top: 0;
@@ -15,7 +12,7 @@
     width: 100%;
     background: rgba(0, 0, 0, 0.4);
   }
-  .@{modal}-body {
+  .@{modal}-wrap {
     position: fixed;
     width: 350px;
     border-radius: 4px;
@@ -29,15 +26,60 @@
       top: 100px;
       bottom: auto;
     }
+    &.@{prefix-inner}topLeft {
+      top: 100px;
+      left: 100px;
+      right: auto;
+      bottom: auto;
+    }
+    &.@{prefix-inner}topRight {
+      top: 100px;
+      right: 100px;
+      left: auto;
+      bottom: auto;
+    }
     &.@{prefix-inner}center {
-      top: 0;
-      bottom: 0;
+      top: 50%;
+      left: 50%;
+      bottom: auto;
+      right: auto;
+      margin: auto;
+      transform: translate(-50%, -50%);
+    }
+    &.@{prefix-inner}centerLeft {
+      top: 50%;
+      left: 100px;
+      bottom: auto;
+      right: auto;
+      margin: auto;
+      transform: translate(0, -50%);
+    }
+    &.@{prefix-inner}centerRight {
+      top: 50%;
+      left: auto;
+      bottom: auto;
+      right: 100px;
+      margin: auto;
+      transform: translate(0, -50%);
     }
     &.@{prefix-inner}bottom {
       top: auto;
       bottom: 100px;
     }
+    &.@{prefix-inner}bottomLeft {
+      top: auto;
+      bottom: 100px;
+      left: 100px;
+      right: auto;
+    }
+    &.@{prefix-inner}bottomRight {
+      top: auto;
+      bottom: 100px;
+      left: auto;
+      right: 100px;
+    }
   }
+  .@{modal}-close {}
   .@{modal}-header {
     font-size: 0;
     clear: both;
@@ -57,7 +99,7 @@
       }
     }
   }
-  .@{modal}-content {
+  .@{modal}-body {
     margin-top: 15px;
     padding-left: 30px;
   }

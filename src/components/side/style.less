@@ -5,4 +5,99 @@
 
 .@{side} {
 
+  .@{side}-container {
+
+  }
+
+  .@{side}-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .@{side}-wrap {
+    position: absolute;
+    background: #fff;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.15);
+    &.@{prefix-inner}top {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+    }
+    &.@{prefix-inner}right {
+      top: 0;
+      right: 0;
+      width: 500px;
+      height: 100%;
+    }
+    &.@{prefix-inner}left {
+      top: 0;
+      left: 0;
+      width: 500px;
+      height: 100%;
+    }
+    &.@{prefix-inner}bottom {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+    }
+  }
+
+  .@{side}-wrap-content {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .@{side}-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px 25px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #fff;
+    overflow: hidden;
+    .@{prefix-inner}title {
+      float: left;
+      font-weight: 500;
+      font-size: 16px;
+    }
+    .@{prefix-inner}close {
+      float: right;
+      width: 25px;
+      text-align: right;
+      .@{icon-close} {
+        vertical-align: top;
+        margin-top: 2px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .@{side}-body {
+    padding: 16px 25px;
+    &.@{prefix-inner}header {
+      margin-top: 80px;
+    }
+    &.@{prefix-inner}footer {
+      margin-bottom: 80px;
+    }
+  }
+
+  .@{side}-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 16px 25px;
+    box-sizing: border-box;
+    border-top: 1px solid #e8e8e8;
+    background: #fff;
+  }
 }

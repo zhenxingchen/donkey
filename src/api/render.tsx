@@ -1,14 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { GlobalContext } from "@shared/context";
-import IGlobal from "@types-common/global";
+import IGlobalContext from "@types-common/globalContext";
 import Item from "@components/item";
 import log from "@shared/log";
 
 function render(
   config: any,
   id: string = "donkey",
-  global: IGlobal
+  global?: IGlobalContext
 ) {
   // check config
   if (!config) {

@@ -1,16 +1,13 @@
-import { IFormItem } from "@types-component/form";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import IItem from "@types-component/item";
 import ILayout from "@types-common/layout";
 
-interface ILink extends ILayout, IFormItem {
+interface ILink extends IComponent, IFormItem, ILayout {
   tag: "link";
   text?: string;
-  attr?: {
-    id?: string;
-    href?: string;
-    target?: string;
-    visible?: boolean;
-  };
+  href?: string;
+  target?: string;
   onClick?: (target: HTMLLinkElement) => boolean | void;
   items?: IItem[]
 }

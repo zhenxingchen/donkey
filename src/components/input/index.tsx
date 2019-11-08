@@ -19,7 +19,12 @@ function Input(props: IProps<IInput>) {
   React.useEffect(() => {
     eventListener();
     updateSubject.subscribe({
-      next: (params) => console.log("input receive subscribe", params, config.attr.name, Date.now())
+      next: (params) => console.log(
+        "input receive subscribe",
+        params,
+        config.name,
+        Date.now()
+      )
     });
   }, []);
 
@@ -43,17 +48,17 @@ function Input(props: IProps<IInput>) {
     } else if (typeof result === "string") {
       value = result;
     }
-    config.attr.value = value;
+    config.value = value;
     setConfig({ ...config });
     if (tableContext && tableContext.name) {
       bus.emit("dk-table-data-report", {
         tableName: tableContext.name,
-        data: { [config.attr.name]: config.attr.value }
+        data: { [config.name]: config.value }
       });
     } else if (formContext && formContext.name) {
       bus.emit("dk-form-data-report", {
         formName: formContext.name,
-        data: { [config.attr.name]: config.attr.value }
+        data: { [config.name]: config.value }
       });
     }
   };
@@ -61,14 +66,14 @@ function Input(props: IProps<IInput>) {
   const renderInput = () => {
     return (
       <input
-        id={ config.attr.id }
-        name={ config.attr.name }
-        type={ config.attr.type ? config.attr.type : "text" }
-        value={ config.attr.value }
-        disabled={ !!config.attr.disabled }
-        readOnly={ !!config.attr.readonly }
-        maxLength={ config.attr.maxLength }
-        autoComplete={ config.attr.autoComplete ? "on" : "off" }
+        id={ config.id }
+        name={ config.name }
+        type={ config.type ? config.type : "text" }
+        value={ `${config.value}` }
+        disabled={ !!config.disabled }
+        readOnly={ !!config.readonly }
+        maxLength={ config.maxLength }
+        autoComplete={ config.autoComplete ? "on" : "off" }
         className={ `dk-form-control dk-transition-border ${Layout.componentClassName(config)}` }
         style={ Layout.componentStyle(config) }
         onBlur={ eventHandler.bind(this, "onBlur") }
@@ -79,7 +84,7 @@ function Input(props: IProps<IInput>) {
   };
 
   const renderNumberStep = () => {
-    if (config.attr.type !== 'number') {
+    if (config.type !== 'number') {
       return null;
     }
     return (

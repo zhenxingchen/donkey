@@ -1,47 +1,28 @@
-const breadConfig = {
+var breadConfig = {
   tag: "bread",
-  attr: {
-    split: ">"
-  },
+  split: ">",
   items: [
-    {
-      tag: "icon",
-      attr: {
-        name: "fa-coffee"
-      }
-    },
-    {
-      tag: "span",
-      text: "实验室"
-    },
-    {
-      tag: "span",
-      text: "表单"
-    }
+    { tag: "icon", name: "fa-coffee" },
+    { tag: "span", text: "实验室" },
+    { tag: "span", text: "表单" }
   ]
 };
 
-const formConfig = {
+var formConfig = {
   tag: "form",
-  attr: {
-    name: "searchForm",
-    action: "https://www.some.com",
-    method: "post"
-  },
-  layout: {
-    containerStyle: {
-      padding: "15px 10px"
-    }
+  name: "searchForm",
+  action: "https://www.some.com",
+  method: "post",
+  containerStyle: {
+    padding: "15px 10px"
   },
   items: [
     {
       tag: "input",
       label: "姓名",
       cols: "lg6 md8 sm12 xs24",
-      attr: {
-        name: "username",
-        value: "zhangsan"
-      },
+      name: "username",
+      value: "zhangsan",
       validate: {
         required: true
       }
@@ -53,24 +34,18 @@ const formConfig = {
       items: [
         {
           tag: "radio",
-          attr: {
-            text: "男",
-            name: "sex",
-            value: "1"
-          },
-          layout: {
-            rootStyle: {
-              marginRight: "10px"
-            }
+          text: "男",
+          name: "sex",
+          value: "1",
+          rootStyle: {
+            marginRight: "10px"
           }
         },
         {
           tag: "radio",
-          attr: {
-            text: "女",
-            name: "sex",
-            value: "2"
-          }
+          text: "女",
+          name: "sex",
+          value: "2"
         }
       ]
     },
@@ -78,41 +53,33 @@ const formConfig = {
       tag: "input",
       label: "年龄",
       cols: "lg6 md8 sm12 xs24",
-      attr: {
-        name: "age",
-        value: "23",
-        type: "number"
-      }
+      name: "age",
+      value: "23",
+      type: "number"
     },
     {
       tag: "input",
       label: "密码",
       cols: "lg6 md8 sm12 xs24",
-      attr: {
-        name: "password",
-        value: "zhangsan",
-        type: "password"
-      }
+      name: "password",
+      value: "zhangsan",
+      type: "password"
     },
     {
       tag: "input",
       label: "邮箱",
       cols: "lg6 md8 sm12 xs24",
-      attr: {
-        name: "email",
-        value: "zhangsan",
-        type: "email"
-      }
+      name: "email",
+      value: "zhangsan",
+      type: "email"
     },
     {
       tag: "select",
       label: "班级",
       cols: "lg6 md8 sm12 xs24",
-      attr: {
-        name: "class",
-        value: "zhangsan",
-        placeholder: "请选择班级"
-      },
+      name: "class",
+      value: "zhangsan",
+      placeholder: "请选择班级",
       options: [
         { text: "高三（1）班级", value: "0301" },
         { text: "高三（2）班级", value: "0302" },
@@ -133,16 +100,12 @@ const formConfig = {
           items: [
             {
               tag: "icon",
-              attr: {
-                name: "fa-upload"
-              }
+              name: "fa-upload"
             },
             {
               tag: "span",
               text: "上传",
-              layout: {
-                rootStyle: { marginLeft: "5px" }
-              }
+              rootStyle: { marginLeft: "5px" }
             }
           ]
         }
@@ -152,32 +115,24 @@ const formConfig = {
       tag: "img",
       label: "头像",
       cols: "lg6 md8 sm12 xs24",
-      attr: {
-        src: "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=4230941942,666991723&fm=58",
-        height: "33px"
-      }
+      src: "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=4230941942,666991723&fm=58",
+      height: "33px"
     },
     {
       tag: "span",
       label: "状态",
       text: "正常",
       cols: "lg6 md8 sm12 xs24",
-      layout: {
-        containerStyle: { color: "#888" }
-      },
+      containerStyle: { color: "#888" },
       items: [
         {
           tag: "icon",
-          attr: {
-            name: "fa-info"
-          }
+          name: "fa-info"
         },
         {
           tag: "span",
           text: "正常",
-          layout: {
-            rootStyle: { marginLeft: "5px" }
-          }
+          rootStyle: { marginLeft: "5px" }
         }
       ]
     },
@@ -186,23 +141,17 @@ const formConfig = {
       label: "详细资料",
       text: "点击查看",
       cols: "lg6 md8 sm12 xs24",
-      attr: {
-        href: "https://www.baidu.com",
-        target: "_blank"
-      },
+      href: "https://www.baidu.com",
+      target: "_blank",
       items: [
         {
           tag: "icon",
-          attr: {
-            name: "fa-address-card"
-          }
+          name: "fa-address-card"
         },
         {
           tag: "span",
           text: "点击查看",
-          layout: {
-            rootStyle: { marginLeft: "10px" }
-          }
+          rootStyle: { marginLeft: "10px" }
         }
       ]
     },
@@ -210,9 +159,7 @@ const formConfig = {
       tag: "switch",
       label: "三好学生",
       cols: "lg6 md8 sm12 xs24",
-      attr: {
-        name: "good"
-      }
+      name: "good"
     },
     {
       tag: "group",
@@ -221,173 +168,125 @@ const formConfig = {
       items: [
         {
           tag: "checkbox",
-          attr: {
-            text: "物理",
-            name: "professional",
-            value: "1"
-          },
-          layout: {
-            rootStyle: {
-              marginRight: "15px"
-            }
+          text: "物理",
+          name: "professional",
+          value: "1",
+          rootStyle: {
+            marginRight: "15px"
           }
         },
         {
           tag: "checkbox",
-          attr: {
-            text: "化学",
-            name: "professional",
-            value: "2"
-          },
-          layout: {
-            rootStyle: {
-              marginRight: "15px"
-            }
+          text: "化学",
+          name: "professional",
+          value: "2",
+          rootStyle: {
+            marginRight: "15px"
           }
         },
         {
           tag: "checkbox",
-          attr: {
-            text: "生物",
-            name: "professional",
-            value: "3"
-          },
-          layout: {
-            rootStyle: {
-              marginRight: "15px"
-            }
+          text: "生物",
+          name: "professional",
+          value: "3",
+          rootStyle: {
+            marginRight: "15px"
           }
         },
         {
           tag: "checkbox",
-          attr: {
-            text: "地理",
-            name: "professional",
-            value: "4"
-          },
-          layout: {
-            rootStyle: {
-              marginRight: "15px"
-            }
+          text: "地理",
+          name: "professional",
+          value: "4",
+          rootStyle: {
+            marginRight: "15px"
           }
         },
         {
           tag: "checkbox",
-          attr: {
-            text: "历史",
-            name: "professional",
-            value: "5"
-          },
-          layout: {
-            rootStyle: {
-              marginRight: "15px"
-            }
+          text: "历史",
+          name: "professional",
+          value: "5",
+          rootStyle: {
+            marginRight: "15px"
           }
         },
         {
           tag: "checkbox",
-          attr: {
-            text: "政治",
-            name: "professional",
-            value: "6"
-          }
+          text: "政治",
+          name: "professional",
+          value: "6"
         }
       ]
     },
     {
       tag: "group",
-      layout: {
-        rootStyle: {
-          textAlign: "center"
-        }
+      rootStyle: {
+        textAlign: "center"
       },
       items: [
         {
           tag: "button",
           text: "保存",
-          attr: {
-            type: "submit",
-            color: "blue"
-          },
-          layout: {
-            componentStyle: {
-              width: "34px",
-              height: "33px",
-              borderRadius: "33px",
-              textAlign: "center",
-              padding: 0
-            }
+          type: "submit",
+          color: "blue",
+          rootStyle: {
+            marginRight: "10px"
           },
           items: [
             {
+              tag: "span",
+              text: "查询",
+              rootStyle: { marginRight: "10px" }
+            },
+            {
               tag: "icon",
-              attr: {
-                name: "fa-search"
-              }
+              name: "fa-search"
             }
           ]
         },
         {
           tag: "button",
           text: "重置",
-          attr: {
-            type: "reset",
-            color: "red",
-            disabled: true
-          },
-          layout: {
-            rootStyle: {
-              margin: "5px"
-            }
+          type: "reset",
+          color: "white",
+          rootStyle: {
+            margin: "5px"
           }
         }
       ]
     },
     {
       tag: "table",
-      attr: {
-        checkType: "checkbox"
-      },
+      checkType: "checkbox",
       toolbar: {
         tag: "group",
-        layout: {
-          containerStyle: {
-            marginBottom: "10px"
-          }
+        containerStyle: {
+          marginBottom: "10px"
         },
         items: [
           {
             tag: "button",
             text: "新建",
-            attr: {
-              color: "blue"
-            },
-            layout: {
-              rootStyle: {
-                marginRight: "10px"
-              }
+            color: "blue",
+            rootStyle: {
+              marginRight: "10px"
             }
           },
           {
             tag: "button",
             text: "编辑",
-            attr: {
-              color: "blue",
-              disabled: true
-            },
-            layout: {
-              rootStyle: {
-                marginRight: "10px"
-              }
+            color: "blue",
+            disabled: true,
+            rootStyle: {
+              marginRight: "10px"
             }
           },
           {
             tag: "button",
             text: "删除",
-            attr: {
-              color: "blue",
-              disabled: true
-            }
+            color: "blue",
+            disabled: true
           }
         ]
       },
@@ -434,12 +333,12 @@ const formConfig = {
       ],
       pager: {
         tag: "pager",
-        layout: {
-          containerStyle: { marginTop: "10px" }
-        }
+        containerStyle: { marginTop: "10px" }
       }
     }
   ]
 };
 
-window.dk.render([breadConfig, formConfig]);
+var pageConfig = [breadConfig, formConfig];
+
+window.dk.render(pageConfig);

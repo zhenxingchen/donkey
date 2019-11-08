@@ -1,15 +1,19 @@
 
 export default interface IProps<T> {
-  // for container
+  // portal or render mount
+  target?: HTMLElement;
+  // for portal or render to get parent position
+  parent?: any;
+  // container component
   children?: any;
-  // for config
-  config?: T;
-  // for config items
+  // for items
   configs?: T[];
-  // for list
+  // config
+  config?: T;
+  // list
   key?: string | number;
-  // for table row index
+  // table row index
   rowIndex?: number;
-  // for table col index
+  // table col index
   colIndex?: number;
 }

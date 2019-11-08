@@ -1,13 +1,10 @@
+import IComponent from "@types-common/component";
 import ILayout from "@types-common/layout";
 
-interface IIFrame extends ILayout {
+interface IIFrame extends IComponent, ILayout {
   tag: "iframe";
-  attr?: {
-    id?: string;
-    name?: string;
-    src?: string;
-    visible?: boolean;
-  };
+  name?: string;
+  src?: string;
   onLoad?: () => void;
 }
 

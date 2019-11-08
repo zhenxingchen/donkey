@@ -1,8 +1,10 @@
 import * as React from "react";
 import { FormContext } from "@shared/context";
+import { Layout } from "@util";
+import { CLS } from "@shared/constant";
 import IProps from "@types-common/props";
 import ITextArea from "@types-component/textarea";
-import { Label, Layout } from "@util";
+
 import "./style.less";
 
 function TextArea(props: IProps<ITextArea>) {
@@ -14,14 +16,16 @@ function TextArea(props: IProps<ITextArea>) {
   const [formContext] = React.useContext(FormContext);
 
   const renderTextArea = () => {
+    const componentCls = [];
+    componentCls.push(CLS.form.item);
+    componentCls.push(CLS.transition.border);
+    componentCls.push(Layout.componentClassName(config));
     return (
       <textarea
-        id={ config.attr.id }
-        name={ config.attr.name }
-        cols={ config.attr.cols }
-        rows={ config.attr.rows }
-        className={`dk-form-control dk-transition-border ${Layout.componentClassName(config)}`}
-        style={Layout.componentStyle(config)}
+        id={ config.id }
+        name={ config.name }
+        className={ componentCls.join(" ") }
+        style={ Layout.componentStyle(config) }
       />
     );
   };

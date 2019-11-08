@@ -3,6 +3,10 @@ import { Label, Layout } from "@util";
 import IItem from "@types-component/item";
 import IProps from "@types-common/props";
 
+/**
+ * do some common
+ * visible、gutter
+ */
 function Container(props: IProps<IItem>) {
 
   return (

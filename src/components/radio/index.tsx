@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormContext } from "@shared/context";
 import { Id, Layout } from "@util";
-import Constant from "@shared/constant";
+import { CLS } from "@shared/constant";
 import bus from "@shared/bus";
 import IProps from "@types-common/props";
 import IRadio from "@types-component/radio";
@@ -17,12 +17,12 @@ function Radio(props: IProps<IRadio>) {
   const [formContext] = React.useContext(FormContext);
 
   const changeHandler = () => {
-    if (formContext.data[config.attr.name] === config.attr.value) {
+    if (formContext.data[config.name] === config.value) {
       return ;
     }
     bus.emit("dk-form-data-report", {
       formName: formContext.name,
-      data: { [config.attr.name]: config.attr.value }
+      data: { [config.name]: config.value }
     });
   };
 
@@ -30,28 +30,28 @@ function Radio(props: IProps<IRadio>) {
     if (!config) {
       return null;
     }
-    const checked = config.attr.value === formContext.data[config.attr.name];
-    const disabled = !!config.attr.disabled || formContext.disabled;
+    const checked = config.value === formContext.data[config.name];
+    const disabled = !!config.disabled || formContext.disabled;
     const radioCls = [];
-    radioCls.push(Constant.icon.radio.main);
-    checked ? radioCls.push(Constant.icon.radio.checked) : null;
-    disabled ? radioCls.push(Constant.icon.radio.disabled) : null;
+    radioCls.push(CLS.icon.radio.main);
+    checked ? radioCls.push(CLS.icon.radio.checked) : null;
+    disabled ? radioCls.push(CLS.icon.radio.disabled) : null;
     return (
       <>
         <input
-          id={ config.attr.id }
-          name={ config.attr.name }
-          value={ config.attr.value }
+          id={ config.id }
+          name={ config.name }
+          value={ `${config.value}` }
           type="radio"
           checked={ checked }
           disabled={ disabled }
           onChange={ changeHandler }
         />
-        <label htmlFor={ config.attr.id }>
+        <label htmlFor={ config.id }>
           <i className={ radioCls.join(" ") }/>
           {
-            config.attr.text
-              ? (<span className="text">{ config.attr.text }</span>)
+            config.text
+              ? (<span className="text">{ config.text }</span>)
               : null
           }
         </label>

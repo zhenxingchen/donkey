@@ -1,15 +1,12 @@
-import { IFormItem } from "./form";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import ILayout from "@types-common/layout";
 
-interface IIcon extends ILayout, IFormItem {
+interface IIcon extends IComponent, IFormItem, ILayout {
   tag: "icon";
-  attr?: {
-    id?: string;
-    name?: string;
-    src?: string;
-    width?: number;
-    height?: number;
-  };
+  name?: string;
+  size?: string;
+  color?: string;
   onClick?: (config: IIcon) => void;
 }
 

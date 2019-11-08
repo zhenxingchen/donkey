@@ -17,7 +17,17 @@
 /* btn */
 @btn: ~"@{prefix}-btn";
 
+/* space */
+.space(@multiple) {
+  @space-multiple: @multiple * 8;
+}
+@space-small: .space(1);
+@space-middle: .space(2);
+@space-big: .space(3);
+
 /* color */
+@color-font: rgba(0, 0, 0, 0.65);
+@color-icon: rgba(0, 0, 0, 0.45);
 @color-blue: #1890ff;
 @color-green: #5FB878;
 @color-white: #ffffff;

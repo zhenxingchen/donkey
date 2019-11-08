@@ -11,21 +11,21 @@ function Toast(props: IProps<IToast>) {
   });
 
   const renderIcon = () => {
-    if (!config.attr.icon && !config.attr.type) {
+    if (!config.icon && !config.type) {
       return null;
     }
     const iconClassName = ["fa"];
-    if (config.attr.icon) {
-      iconClassName.push(config.attr.icon);
-    } else if (config.attr.type) {
-      switch (config.attr.type) {
+    if (config.icon) {
+      iconClassName.push(config.icon);
+    } else if (config.type) {
+      switch (config.type) {
         case "warn": iconClassName.push("fa-info-circle"); break;
         case "info": iconClassName.push("fa-info-circle"); break;
         case "success": iconClassName.push("fa-check-circle"); break;
         case "error": iconClassName.push("fa-times-circle"); break;
       }
     }
-    config.attr.type ? iconClassName.push(config.attr.type) : null;
+    config.type ? iconClassName.push(config.type) : null;
     return (
       <i className={ iconClassName.join(" ") }></i>
     );
@@ -38,7 +38,7 @@ function Toast(props: IProps<IToast>) {
     return (
       <>
         { renderIcon() }
-        { config.attr.text }
+        { config.text }
       </>
     );
   };

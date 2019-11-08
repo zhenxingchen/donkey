@@ -10,7 +10,7 @@ export default (config: IConfig) => {
     <label
       className={ Layout.labelClassName(config) }
       style={ Layout.labelStyle(config) }
-      htmlFor={ config.attr.id }
+      htmlFor={ config.id }
     >
       { config["label"] }
     </label>

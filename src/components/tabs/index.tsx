@@ -17,8 +17,8 @@ function Tabs(props: IProps<ITabs>) {
 
   const [config, setConfig] = React.useState(() => {
     const config = props.config;
-    !config.attr.selected
-      ? config.attr.selected = config.items[0].attr.id
+    !config.selected
+      ? config.selected = config.items[0].id
       : "";
     return config;
   });
@@ -26,19 +26,19 @@ function Tabs(props: IProps<ITabs>) {
 
   const getNavClassName = (tab) => {
     const cls = [];
-    tab.attr.id === config.attr.selected ? cls.push("curr") : "";
-    tab.attr.disabled ? cls.push("disabled") : "";
+    tab.id === config.selected ? cls.push("curr") : "";
+    tab.disabled ? cls.push("disabled") : "";
     return cls.join(" ");
   };
 
   const navClickHandler = (tab) => {
     if (
-      config.attr.selected === tab.attr.id
-      || tab.attr.disabled
+      config.selected === tab.id
+      || tab.disabled
     ) {
       return false;
     }
-    config.attr.selected = tab.attr.id;
+    config.selected = tab.id;
     setConfig({ ...config });
   };
 
@@ -56,7 +56,7 @@ function Tabs(props: IProps<ITabs>) {
                 className={ getNavClassName(tab) }
                 onClick={ navClickHandler.bind(this, tab) }
               >
-                { tab.attr.text }
+                { tab.text }
               </li>
             )
           }

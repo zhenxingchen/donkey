@@ -1,17 +1,14 @@
-import { IFormItem } from "./form";
 import IAjax from "@types-common/ajax";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import ILayout from "@types-common/layout";
 
-interface ITree extends ILayout, IFormItem {
+interface ITree extends IComponent, IFormItem, ILayout {
   tag: "tree";
-  attr?: {
-    id?: string;
-    name?: string;
-    value?: string | string[];
-    type?: "checkbox" | "radio";
-    association?: "";
-    visible?: boolean;
-  };
+  name?: string;
+  value?: string | string[];
+  type?: "checkbox" | "radio";
+  association?: "";
   ajax?: IAjax;
   data: {}[];
 }

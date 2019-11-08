@@ -4,25 +4,45 @@
   <h2 align="center">默默的做着一些有意义的事情，不忘初心即可</h2>
 </p>
 
-### 开发理念
+# 约定和说明
 
-> 目标：`管理系统`。管理系统、动态表单系统这些项目中字段超多、校验和交互复杂的静态表单和动态表单，一直以来都是让开发者们最为头大的东东，donkey 就是为了搞定他们而生。顺便再做了一些管理系统应有的其他功能，比如弹窗、侧边栏、吐司提示等等。期望某一天，大家都可以使用 donkey 可以开发任意管理系统
+### 目标
 
-> 使用：`JSON`。化繁为简，任何复杂的页面都可以使用一致性的 json 结构树配置显示并完成全部交互
+> `管理系统`
 
-> UI：严格按照 [AntDesign 设计语言](https://ant.design/docs/spec/introduce-cn)
+管理系统和动态表单项目中，表单字段超多、校验各异和交互复杂，这些通常是开发者们最为头大的东东。donkey 就是为了简化这些事情的一个前端框架。顺便做了比如弹窗、侧边栏、吐司提示等一些好用的组件。期望某一天，大家都可以使用 donkey 可以开发任意管理系统
 
-> Animation：内置`动画`效果尽量使用开源 [animate.css](https://github.com/daneden/animate.css) 并支持用户自定义配置
+### 使用
 
-> Icon：内置小`图标`使用开源 [awesome icon fonts](https://fontawesome.com/) ，或用户自定义指定字体图标库
+> `JSON`
+
+化繁为简，任何复杂的页面都可以使用一致性的 json 配置组件，组成一颗树形配置渲染并完成所有页面端的工作。
+
+### UI
+
+> `AntDesign`
+
+严格按照 [AntDesign 设计语言](https://ant.design/docs/spec/introduce-cn) 重新编写每一个组件展现。
+
+### 动画
+
+> `Animate.css`
+
+框架内置动画效果尽量使用开源 [animate.css](https://github.com/daneden/animate.css) 实现，部分细小交互动画为框架参考业界交互设计实现。大部分组件交互动画还支持用户自定义配置。
+
+### 图标
+
+> `Awesome Icon Fonts`
+
+框架内置图标使用开源 [awesome icon fonts](https://fontawesome.com/) 字体库文件（需额外引入），或用户自定义指定字体图标库。
 
 在此对以上开源设计及项目表示**感谢**。
 
-### 使用方式
+# 使用方式
 
 等发布了之后再补充。
 
-### 开发模式
+# 开发模式
 
 - 安装依赖库
 
@@ -48,9 +68,8 @@ npm run dev
 npm run build
 ```
 
-### 常用插件
+# 常用插件
 
 - [awesome-font-icons-en_US](https://fontawesome.com/icons)
 - [awesome-font-icons-zh_CN](http://www.fontawesome.com.cn/faicons/)
 - [animate.css](https://daneden.github.io/animate.css/)
-

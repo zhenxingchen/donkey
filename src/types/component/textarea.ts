@@ -1,24 +1,18 @@
-import { IFormItem } from "@types-component/form";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import ILayout from "@types-common/layout";
-import IValidate from "@types-common/validte";
 
-interface ITextArea extends ILayout, IFormItem {
+interface ITextArea extends IComponent, IFormItem, ILayout {
   tag: "textarea";
-  attr?: {
-    id?: string;
-    name?: string;
-    value?: string;
-    cols?: number;
-    rows?: number;
-    maxLength?: number;
-    disabled?: boolean;
-    visible?: boolean;
-  }
+  name?: string;
+  value?: string;
+  maxLength?: number;
+  width?: string;
+  height?: string;
   onBlur?: (target: HTMLInputElement) => void | boolean;
   onFocus?: (target: HTMLInputElement) => void | boolean;
   onChange?: (target: HTMLInputElement) => void | boolean;
   onInput?: (target: HTMLInputElement) => void | boolean;
-  validate?: IValidate;
 }
 
 export default ITextArea;

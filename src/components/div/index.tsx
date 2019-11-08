@@ -1,12 +1,11 @@
 import * as React from "react";
-import { Layout } from "@util";
 import IProps from "@types-common/props";
-import IBlock from "@types-component/block";
+import IDiv from "@types-component/div";
 import Item from "@components/item";
 
 import "./style.less";
 
-function Block(props: IProps<IBlock>) {
+function Div(props: IProps<IDiv>) {
 
   const [config] = React.useState(() => {
     const config = props.config;
@@ -19,14 +18,7 @@ function Block(props: IProps<IBlock>) {
       || config.items.length < 1) {
       return null;
     }
-    return (
-      <div
-        className={Layout.containerClassName(config)}
-        style={Layout.containerStyle(config)}
-      >
-        <Item configs={ config.items }/>
-      </div>
-    );
+    return (<Item configs={ config.items }/>);
   };
 
   const render = () => {
@@ -34,9 +26,9 @@ function Block(props: IProps<IBlock>) {
       return null;
     }
     return renderItems();
-  }
+  };
 
   return render();
 }
 
-export default Block;
+export default Div;

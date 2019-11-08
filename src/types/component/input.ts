@@ -1,26 +1,19 @@
-import { IFormItem } from "@types-component/form";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import ILayout from "@types-common/layout";
-import IValidate from "@types-common/validte";
 
-interface IInput extends ILayout, IFormItem {
+export type IInputType = "text" | "password" | "email" | "number";
+
+interface IInput extends IComponent, IFormItem, ILayout {
   tag: "input";
-  attr?: {
-    id?: string;
-    name?: string;
-    type?: "text" | "password" | "email" | "number";
-    value?: string;
-    placeholder?: string;
-    maxLength?: number;
-    disabled?: boolean;
-    readonly?: boolean;
-    autoComplete?: boolean;
-    showClear?: boolean;
-    visible?: boolean;
-  };
+  name?: string;
+  type?: IInputType;
+  maxLength?: number;
+  autoComplete?: boolean;
+  showClear?: boolean;
   onBlur?: (target: HTMLInputElement) => void | boolean;
   onChange?: (target: HTMLInputElement) => void | boolean;
   onFocus?: (target: HTMLInputElement) => void | boolean;
-  validate?: IValidate;
   form?: {};
   table?: {};
 }

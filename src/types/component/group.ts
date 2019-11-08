@@ -1,19 +1,14 @@
-import { IFormItem } from "@types-component/form";
 import IAjax from "@types-common/ajax";
-import ILayout from "@types-common/layout";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import IItem from "@types-component/item";
-import IValidate from "@types-common/validte";
+import ILayout from "@types-common/layout";
 
-interface IGroup extends ILayout, IFormItem {
+interface IGroup extends IComponent, IFormItem, ILayout {
   tag: "group";
-  attr?: {
-    id?: string;
-    name?: string;
-    visible?: boolean;
-  },
+  name?: string;
   items: IItem[];
   permissionAjax?: string | IAjax
-  validate?: IValidate;
 }
 
 export default IGroup;

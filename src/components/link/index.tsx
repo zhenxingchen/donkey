@@ -25,9 +25,9 @@ function Link(props: IProps<ILink>) {
     }
     return (
       <a
-        id={ config.attr.id }
-        href={ config.attr.href }
-        target={ config.attr.target }
+        id={ config.id }
+        href={ config.href }
+        target={ config.target }
         className={ Layout.componentClassName(config) }
         style={ Layout.componentStyle(config) }
         onClick={ handleClick.bind(this) }

@@ -7,12 +7,12 @@ import log from "@shared/log";
 import Container from "@components/container";
 
 import Banner from "@components/banner";
-import Block from "@components/block";
 import Bread from "@components/bread";
 import Button from "@components/button";
 import Carousel from "@components/carousel";
 import Checkbox from "@components/checkbox";
 import Date from "@components/date";
+import Div from "@components/div";
 import Form from "@components/form";
 import Frame from "@components/frame";
 import Group from "@components/group";
@@ -48,20 +48,22 @@ function Item(props: IProps<IItem>) {
 
   const [configs] = React.useState(() => {
     const configs = props.configs;
-    if (!configs) return null;
+    if (!configs) {
+      return null;
+    }
     for (const config of configs) {
       if (!config) continue;
-      !config.attr ? config.attr = {} : "";
-      !config.attr.id ? config.attr.id = Id(config.tag) : null;
+      !config.id ? config.id = Id(config.tag) : null;
     }
     return configs;
   });
 
   const [config] = React.useState(() => {
     const config = props.config;
-    if (!config) return null;
-    !config.attr ? config.attr = {} : "";
-    !config.attr.id ? config.attr.id = Id(config.tag) : null;
+    if (!config) {
+      return null;
+    }
+    !config.id ? config.id = Id(config.tag) : null;
     return config;
   });
 
@@ -74,23 +76,15 @@ function Item(props: IProps<IItem>) {
       case "banner":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Banner config={ config }/> }
-          />
-        );
-      case "block":
-        return (
-          <Container
-            key={ config.attr.id }
-            config={ config }
-            children={ <Block config={ config }/> }
           />
         );
       case "bread":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Bread config={ config } /> }
           />
@@ -98,7 +92,7 @@ function Item(props: IProps<IItem>) {
       case "button":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Button
@@ -112,7 +106,7 @@ function Item(props: IProps<IItem>) {
       case "carousel":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Carousel config={ config }/> }
           />
@@ -120,7 +114,7 @@ function Item(props: IProps<IItem>) {
       case "checkbox":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Checkbox
@@ -134,7 +128,7 @@ function Item(props: IProps<IItem>) {
       case "date":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Date
@@ -145,10 +139,18 @@ function Item(props: IProps<IItem>) {
             }
           />
         );
+      case "div":
+        return (
+          <Container
+            key={ config.id }
+            config={ config }
+            children={ <Div config={ config }/> }
+          />
+        );
       case "form":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Form config={ config }/> }
           />
@@ -156,7 +158,7 @@ function Item(props: IProps<IItem>) {
       case "frame":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Frame config={ config }/> }
           />
@@ -164,7 +166,7 @@ function Item(props: IProps<IItem>) {
       case "group":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Group
@@ -178,7 +180,7 @@ function Item(props: IProps<IItem>) {
       case "html":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Html
@@ -192,7 +194,7 @@ function Item(props: IProps<IItem>) {
       case "icon":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Icon
@@ -206,7 +208,7 @@ function Item(props: IProps<IItem>) {
       case "iframe":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <IFrame config={ config }/> }
           />
@@ -214,7 +216,7 @@ function Item(props: IProps<IItem>) {
       case "img":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Img
@@ -228,7 +230,7 @@ function Item(props: IProps<IItem>) {
       case "input":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Input
@@ -242,7 +244,7 @@ function Item(props: IProps<IItem>) {
       case "layer":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Layer config={ config }/> }
           />
@@ -250,7 +252,7 @@ function Item(props: IProps<IItem>) {
       case "link":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Link
@@ -264,7 +266,7 @@ function Item(props: IProps<IItem>) {
       case "loading":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Loading config={ config }/> }
           />
@@ -272,7 +274,7 @@ function Item(props: IProps<IItem>) {
       case "menu":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Menu config={ config }/> }
           />
@@ -280,7 +282,7 @@ function Item(props: IProps<IItem>) {
       case "modal":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Modal config={ config }/> }
           />
@@ -288,7 +290,7 @@ function Item(props: IProps<IItem>) {
       case "pager":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Pager config={ config }/> }
           />
@@ -296,7 +298,7 @@ function Item(props: IProps<IItem>) {
       case "panel":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Panel config={ config }/> }
           />
@@ -304,7 +306,7 @@ function Item(props: IProps<IItem>) {
       case "progress":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Progress
@@ -318,7 +320,7 @@ function Item(props: IProps<IItem>) {
       case "radio":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Radio
@@ -332,7 +334,7 @@ function Item(props: IProps<IItem>) {
       case "select":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Select
@@ -346,7 +348,7 @@ function Item(props: IProps<IItem>) {
       case "side":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Side config={ config }/> }
           />
@@ -354,7 +356,7 @@ function Item(props: IProps<IItem>) {
       case "slide":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Slide
@@ -368,7 +370,7 @@ function Item(props: IProps<IItem>) {
       case "span":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Span
@@ -382,7 +384,7 @@ function Item(props: IProps<IItem>) {
       case "switch":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Switch
@@ -396,7 +398,7 @@ function Item(props: IProps<IItem>) {
       case "table":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Table
@@ -410,7 +412,7 @@ function Item(props: IProps<IItem>) {
       case "tabs":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Tabs config={ config }/> }
           />
@@ -418,7 +420,7 @@ function Item(props: IProps<IItem>) {
       case "textarea":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <TextArea
@@ -432,7 +434,7 @@ function Item(props: IProps<IItem>) {
       case "toast":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Toast config={ config }/> }
           />
@@ -440,7 +442,7 @@ function Item(props: IProps<IItem>) {
       case "tooltip":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Tooltip config={ config }/> }
           />
@@ -448,7 +450,7 @@ function Item(props: IProps<IItem>) {
       case "transfer":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={ <Transfer config={ config }/> }
           />
@@ -456,7 +458,7 @@ function Item(props: IProps<IItem>) {
       case "tree":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Tree
@@ -470,7 +472,7 @@ function Item(props: IProps<IItem>) {
       case "upload":
         return (
           <Container
-            key={ config.attr.id }
+            key={ config.id }
             config={ config }
             children={
               <Upload
@@ -488,35 +490,19 @@ function Item(props: IProps<IItem>) {
     }
   };
 
-  const renderItems = () => {
-    if (!configs) {
-      return null;
-    }
-    return (
-      <>
-        {
-          configs.map((config) => (
-            configToComponent(config)
-          ))
-        }
-      </>
-    );
-  };
-
-  const renderItem = () => {
-    if (!config) {
-      return null;
-    }
-    return configToComponent(config);
-  };
-
   const render = () => {
-    if (config) {
-      return renderItem();
-    } else if (configs) {
-      return renderItems();
+    if (!config && !configs) {
+      return null;
     }
-    return null;
+    if (config) {
+      return configToComponent(config);
+    } else if (configs){
+      return (
+        <>
+          { configs.map((config) => configToComponent(config)) }
+        </>
+      );
+    }
   };
 
   return render();

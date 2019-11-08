@@ -1,5 +1,5 @@
 import * as React from "react";
-import Constant from "@shared/constant";
+import { CLS, PREFIX } from "@shared/constant";
 import IConfig from "@types-component/item";
 
 const REG = {
@@ -15,7 +15,7 @@ const _cols = (config: IConfig) => {
   for (const c of css) {
     cs.push(
       REG.COLS.test(c)
-      ? `${Constant.cls.prefix}-${c}`
+      ? `${PREFIX}-${c}`
       : c
     );
   }
@@ -24,7 +24,7 @@ const _cols = (config: IConfig) => {
 
 const _formItem = (config: IConfig) => {
   return config && config.hasOwnProperty("label")
-    ? `${Constant.cls.prefix}-form-item`
+    ? CLS.form.item
     : null;
 };
 
@@ -32,49 +32,49 @@ const Layout = {
 
   labelClassName: (config: IConfig) => {
     const className = [];
-    className.push(`${Constant.cls.prefix}-label`);
+    className.push(`${PREFIX}-label`);
     if (
       config["validate"]
       && config["validate"]["required"]
     ) {
-      className.push(`${Constant.cls.prefix}-required-after`);
+      className.push(`${PREFIX}-required-after`);
     }
-    config && config.layout && config.layout.labelClassName
-      ? className.push(config.layout.labelClassName)
+    config && config.labelClassName
+      ? className.push(config.labelClassName)
       : "";
     return className.join(" ");
   },
 
   labelStyle: (config: IConfig) => {
-    return config && config.layout && config.layout.labelStyle
-      ? config.layout.labelStyle
+    return config && config.labelStyle
+      ? config.labelStyle
       : {};
   },
 
   rootClassName: (config: IConfig) => {
     const className = [];
-    className.push(`${Constant.cls.prefix}-${config.tag}`);
+    className.push(`${PREFIX}-${config.tag}`);
     const formItem = _formItem(config);
     const cols = _cols(config);
     formItem ? className.push(formItem) : "";
     cols ? className.push(cols) : "";
-    config && config.layout && config.layout.containerClassName
-      ? className.push(config.layout.containerClassName)
+    config && config.containerClassName
+      ? className.push(config.containerClassName)
       : "";
     return className.join(" ");
   },
 
   rootStyle: (config: IConfig) => {
-    return config && config.layout && config.layout.rootStyle
-      ? config.layout.rootStyle
+    return config && config.rootStyle
+      ? config.rootStyle
       : {};
   },
 
   containerClassName: (config: IConfig) => {
     const className = [];
-    className.push(`${Constant.cls.prefix}-${config.tag}-container`);
-    config && config.layout && config.layout.containerClassName
-      ? className.push(config.layout.containerClassName)
+    className.push(`${PREFIX}-${config.tag}-container`);
+    config && config.containerClassName
+      ? className.push(config.containerClassName)
       : "";
     return className.join(" ");
   },
@@ -83,22 +83,22 @@ const Layout = {
     const style = config.hasOwnProperty("label")
       ? {width: "calc(100% - 110px)"}
       : {};
-    return config && config.layout && config.layout.containerStyle
-      ? config.layout.containerStyle
+    return config && config.containerStyle
+      ? config.containerStyle
       : style;
   },
 
   componentClassName: (config: IConfig) => {
     const className = [];
-    config && config.layout && config.layout.componentClassName
-      ? className.push(config.layout.containerClassName)
+    config && config.componentClassName
+      ? className.push(config.containerClassName)
       : "";
     return className.length > 0 ? className.join(" ") : "";
   },
 
   componentStyle: (config: IConfig) => {
-    return config && config.layout && config.layout.componentStyle
-      ? config.layout.componentStyle
+    return config && config.componentStyle
+      ? config.componentStyle
       : {};
   }
 

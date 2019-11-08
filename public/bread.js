@@ -1,7 +1,4 @@
-/**
- * bread
- */
-const config = {
+var config = {
   tag: "bread",
   attr: {
     id: "bread",
@@ -42,4 +39,6 @@ const config = {
   ]
 };
 
-window.dk.start(config);
+console.log("aaaaaa");
+
+// window.dk.start(config);

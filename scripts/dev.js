@@ -1,6 +1,7 @@
-const path = require("path");
 const { alias, rules } = require("./base");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const path = require("path");
+const webpack = require("webpack");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
@@ -15,6 +16,14 @@ module.exports = {
     alias
   },
   plugins: [
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: [`running : http://localhost:9000`]
+      },
+      onErrors: () => console.log("dev error"),
+      clearConsole: true
+    }),
+    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: "donkey.css",
       hmr: true,
@@ -29,6 +38,8 @@ module.exports = {
     contentBase: path.resolve(__dirname, "../public/"),
     publicPath: "/",
     compress: true,
+    overlay: true,
+    quiet: true,
     port: 9000
   }
 }

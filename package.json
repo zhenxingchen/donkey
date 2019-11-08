@@ -56,6 +56,8 @@
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.14.3",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "node-notifier": "^6.0.0",
     "prettier": "^1.18.2",
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-dev-server": "^3.7.2"

@@ -16,7 +16,7 @@ const breadConfig = {
   }
 };
 const tableToolbar = {
-  tag: "block",
+  tag: "div",
   attr: {
     className: "mt10 mb10 tal"
   },
@@ -259,7 +259,7 @@ const tableParentAndChildConfig = {
 }
 const formItems = [
   {
-    tag: "block",
+    tag: "div",
     items: [
       {
         tag: "input",
@@ -479,14 +479,14 @@ const tabConfig = {
   attr: {},
   items: [
     {
-      tag: "block",
+      tag: "div",
       title: "",
     }
   ]
 };
 
 const config = {
-  tag: "block",
+  tag: "div",
   attr: {},
   items: [
     breadConfig,
@@ -505,7 +505,7 @@ const config = {
       },
     },
     {
-      tag: "block",
+      tag: "div",
       attr: {
         style: {
           padding: "5px 3px",

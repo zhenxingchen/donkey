@@ -90,4 +90,4 @@ var menuConfig = {
   ajax: {}
 };
 
-window.dk.render(menuConfig);
+// window.dk.render(menuConfig);

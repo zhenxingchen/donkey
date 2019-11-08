@@ -93,33 +93,4 @@ const toastGroup = {
   ]
 };
 
-const alertGroup = {
-  tag: "group",
-  label: "警示框",
-  items: [
-    {
-      tag: "button",
-      text: "默认",
-      onClick: function() {
-        dk.alert("保存成功");
-      }
-    },
-    {
-      tag: "button",
-      text: "确认",
-      onClick: function() {
-        dk.confirm("保存成功");
-      }
-    }
-  ]
-};
-
-const dialogConfig = {
-  tag: "block",
-  items: [
-    toastGroup,
-    alertGroup
-  ]
-};
-
-dk.render(dialogConfig);
+dk.render(toastGroup);

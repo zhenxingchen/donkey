@@ -1,6 +1,7 @@
-const path = require("path");
 const { alias, rules } = require("./base");
+const path = require("path");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
@@ -17,6 +18,13 @@ module.exports = {
     alias
   },
   plugins: [
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: ["build success"]
+      },
+      onErrors: () => console.log("build error list, please check"),
+      clearConsole: true
+    }),
     new MiniCssExtractPlugin({
       filename: "donkey.min.css",
       hmr: false,
@@ -27,5 +35,13 @@ module.exports = {
     }),
     new BundleAnalyzerPlugin()
   ],
-  module: { rules }
+  module: { rules },
+  performance: {
+    hints: "warning",
+    maxAssetSize: 512000,
+    maxEntrypointSize: 512000,
+    assetFilter: function(assetFilename) {
+      return assetFilename.endsWith(".css") || assetFilename.endsWith(".js");
+    }
+  }
 };

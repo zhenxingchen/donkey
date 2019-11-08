@@ -1,15 +1,15 @@
+import IComponent from "@types-common/component";
 import ILayout from "@types-common/layout";
 
-interface IToast extends ILayout {
+export type IToastType = "error" | "success" | "warn" | "info";
+
+interface IToast extends IComponent, ILayout {
   tag: "toast";
-  attr?: {
-    id?: string;
-    text?: string;
-    delay?: number;
-    icon?: string;
-    theme?: "white" | "dark";
-    type?: "error" | "success" | "warn" | "info";
-  };
+  text?: string;
+  delay?: number;
+  icon?: string;
+  theme?: "white" | "dark";
+  type?: IToastType;
 }
 
 export default IToast;

@@ -13,12 +13,12 @@ function Panel(props: IProps<IPanel>) {
   });
 
   const renderTop = () => {
-    if (!config.attr.title) {
+    if (!config.title) {
       return null;
     }
     return (
       <div className="dk-panel-header">
-        <span className="title">{ config.attr.title }</span>
+        <span className="title">{ config.title }</span>
       </div>
     );
   };

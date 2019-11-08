@@ -1,28 +1,21 @@
 import IAjax from "@types-common/ajax";
+import IComponent from "@types-common/component";
 import IItem from "@types-component/item";
 import ILayout from "@types-common/layout";
 
-interface IForm extends ILayout {
+interface IForm extends IComponent, ILayout {
   tag: "form";
-  attr?: {
-    id?: string;
-    name?: string;
-    action?: string;
-    method?: string;
-    load?: true;
-    disabled?: boolean;
-    visible?: boolean;
-  };
-  onSubmit?: (formData: object) => boolean | {};
-  onSuccess?: (result: object) => void | {};
-  onValidate?: (msg: string) => void;
+  name?: string;
+  action?: string;
+  method?: string;
+  load?: true;
+  disabled?: boolean;
   ajax?: IAjax;
   data?: {};
   items: IItem[];
-}
-
-export interface IFormItem {
-  label?: string;
+  onSubmit?: (formData: object) => boolean | {};
+  onSuccess?: (result: object) => void | {};
+  onValidate?: (msg: string) => void;
 }
 
 export default IForm;

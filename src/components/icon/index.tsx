@@ -18,7 +18,7 @@ function Icon(props: IProps<IIcon>) {
     }
     return (
       <i
-        className={`fa ${config.attr.name} ${Layout.componentClassName(config)}`}
+        className={`fa ${config.name} ${Layout.componentClassName(config)}`}
         style={Layout.containerStyle(config)}
       >
       </i>

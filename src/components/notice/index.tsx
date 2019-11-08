@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Layout } from "@util";
-import Constant from "@shared/constant";
 import IProps from "@types-common/props";
 import INotice from "@types-component/notice";
 

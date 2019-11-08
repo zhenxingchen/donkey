@@ -18,7 +18,7 @@ function Bread(props: IProps<IBread>) {
     }
     return (
       <span className={"dk-bread-split"}>
-        { config.attr.split }
+        { config.split }
       </span>
     );
   };

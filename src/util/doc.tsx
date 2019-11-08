@@ -1,19 +1,44 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-const append = (component) => {
-  const target = document.createElement("div");
+const create = (tagName: string) =>
+  document.createElement(tagName);
+
+const append = (target: HTMLElement) => {
   document.body.appendChild(target);
-  ReactDOM.render(component, target);
   return target;
 };
 
-const remove = (target) => {
-  ReactDOM.unmountComponentAtNode(target);
+const createAndAppend = (tagName: string) => {
+  return append(create(tagName));
+};
+
+const remove = (target: HTMLElement) =>
   document.body.removeChild(target);
+
+const unmount = (target: HTMLElement) => {
+  ReactDOM.unmountComponentAtNode(target);
+  return target;
+};
+
+const partols = (component, target: HTMLElement) =>
+  ReactDOM.createPortal(component, target);
+
+const render = (component, target: HTMLElement) =>
+  ReactDOM.render(component, target);
+
+const unmoutAndRemove = (target: HTMLElement) => {
+  unmount(target);
+  remove(target);
 };
 
 export default {
+  create,
   append,
-  remove
+  remove,
+  unmount,
+  partols,
+  render,
+  unmoutAndRemove,
+  createAndAppend
 }

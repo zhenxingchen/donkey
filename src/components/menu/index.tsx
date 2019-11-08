@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Layout } from "@util";
-import Constant from "@shared/constant";
+import { CLS } from "@shared/constant";
 import IProps from "@types-common/props";
 import IMenu from "@types-component/menu";
 
@@ -10,24 +10,24 @@ function Menu(props: IProps<IMenu>) {
 
   const [config, setConfig] = React.useState(() => {
     const config = props.config;
-    !config.attr.offset ? config.attr.offset = 10 : null;
+    !config.offset ? config.offset = 10 : null;
     return config;
   });
   const textField =
-    config.attr && config.attr.textField
-    ? config.attr.textField
+    config && config.textField
+    ? config.textField
     : "text";
   const hrefField =
-    config.attr && config.attr.hrefField
-      ? config.attr.hrefField
+    config && config.hrefField
+      ? config.hrefField
       : "href";
   const iconField =
-    config.attr && config.attr.iconField
-      ? config.attr.iconField
+    config && config.iconField
+      ? config.iconField
       : "icon";
   const childrenField =
-    config.attr && config.attr.childrenField
-      ? config.attr.childrenField
+    config && config.childrenField
+      ? config.childrenField
       : "children";
 
   const hasChildren = (node) => {
@@ -54,11 +54,11 @@ function Menu(props: IProps<IMenu>) {
   const renderArrow = (node) => {
     if (hasChildren(node)) {
       const cls = [];
-      cls.push(Constant.icon.arrowY.main);
+      cls.push(CLS.icon.arrowY.main);
       cls.push(
         node["childrenOpen"]
-          ? Constant.icon.arrowY.up
-          : Constant.icon.arrowY.down
+          ? CLS.icon.arrowY.up
+          : CLS.icon.arrowY.down
       );
       return <i className={cls.join(" ")}/>;
     }
@@ -89,7 +89,7 @@ function Menu(props: IProps<IMenu>) {
             <div className="dk-menu-child" key={ index }>
               <a
                 className={'dk-menu-node'}
-                style={ {paddingLeft: level * config.attr.offset + 10} }
+                style={ {paddingLeft: level * config.offset + 10} }
                 href={ node[hrefField] }
                 onClick={ nodeClickHandler.bind(this, node) }
               >

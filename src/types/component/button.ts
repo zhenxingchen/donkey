@@ -1,21 +1,23 @@
-import { IFormItem } from "@types-component/form";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import IItem from "@types-component/item";
 import ILayout from "@types-common/layout";
 
-interface IButton extends ILayout, IFormItem {
+export type IButtonType = "submit" | "reset" | "button";
+
+export type IButtonColor = "blue" | "red" | "gray" | "green" | "white";
+
+interface IButton extends IComponent, IFormItem, ILayout {
   tag: "button";
   text?: string;
-  attr?: {
-    id?: string;
-    title?: string;
-    color?: "blue" | "red" | "gray" | "green" | "white";
-    type?: "submit" | "reset" | "button";
-    permission?: string;
-    disabled?: boolean;
-    visible?: boolean;
-  },
-  onClick?: (target: HTMLButtonElement) => void | boolean;
+  id?: string;
+  color?: IButtonColor;
+  type?: IButtonType;
+  permission?: string;
+  disabled?: boolean;
+  visible?: boolean;
   items?: IItem[];
+  onClick?: (target: HTMLButtonElement) => void | boolean;
 }
 
 export default IButton;

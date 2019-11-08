@@ -1,13 +1,11 @@
+import IComponent from "@types-common/component";
 import IItem from "@types-component/item";
 import ILayout from "@types-common/layout";
 
-interface ITab extends ILayout {
+interface ITab extends IComponent, ILayout {
   tag: "tab";
-  attr?: {
-    id?: string;
-    text?: string;
-    disabled?: boolean;
-  };
+  text?: string;
+  disabled?: boolean;
   items?: IItem[];
   onShow: (config: ITab) => void;
   onHide: (config: ITab) => void;

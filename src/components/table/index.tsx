@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormContext, TableContext} from "@shared/context";
 import { Layout } from "@util";
-import Constant from "@shared/constant";
+import { CLS } from "@shared/constant";
 import IProps from "@types-common/props";
 import ITable from "@types-component/table";
 import Pager from "@components/pager";
@@ -46,13 +46,13 @@ function Table(props: IProps<ITable>) {
         );
       }
       // check col
-      if (config.attr.checkType
-        && ["radio", "checkbox"].indexOf(config.attr.checkType) > -1) {
+      if (config.checkType
+        && ["radio", "checkbox"].indexOf(config.checkType) > -1) {
         rowItems.push(
-          "radio" === config.attr.checkType
-            ? (<i className={Constant.icon.radio.main}/>)
-            : "checkbox" === config.attr.checkType
-            ? (<i className={Constant.icon.checkbox.main}/>)
+          "radio" === config.checkType
+            ? (<i className={CLS.icon.radio.main}/>)
+            : "checkbox" === config.checkType
+            ? (<i className={CLS.icon.checkbox.main}/>)
             : null
         );
       }
@@ -68,7 +68,7 @@ function Table(props: IProps<ITable>) {
         config.children.data = rowData.children;
         const _rowItems = [];
         _rowItems.push(null);
-        ["radio", "checkbox"].indexOf(config.attr.checkType) > -1
+        ["radio", "checkbox"].indexOf(config.checkType) > -1
           ? _rowItems.push(null)
           : null;
         _rowItems.push(config.children);
@@ -105,7 +105,7 @@ function Table(props: IProps<ITable>) {
       return null;
     };
     const renderCheckCol = () => {
-      if (["radio", "checkbox"].indexOf(config.attr.checkType) > -1) {
+      if (["radio", "checkbox"].indexOf(config.checkType) > -1) {
         return (
           <col style={ { width: "50px", minWidth: "50px" }}/>
         );
@@ -147,10 +147,10 @@ function Table(props: IProps<ITable>) {
           : null
       );
       const renderCheckCol = () => (
-        "radio" === config.attr.checkType
+        "radio" === config.checkType
           ? (<th>选择</th>)
-          : "checkbox" === config.attr.checkType
-          ? (<th><i className={ Constant.icon.checkbox.main }></i></th>)
+          : "checkbox" === config.checkType
+          ? (<th><i className={ CLS.icon.checkbox.main }></i></th>)
           : null
       );
       const renderItems = () => {
@@ -252,7 +252,7 @@ function Table(props: IProps<ITable>) {
       return null;
     }
     return (
-      <Pager config={ config.pager }/>
+      <Item config={ config.pager }/>
     );
   };
 
@@ -265,8 +265,8 @@ function Table(props: IProps<ITable>) {
     return (
       <TableContext.Provider
         value={[{
-          name: config.attr.name,
-          disabled: config.attr.disabled
+          name: config.name,
+          disabled: config.disabled
         }]}>
         { renderToolbar() }
         { renderTableMain() }

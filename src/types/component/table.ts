@@ -1,21 +1,18 @@
 import IAjax from "@types-common/ajax";
+import IComponent from "@types-common/component";
 import ILayout from "@types-common/layout";
 import IItem from "@types-component/item";
 import IPager from "@types-component/pager";
 
-interface ITable extends ILayout {
+interface ITable extends IComponent, ILayout {
   tag: "table";
-  attr?: {
-    id?: string;
-    name?: string;
-    checkType?: "checkbox" | "radio";
-    checkField?: string | string[];
-    disabled?: boolean;
-    fixed?: boolean;
-    border?: boolean;
-    zebra?: boolean;
-    visible?: boolean;
-  };
+  name?: string;
+  checkType?: "checkbox" | "radio";
+  checkField?: string | string[];
+  disabled?: boolean;
+  fixed?: boolean;
+  border?: boolean;
+  zebra?: boolean;
   toolbar?: IItem;
   columns: ITableColumns[];
   header?: ITableHeader[] | ITableHeader[][];

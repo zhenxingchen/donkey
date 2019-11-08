@@ -1,4 +1,5 @@
-export default interface IGlobal {
+
+export default interface IGlobalContext {
   // root document id
   root: string;
   // global ajax header

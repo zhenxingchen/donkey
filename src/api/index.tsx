@@ -1,6 +1,6 @@
 import ajax from "./ajax";
 import alert from "./alert";
-import component from "./component";
+import close from "./close";
 import configUpdate from "./configUpdate";
 import confirm from "./confirm";
 import dateFormat from "./dateFormat";
@@ -32,10 +32,10 @@ import tooltip from "./tooltip";
 import urlQuery from "./urlQuery";
 import validateUpdate from "./validateUpdate";
 
-export default {
+export {
   ajax,
   alert,
-  component,
+  close,
   configUpdate,
   confirm,
   dateFormat,
@@ -67,3 +67,4 @@ export default {
   urlQuery,
   validateUpdate
 };
+

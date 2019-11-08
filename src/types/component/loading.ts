@@ -1,11 +1,8 @@
+import IComponent from "@types-common/component";
 import ILayout from "@types-common/layout";
 
-interface ILoading extends ILayout {
+interface ILoading extends IComponent, ILayout {
   tag: "loading";
-  attr?: {
-    id?: string;
-    visible?: boolean;
-  }
 }
 
 export default ILoading;

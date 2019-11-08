@@ -1,18 +1,14 @@
-import { IFormItem } from "@types-component/form";
+import IComponent from "@types-common/component";
+import IFormItem from "@types-common/formItem";
 import ILayout from "@types-common/layout";
 
-interface ICheckbox extends ILayout, IFormItem {
+interface ICheckbox extends IComponent, IFormItem, ILayout {
   tag: "checkbox";
-  attr?: {
-    id?: string;
-    name?: string;
-    nameAlias?: string;
-    text?: string;
-    value?: string | number | string[];
-    disabled?: boolean;
-    readonly?: boolean;
-    visible?: boolean;
-  };
+  name?: string;
+  nameAlias?: string;
+  text?: string;
+  value?: string | number | string[];
   onClick?: (target: HTMLInputElement) => boolean;
 }
+
 export default ICheckbox;

@@ -1,11 +1,8 @@
+import IComponent from "@types-common/component";
 import ILayout from "@types-common/layout";
 
-interface ITooltip extends ILayout {
+interface ITooltip extends IComponent, ILayout {
   tag: "tooltip";
-  attr: {
-    id?: string;
-    visible?: boolean;
-  }
 }
 
 export default ITooltip;

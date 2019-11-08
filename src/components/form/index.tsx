@@ -29,7 +29,7 @@ function Form(props: IProps<IForm>) {
     bus.on("dk-form-data-report", (result) => {
       if (!result
         || !result.formName
-        || result.formName !== props.config.attr.name
+        || result.formName !== props.config.name
         || !result.data) {
         return ;
       }
@@ -66,14 +66,14 @@ function Form(props: IProps<IForm>) {
     return (
       <FormContext.Provider
         value={[{
-          name: config.attr.name,
+          name: config.name,
           data: formData,
-          disabled: config.attr.disabled
+          disabled: config.disabled
         }]}>
         <form
-          name={ config.attr.name }
-          action={ config.attr.action }
-          method={ config.attr.method }
+          name={ config.name }
+          action={ config.action }
+          method={ config.method }
           onSubmit={ handleFormSubmit.bind(this) }
         >
           { renderItems() }

@@ -1,11 +1,8 @@
+import IComponent from "@types-common/component";
 import ILayout from "@types-common/layout";
 
-interface ILayer extends ILayout {
+interface ILayer extends IComponent, ILayout {
   tag: "layer";
-  attr?: {
-    id?: string;
-    visible?: boolean;
-  }
 }
 
 export default ILayer;
