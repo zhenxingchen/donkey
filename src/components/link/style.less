@@ -4,14 +4,18 @@
 @link: ~"@{prefix}-link";
 
 .@{link} {
-  &-container {
-    display: inline-block;
-  }
-  a {
-    text-decoration: none;
-    color: #409eff;
-    &:hover {
-      cursor: pointer;
+  .@{link}-container {
+    overflow: hidden;
+    .@{link}-item {
+      display: inline-block;
+      vertical-align: top;
+    }
+    a {
+      text-decoration: none;
+      color: #409eff;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

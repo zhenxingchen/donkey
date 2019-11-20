@@ -5,6 +5,8 @@ import ILayout from "@types-common/layout";
 interface IPanel extends IComponent, ILayout {
   tag: "panel";
   title?: string;
+  fold?: boolean;
+  headerItems?: IItem[];
   items?: IItem[];
 }
 

@@ -22,10 +22,7 @@ var config = {
         }
       },
       onClick: function(e) {
-        lv.sss({
-          start: "sss",
-          end: "dd"
-        })
+
       }
     },
     {
@@ -41,4 +38,4 @@ var config = {
 
 console.log("aaaaaa");
 
-// window.dk.start(config);
+window.dk.render(config);

@@ -1,9 +1,14 @@
 import * as React from "react";
-import { updateSubject } from "@shared/subject";
+import { configUpdateSubject } from "@shared/subject";
+import IItem from "@types-component/item";
 
-function configUpdate(params) {
-  console.log("update send subscribe...");
-  updateSubject.next(params);
+export type IConfigUpdateParam = {
+  id?: string | string[];
+  config?: IItem
+};
+
+function configUpdate(id: string | string[], config: {}) {
+  configUpdateSubject.next({ id, config });
 }
 
 export default configUpdate;

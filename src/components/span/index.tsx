@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Label, Layout } from "@util";
+import { Layout } from "@util";
+import { PREFIX } from "@shared/constant";
 import ISpan from "@types-component/span";
 import IProps from "@types-common/props";
 import Item from "@components/item";
@@ -23,7 +24,10 @@ function Span(props: IProps<ISpan>) {
       >
         {
           config.items
-            ? <Item configs={config.items}/>
+            ? <Item
+                configs={config.items}
+                className={`${PREFIX}-span-item`}
+              />
             : config.text
         }
       </span>

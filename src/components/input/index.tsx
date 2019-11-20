@@ -1,8 +1,7 @@
 import * as React from "react";
 import { FormContext, TableContext } from "@shared/context";
-import { Label, Layout } from "@util";
-import { updateSubject } from "@shared/subject";
-import bus from "@shared/bus";
+import { Layout } from "@util";
+import { formUpdateSubject } from "@shared/subject";
 import IProps from "@types-common/props";
 import IInput from "@types-component/input";
 import "./style.less";
@@ -18,7 +17,7 @@ function Input(props: IProps<IInput>) {
 
   React.useEffect(() => {
     eventListener();
-    updateSubject.subscribe({
+    formUpdateSubject.subscribe({
       next: (params) => console.log(
         "input receive subscribe",
         params,
@@ -51,15 +50,9 @@ function Input(props: IProps<IInput>) {
     config.value = value;
     setConfig({ ...config });
     if (tableContext && tableContext.name) {
-      bus.emit("dk-table-data-report", {
-        tableName: tableContext.name,
-        data: { [config.name]: config.value }
-      });
+
     } else if (formContext && formContext.name) {
-      bus.emit("dk-form-data-report", {
-        formName: formContext.name,
-        data: { [config.name]: config.value }
-      });
+
     }
   };
 

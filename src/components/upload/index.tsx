@@ -9,7 +9,7 @@ import "./style.less";
 function Upload(props: IProps<IUpload>) {
 
   const fileRef = React.createRef<HTMLInputElement>();
-  const fileId = Id(props.config.tag);
+  const fileId = Id.generate(props.config.tag);
   const [formContext] = React.useContext(FormContext);
   const [config] = React.useState(() => {
     const config = props.config;
@@ -32,12 +32,16 @@ function Upload(props: IProps<IUpload>) {
           className={"dk-upload-text"}
           htmlFor={ fileId }
           onClick={ (e) => {
-            e.nativeEvent.stopImmediatePropagation();
-            // fileRef.current.click();
-          }
+              e.nativeEvent.stopImmediatePropagation();
+              // fileRef.current.click();
+            }
           }
         >
-          { config.items ? <Item configs={ config.items }/> : config.text }
+          {
+            config.items
+            ? <Item configs={ config.items } className={`dk-upload-item`}/>
+            : config.text
+          }
         </label>
       </>
     );

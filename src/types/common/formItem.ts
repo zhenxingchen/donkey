@@ -1,4 +1,4 @@
-import IValidate from "@types-common/validte";
+import IValidate from "@types-common/validate";
 
 export type IFormValue =
   string

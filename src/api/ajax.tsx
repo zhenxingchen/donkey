@@ -1,24 +1,14 @@
 import * as React from "react";
-import IAjax, { IAjaxTrigger } from "@types-common/ajax";
+import IAjax from "@types-common/ajax";
 import Axios from "axios";
 
-/**
- * ajax or ajax trigger
- */
-function ajax(ajax: IAjax | IAjaxTrigger) {
+function ajax(ajax: IAjax) {
   if (!ajax) {
     return false;
   }
-  // ajax
-  if (ajax.hasOwnProperty("url")) {
-    Axios.request({
+  Axios.request({
 
-    });
-  }
-  // trigger
-  else if (ajax.hasOwnProperty("id")) {
-
-  }
+  });
 }
 
 export default ajax;

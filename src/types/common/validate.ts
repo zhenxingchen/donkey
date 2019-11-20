@@ -1,7 +1,8 @@
 /**
  * validate
  */
-export default interface IValidate {
+interface IValidate {
+  // default value is label
   tagName?: string;
   required?: boolean;
   minLength?: number;
@@ -20,6 +21,7 @@ export default interface IValidate {
   creditCardCn?: boolean;
   idCardCn?: boolean;
   reg?: string | RegExp | object;
+  custom?: (value: any) => boolean;
   errorMsg: {
     required?: string;
     minLength?: string;
@@ -38,5 +40,8 @@ export default interface IValidate {
     creditCardCn?: string;
     idCardCn?: string;
     reg?: string;
+    custom?: string;
   }
 }
+
+export default IValidate;

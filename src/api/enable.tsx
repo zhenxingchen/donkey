@@ -1,9 +1,9 @@
 import * as React from "react";
-/**
- * set component enable
- */
-function enable(id: string | string[]) {
+import { enableSubject } from "@shared/subject";
+import IIds from "@types-common/ids";
 
+function enable(id: IIds) {
+  enableSubject.next(id);
 }
 
 export default enable;

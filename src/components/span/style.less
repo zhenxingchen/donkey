@@ -4,8 +4,11 @@
 @span: ~"@{prefix}-span";
 
 .@{span} {
-  display: inline-block;
-  &-container {
+  .@{span}-container {
+    overflow: hidden;
+  }
+  .@{span}-item {
     display: inline-block;
+    vertical-align: top;
   }
 }

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Layout } from "@util";
+import { PREFIX } from "@shared/constant";
 import IProps from "@types-common/props";
 import ILink from "@types-component/link";
 import Item from "@components/item";
@@ -34,7 +35,10 @@ function Link(props: IProps<ILink>) {
       >
         {
           config.items
-            ? <Item configs={ config.items }/>
+            ? <Item
+                configs={ config.items }
+                className={`${PREFIX}-link-item`}
+              />
             : config.text
         }
       </a>

@@ -1,7 +1,8 @@
 import * as React from "react";
 import { FormContext, GlobalContext, GroupContext } from "@shared/context";
+import { useConfig } from "@hooks";
 import { Layout } from "@util";
-import { CLS } from "@shared/constant";
+import { CLS, PREFIX } from "@shared/constant";
 import IProps from "@types-common/props";
 import IButton from "@types-component/button";
 import Item from "@components/item";
@@ -9,12 +10,21 @@ import "./style.less";
 
 function Button(props: IProps<IButton>) {
 
-  const [config] = React.useState(() => {
+  // const [config] = React.useState(() => {
+  //   const config = props.config;
+  //   !config.color ? config.color = "blue" : "";
+  //   !config.type ? config.type = "button" : "";
+  //   return config;
+  // });
+
+  console.log("Button", props.config["text"]);
+  const [config, setConfig] = useConfig<IButton>(() => {
     const config = props.config;
     !config.color ? config.color = "blue" : "";
     !config.type ? config.type = "button" : "";
     return config;
   });
+
   const [formContext] = React.useContext(FormContext);
   const [globalContext] = React.useContext(GlobalContext);
   const [groupContext] = React.useContext(GroupContext);
@@ -44,7 +54,10 @@ function Button(props: IProps<IButton>) {
       >
         {
           config.items
-            ? <Item configs={ config.items }/>
+            ? <Item
+                configs={ config.items }
+                className={`${PREFIX}-button-item`}
+              />
             : config.text
         }
       </button>

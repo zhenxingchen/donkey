@@ -1,5 +1,6 @@
 import * as React from "react";
 import { GroupContext } from "@shared/context";
+import { PREFIX } from "@shared/constant";
 import IProps from "@types-common/props";
 import IGroup from "@types-component/group";
 import Item from "@components/item";
@@ -30,9 +31,10 @@ function Group(props: IProps<IGroup>) {
       return null;
     }
     return (
-      <div className="dk-group-items">
-        <Item configs={ config.items }/>
-      </div>
+      <Item
+        configs={ config.items }
+        className={`${PREFIX}-group-item`}
+      />
     );
   };
 

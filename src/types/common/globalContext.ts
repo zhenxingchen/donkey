@@ -1,5 +1,5 @@
 
-export default interface IGlobalContext {
+interface IGlobalContext {
   // root document id
   root: string;
   // global ajax header
@@ -15,3 +15,5 @@ export default interface IGlobalContext {
   // debug enable console output
   debug?: boolean;
 }
+
+export default IGlobalContext;

@@ -1,7 +1,5 @@
-/**
- * ajax
- */
-export default interface IAjax {
+
+interface IAjax {
   url: string;
   method?: string;
   data?: {};
@@ -13,7 +11,4 @@ export default interface IAjax {
   status?: (code: number) => void;
 }
 
-export interface IAjaxTrigger {
-  id: string;
-  data?: {};
-}
+export default IAjax;

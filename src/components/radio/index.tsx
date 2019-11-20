@@ -1,8 +1,6 @@
 import * as React from "react";
 import { FormContext } from "@shared/context";
-import { Id, Layout } from "@util";
 import { CLS } from "@shared/constant";
-import bus from "@shared/bus";
 import IProps from "@types-common/props";
 import IRadio from "@types-component/radio";
 
@@ -20,10 +18,7 @@ function Radio(props: IProps<IRadio>) {
     if (formContext.data[config.name] === config.value) {
       return ;
     }
-    bus.emit("dk-form-data-report", {
-      formName: formContext.name,
-      data: { [config.name]: config.value }
-    });
+
   };
 
   const render = () => {

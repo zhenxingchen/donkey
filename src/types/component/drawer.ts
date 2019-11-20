@@ -2,25 +2,25 @@ import IComponent from "@types-common/component";
 import IItem from "@types-component/item";
 import ILayout from "@types-common/layout";
 
-type ISidePosition =
+type IDrawerPosition =
   "top"
   | "right"
   | "bottom"
   | "left"
   | { top?: string, left?: string; right?: string ; bottom?: string };
 
-interface ISide extends IComponent, ILayout {
-  tag: "side";
+interface IDrawer extends IComponent, ILayout {
+  tag: "drawer";
   title?: string;
-  position?: ISidePosition;
+  position?: IDrawerPosition;
   width?: string;
   showMask?: boolean;
   showClose?: boolean;
   maskClose?: boolean;
   escClose?: boolean;
-  body: IItem[] | IItem;
+  items: IItem[] | IItem;
   header?: IItem[] | IItem;
   footer?: IItem[] | IItem;
 }
 
-export default ISide;
+export default IDrawer;

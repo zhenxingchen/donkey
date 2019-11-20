@@ -1,3 +1,5 @@
+"use strict";
+
 const { alias, rules } = require("./base");
 const path = require("path");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;

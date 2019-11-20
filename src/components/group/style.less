@@ -1,26 +1,12 @@
 @charset "utf-8";
 @import "../../theme/style";
-
 @group: ~"@{prefix}-group";
-
 .@{group} {
   .@{group}-container {
-    display: inline-block;
+    overflow: hidden;
   }
-  .@{group}-items {
-    white-space: normal;
-    .@{prefix}-button,
-    .@{prefix}-checkbox,
-    .@{prefix}-img,
-    .@{prefix}-input,
-    .@{prefix}-link,
-    .@{prefix}-radio,
-    .@{prefix}-span,
-    .@{prefix}-select,
-    .@{prefix}-selects,
-    .@{prefix}-textarea,
-    .@{prefix}-upload {
-      display: inline-block;
-    }
+  .@{group}-item {
+    display: inline-block;
+    vertical-align: top;
   }
 }

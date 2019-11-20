@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Key } from "@util";
+import { isEmpty } from "@api";
+import { PREFIX, PREFIX_INNER } from "@shared/constant";
 import IProps from "@types-common/props";
 import IBread from "@types-component/bread";
 import Item from "@components/item";
@@ -13,11 +14,11 @@ function Bread(props: IProps<IBread>) {
   });
 
   const renderSplit = (index: number) => {
-    if (index === config.items.length - 1) {
+    if (isEmpty(config.split) || index === config.items.length - 1) {
       return null;
     }
     return (
-      <span className={"dk-bread-split"}>
+      <span className={`${PREFIX}-bread-split`}>
         { config.split }
       </span>
     );
@@ -33,13 +34,13 @@ function Bread(props: IProps<IBread>) {
       <>
         {
           config.items.map((item, index) => (
-            <div
-              className={"dk-bread-item"}
-              key={Key(item, index)}
-            >
-              <Item config={ item }/>
-              { item.tag !== 'icon' ? renderSplit(index) : null }
-            </div>
+            <React.Fragment key={index}>
+              <Item
+                config={ item }
+                className={`${PREFIX}-bread-item`}
+              />
+              { renderSplit(index) }
+            </React.Fragment>
           ))
         }
       </>

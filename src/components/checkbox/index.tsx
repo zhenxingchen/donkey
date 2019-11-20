@@ -4,7 +4,6 @@ import { Id, Layout } from "@util";
 import ICheckbox from "@types-component/checkbox";
 import IProps from "@types-common/props";
 import { CLS } from "@shared/constant";
-import bus from "@shared/bus";
 import "./style.less";
 
 function Checkbox(props: IProps<ICheckbox>) {
@@ -24,10 +23,7 @@ function Checkbox(props: IProps<ICheckbox>) {
     ) {
       return ;
     }
-    bus.emit("dk-form-data-report", {
-      formName: formContext.name,
-      data: { [config.name]: config.value }
-    });
+
   };
 
   const render = () => {

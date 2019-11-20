@@ -1,32 +1,50 @@
 @charset "utf-8";
-
 @import "../theme/style";
-
-.@{prefix}-lg1, .@{prefix}-lg2, .@{prefix}-lg3, .@{prefix}-lg4, .@{prefix}-lg5, .@{prefix}-lg6,
-.@{prefix}-lg7, .@{prefix}-lg8, .@{prefix}-lg9, .@{prefix}-lg10, .@{prefix}-lg11, .@{prefix}-lg12,
-.@{prefix}-lg13, .@{prefix}-lg14, .@{prefix}-lg15, .@{prefix}-lg16, .@{prefix}-lg17, .@{prefix}-lg18,
-.@{prefix}-lg19, .@{prefix}-lg20, .@{prefix}-lg20, .@{prefix}-lg22, .@{prefix}-lg23, .@{prefix}-lg24,
-.@{prefix}-md1, .@{prefix}-md2, .@{prefix}-md3, .@{prefix}-md4, .@{prefix}-md5, .@{prefix}-md6,
-.@{prefix}-md7, .@{prefix}-md8, .@{prefix}-md9, .@{prefix}-md10, .@{prefix}-md11, .@{prefix}-md12,
-.@{prefix}-md13, .@{prefix}-md14, .@{prefix}-md15, .@{prefix}-md16, .@{prefix}-md17, .@{prefix}-md18,
-.@{prefix}-md19, .@{prefix}-md20, .@{prefix}-md20, .@{prefix}-md22, .@{prefix}-md23, .@{prefix}-md24,
-.@{prefix}-sm1, .@{prefix}-sm2, .@{prefix}-sm3, .@{prefix}-sm4, .@{prefix}-sm5, .@{prefix}-sm6,
-.@{prefix}-sm7, .@{prefix}-sm8, .@{prefix}-sm9, .@{prefix}-sm10, .@{prefix}-sm11, .@{prefix}-sm12,
-.@{prefix}-sm13, .@{prefix}-sm14, .@{prefix}-sm15, .@{prefix}-sm16, .@{prefix}-sm17, .@{prefix}-sm18,
-.@{prefix}-sm19, .@{prefix}-sm20, .@{prefix}-sm20, .@{prefix}-sm22, .@{prefix}-sm23, .@{prefix}-sm24,
-.@{prefix}-xs1, .@{prefix}-xs2, .@{prefix}-xs3, .@{prefix}-xs4, .@{prefix}-xs5, .@{prefix}-xs6,
-.@{prefix}-xs7, .@{prefix}-xs8, .@{prefix}-xs9, .@{prefix}-xs10, .@{prefix}-xs11, .@{prefix}-xs12,
-.@{prefix}-xs13, .@{prefix}-xs14, .@{prefix}-xs15, .@{prefix}-xs16, .@{prefix}-xs17, .@{prefix}-xs18,
-.@{prefix}-xs19, .@{prefix}-xs20, .@{prefix}-xs20, .@{prefix}-xs22, .@{prefix}-xs23, .@{prefix}-xs24 {
+.@{prefix}-lg1, .@{prefix}-lg2, .@{prefix}-lg3,
+.@{prefix}-lg4, .@{prefix}-lg5, .@{prefix}-lg6,
+.@{prefix}-lg7, .@{prefix}-lg8, .@{prefix}-lg9,
+.@{prefix}-lg10, .@{prefix}-lg11, .@{prefix}-lg12,
+.@{prefix}-lg13, .@{prefix}-lg14, .@{prefix}-lg15,
+.@{prefix}-lg16, .@{prefix}-lg17, .@{prefix}-lg18,
+.@{prefix}-lg19, .@{prefix}-lg20, .@{prefix}-lg20,
+.@{prefix}-lg22, .@{prefix}-lg23, .@{prefix}-lg24,
+.@{prefix}-md1, .@{prefix}-md2, .@{prefix}-md3,
+.@{prefix}-md4, .@{prefix}-md5, .@{prefix}-md6,
+.@{prefix}-md7, .@{prefix}-md8, .@{prefix}-md9,
+.@{prefix}-md10, .@{prefix}-md11, .@{prefix}-md12,
+.@{prefix}-md13, .@{prefix}-md14, .@{prefix}-md15,
+.@{prefix}-md16, .@{prefix}-md17, .@{prefix}-md18,
+.@{prefix}-md19, .@{prefix}-md20, .@{prefix}-md20,
+.@{prefix}-md22, .@{prefix}-md23, .@{prefix}-md24,
+.@{prefix}-sm1, .@{prefix}-sm2, .@{prefix}-sm3,
+.@{prefix}-sm4, .@{prefix}-sm5, .@{prefix}-sm6,
+.@{prefix}-sm7, .@{prefix}-sm8, .@{prefix}-sm9,
+.@{prefix}-sm10, .@{prefix}-sm11, .@{prefix}-sm12,
+.@{prefix}-sm13, .@{prefix}-sm14, .@{prefix}-sm15,
+.@{prefix}-sm16, .@{prefix}-sm17, .@{prefix}-sm18,
+.@{prefix}-sm19, .@{prefix}-sm20, .@{prefix}-sm20,
+.@{prefix}-sm22, .@{prefix}-sm23, .@{prefix}-sm24,
+.@{prefix}-xs1, .@{prefix}-xs2, .@{prefix}-xs3,
+.@{prefix}-xs4, .@{prefix}-xs5, .@{prefix}-xs6,
+.@{prefix}-xs7, .@{prefix}-xs8, .@{prefix}-xs9,
+.@{prefix}-xs10, .@{prefix}-xs11, .@{prefix}-xs12,
+.@{prefix}-xs13, .@{prefix}-xs14, .@{prefix}-xs15,
+.@{prefix}-xs16, .@{prefix}-xs17, .@{prefix}-xs18,
+.@{prefix}-xs19, .@{prefix}-xs20, .@{prefix}-xs20,
+.@{prefix}-xs22, .@{prefix}-xs23, .@{prefix}-xs24 {
   display: block;
   box-sizing: border-box;
 }
-/* 非响应式布局 */
-.@{prefix}-1, .@{prefix}-2, .@{prefix}-3, .@{prefix}-4, .@{prefix}-5, .@{prefix}-6,
-.@{prefix}-7, .@{prefix}-8, .@{prefix}-9, .@{prefix}-10, .@{prefix}-11, .@{prefix}-12,
-.@{prefix}-13, .@{prefix}-14, .@{prefix}-15, .@{prefix}-16, .@{prefix}-17, .@{prefix}-18,
-.@{prefix}-19, .@{prefix}-20, .@{prefix}-20, .@{prefix}-22, .@{prefix}-23, .@{prefix}-24 {
-  display: inline-block;
+/* no response layout */
+.@{prefix}-1, .@{prefix}-2, .@{prefix}-3,
+.@{prefix}-4, .@{prefix}-5, .@{prefix}-6,
+.@{prefix}-7, .@{prefix}-8, .@{prefix}-9,
+.@{prefix}-10, .@{prefix}-11, .@{prefix}-12,
+.@{prefix}-13, .@{prefix}-14, .@{prefix}-15,
+.@{prefix}-16, .@{prefix}-17, .@{prefix}-18,
+.@{prefix}-19, .@{prefix}-20, .@{prefix}-20,
+.@{prefix}-22, .@{prefix}-23, .@{prefix}-24 {
+  float: left;
   box-sizing: border-box;
 }
 .@{prefix}-1 { width: 4.167%; }

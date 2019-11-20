@@ -6,22 +6,17 @@
 .@{bread} {
   background: @background-color;
   border-bottom: 1px solid @border-color;
-  &-container {
+  .@{bread}-container {
+    overflow: hidden;
     padding: 0 8px;
     line-height: 40px;
   }
-  &-item {
+  .@{bread}-item {
     display: inline-block;
+    vertical-align: top;
   }
-  &-split {
+  .@{bread}-split {
+    display: inline-block;
     padding: 0 5px;
-  }
-  .@{prefix}-link,
-  .@{prefix}-span,
-  .@{prefix}-icon {
-    display: inline-block;
-  }
-  .@{prefix}-icon {
-    margin-right: 8px;
   }
 }

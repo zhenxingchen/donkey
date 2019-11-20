@@ -1,5 +1,5 @@
 
-export default interface IProps<T> {
+interface IProps<T> {
   // portal or render mount
   target?: HTMLElement;
   // for portal or render to get parent position
@@ -16,4 +16,8 @@ export default interface IProps<T> {
   rowIndex?: number;
   // table col index
   colIndex?: number;
+  // for children items
+  className?: string;
 }
+
+export default IProps;

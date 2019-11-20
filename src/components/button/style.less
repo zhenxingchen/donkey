@@ -4,7 +4,16 @@
 @button: ~"@{prefix}-button";
 
 .@{button} {
-  &-container {
+  vertical-align: top;
+  .@{button}-container {
+    overflow: hidden;
+  }
+  .@{button}-item {
     display: inline-block;
+    vertical-align: top;
+  }
+  /* override */
+  .@{prefix}-btn {
+    float: left;
   }
 }

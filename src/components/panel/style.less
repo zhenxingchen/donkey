@@ -4,20 +4,18 @@
 @panel: ~"@{prefix}-panel";
 
 .@{panel} {
-  &-container {
-    display: inline-block;
-  }
-  &-header {
+  .@{panel}-container {}
+  .@{panel}-header {
     height: 44px;
     line-height: 44px;
     background: #f8f8f8;
     border-bottom: 1px solid #e8e8e8;
     padding: 0 15px;
   }
-  &-body {
+  .@{panel}-body {
     background: #fff;
   }
-  &-footer {
+  .@{panel}-footer {
     background: #f8f8f8;
   }
 }

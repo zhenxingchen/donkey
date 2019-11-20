@@ -1,15 +1,12 @@
 @charset "utf-8";
 @import "../../theme/style";
 
-@side: ~"@{prefix}-side";
+@drawer: ~"@{prefix}-drawer";
 
-.@{side} {
-
-  .@{side}-container {
-
+.@{drawer} {
+  .@{drawer}-container {
   }
-
-  .@{side}-mask {
+  .@{drawer}-mask {
     position: absolute;
     top: 0;
     left: 0;
@@ -18,7 +15,7 @@
     background: rgba(0, 0, 0, 0.4);
   }
 
-  .@{side}-wrap {
+  .@{drawer}-wrap {
     position: absolute;
     background: #fff;
     box-shadow: 4px 4px 20px rgba(0,0,0,0.15);
@@ -48,12 +45,12 @@
     }
   }
 
-  .@{side}-wrap-content {
+  .@{drawer}-wrap-content {
     height: 100%;
     overflow: auto;
   }
 
-  .@{side}-header {
+  .@{drawer}-header {
     position: absolute;
     top: 0;
     left: 0;
@@ -80,7 +77,7 @@
     }
   }
 
-  .@{side}-body {
+  .@{drawer}-body {
     padding: 16px 25px;
     &.@{prefix-inner}header {
       margin-top: 80px;
@@ -90,7 +87,7 @@
     }
   }
 
-  .@{side}-footer {
+  .@{drawer}-footer {
     position: absolute;
     right: 0;
     bottom: 0;

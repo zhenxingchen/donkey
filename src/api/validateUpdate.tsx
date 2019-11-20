@@ -1,6 +1,10 @@
 import * as React from "react";
+import IValidate from "@types-common/validate";
 
-function validateUpdate() {
+function validateUpdate(
+  id: string | string[],
+  validate: IValidate
+) {
 
 }
 

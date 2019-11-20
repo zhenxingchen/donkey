@@ -2,6 +2,7 @@ import * as React from "react";
 import { Layout } from "@util";
 import { FormContext } from "@shared/context";
 import { PREFIX, CLS } from "@shared/constant";
+import { docClickSubject } from "@shared/subject";
 import IProps from "@types-common/props";
 import ISelect from "@types-component/select";
 import Options from "./options";
@@ -22,9 +23,7 @@ function Select(props: IProps<ISelect>) {
   const [optionsVisible, setOptionsVisible] = React.useState(false);
 
   React.useEffect(() => {
-    const outsideClick = () => setOptionsVisible(false);
-    document.addEventListener("click", outsideClick);
-    return () => document.removeEventListener("click", outsideClick);
+    docClickSubject.subscribe(() => setOptionsVisible(false));
   }, []);
 
   const render = () => {

@@ -1,12 +1,10 @@
 import * as React from "react";
 import { FormContext } from "@shared/context";
-import { updateSubject } from "@shared/subject";
+import { formUpdateSubject } from "@shared/subject";
 import IProps from "@types-common/props";
 import IForm from "@types-component/form";
 import Item from "@components/item";
 import log from "@shared/log";
-import bus from "@shared/bus";
-
 import "./style.less";
 
 function Form(props: IProps<IForm>) {
@@ -19,30 +17,13 @@ function Form(props: IProps<IForm>) {
 
   React.useEffect(() => {
     eventListener();
-    updateSubject.subscribe({
+    formUpdateSubject.subscribe({
       next: (params) => console.log("form receive subscribe", params)
     });
-    return () => updateSubject.unsubscribe();
   }, []);
 
   const eventListener = () => {
-    bus.on("dk-form-data-report", (result) => {
-      if (!result
-        || !result.formName
-        || result.formName !== props.config.name
-        || !result.data) {
-        return ;
-      }
-      log.debug("form-data-report", result);
-      const data = result.data;
-      for (const key in data) {
-        data.hasOwnProperty(key)
-          ? formData[key] = data[key]
-          : null;
-      }
-      setFormData({ ...formData });
-      log.debug("form data", formData);
-    });
+
   };
 
   const handleFormSubmit = (e) => {
@@ -63,11 +44,12 @@ function Form(props: IProps<IForm>) {
     if (!config) {
       return null;
     }
+    console.log("==============>>>>>> form render");
     return (
       <FormContext.Provider
         value={[{
           name: config.name,
-          data: formData,
+          data: {},
           disabled: config.disabled
         }]}>
         <form

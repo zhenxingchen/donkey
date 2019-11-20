@@ -10,12 +10,9 @@ export type IButtonColor = "blue" | "red" | "gray" | "green" | "white";
 interface IButton extends IComponent, IFormItem, ILayout {
   tag: "button";
   text?: string;
-  id?: string;
   color?: IButtonColor;
   type?: IButtonType;
   permission?: string;
-  disabled?: boolean;
-  visible?: boolean;
   items?: IItem[];
   onClick?: (target: HTMLButtonElement) => void | boolean;
 }

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Doc } from "@util";
 import { CLS, PREFIX, PREFIX_INNER } from "@shared/constant";
+import { winResizeSubject } from "@shared/subject";
 import IProps from "@types-common/props";
 import ISelect from "@types-component/select";
 
@@ -8,17 +9,13 @@ import OptionsEmpty from "./optionsEmpty";
 
 function Options(props: IProps<ISelect>) {
 
-  const target = Doc.create("div");
-  Doc.append(target);
+  const target = Doc.append(Doc.create("div"));
   const [styles, setStyles] = React.useState(null);
 
   React.useEffect(() => {
     resetPosition();
-    window.addEventListener("resize", resetPosition);
-    return () => {
-      Doc.unmoutAndRemove(target);
-      window.removeEventListener("resize", resetPosition);
-    };
+    winResizeSubject.subscribe(() => resetPosition());
+    return () => Doc.unmoutAndRemove(target);
   }, []);
 
   const resetPosition = () => {

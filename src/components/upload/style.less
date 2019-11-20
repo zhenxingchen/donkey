@@ -4,13 +4,17 @@
 @upload: ~"@{prefix}-upload";
 
 .@{upload} {
-  &-container {
-    display: inline-block;
+  .@{upload}-container {
+    overflow: hidden;
   }
-  &-text {
+  .@{upload}-text {
     color: @theme-color;
     &:hover {
       cursor: pointer;
     }
+  }
+  .@{upload}-item {
+    display: inline-block;
+    vertical-align: top;
   }
 }

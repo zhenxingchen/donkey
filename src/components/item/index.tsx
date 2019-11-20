@@ -1,10 +1,8 @@
 import * as React from "react";
-import { Id } from "@util";
+import { Id, Label, Layout } from "@util";
 import IProps from "@types-common/props";
 import IItem from "@types-component/item";
 import log from "@shared/log";
-
-import Container from "@components/container";
 
 import Banner from "@components/banner";
 import Bread from "@components/bread";
@@ -13,6 +11,7 @@ import Carousel from "@components/carousel";
 import Checkbox from "@components/checkbox";
 import Date from "@components/date";
 import Div from "@components/div";
+import Drawer from "@components/drawer";
 import Form from "@components/form";
 import Frame from "@components/frame";
 import Group from "@components/group";
@@ -31,13 +30,13 @@ import Panel from "@components/panel";
 import Progress from "@components/progress";
 import Radio from "@components/radio";
 import Select from "@components/select";
-import Side from "@components/side";
 import Slide from "@components/slide";
 import Span from "@components/span";
 import Switch from "@components/switch";
 import Table from "@components/table";
 import Tabs from "@components/tabs";
 import TextArea from "@components/textarea";
+import TimeLine from "@components/timeline";
 import Toast from "@components/toast";
 import Tooltip from "@components/tooltip";
 import Transfer from "@components/transfer";
@@ -46,462 +45,88 @@ import Upload from "@components/upload";
 
 function Item(props: IProps<IItem>) {
 
-  const [configs] = React.useState(() => {
-    const configs = props.configs;
-    if (!configs) {
-      return null;
-    }
-    for (const config of configs) {
-      if (!config) continue;
-      !config.id ? config.id = Id(config.tag) : null;
-    }
-    return configs;
-  });
-
-  const [config] = React.useState(() => {
-    const config = props.config;
-    if (!config) {
-      return null;
-    }
-    !config.id ? config.id = Id(config.tag) : null;
-    return config;
-  });
-
   const configToComponent = (config) => {
     if (!config || !config.tag) {
       log.warning("the config is empty or tag name is empty", config);
       return config;
     }
+    // set default id
+    !config.id ? config.id = Id.generate(config.tag) : null;
+    let Component;
     switch (config.tag) {
-      case "banner":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Banner config={ config }/> }
-          />
-        );
-      case "bread":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Bread config={ config } /> }
-          />
-        );
-      case "button":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Button
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "carousel":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Carousel config={ config }/> }
-          />
-        );
-      case "checkbox":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Checkbox
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "date":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Date
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "div":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Div config={ config }/> }
-          />
-        );
-      case "form":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Form config={ config }/> }
-          />
-        );
-      case "frame":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Frame config={ config }/> }
-          />
-        );
-      case "group":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Group
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "html":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Html
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "icon":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Icon
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "iframe":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <IFrame config={ config }/> }
-          />
-        );
-      case "img":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Img
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "input":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Input
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "layer":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Layer config={ config }/> }
-          />
-        );
-      case "link":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Link
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "loading":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Loading config={ config }/> }
-          />
-        );
-      case "menu":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Menu config={ config }/> }
-          />
-        );
-      case "modal":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Modal config={ config }/> }
-          />
-        );
-      case "pager":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Pager config={ config }/> }
-          />
-        );
-      case "panel":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Panel config={ config }/> }
-          />
-        );
-      case "progress":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Progress
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "radio":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Radio
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "select":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Select
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "side":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Side config={ config }/> }
-          />
-        );
-      case "slide":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Slide
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "span":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Span
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "switch":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Switch
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "table":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Table
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "tabs":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Tabs config={ config }/> }
-          />
-        );
-      case "textarea":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <TextArea
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "toast":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Toast config={ config }/> }
-          />
-        );
-      case "tooltip":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Tooltip config={ config }/> }
-          />
-        );
-      case "transfer":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={ <Transfer config={ config }/> }
-          />
-        );
-      case "tree":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Tree
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      case "upload":
-        return (
-          <Container
-            key={ config.id }
-            config={ config }
-            children={
-              <Upload
-                config={ config }
-                rowIndex={ props.rowIndex }
-                colIndex={ props.colIndex }
-              />
-            }
-          />
-        );
-      default : {
-        log.error("config.tag has no compared", config);
-        return null;
-      }
+      case "banner": Component = Banner; break;
+      case "bread": Component = Bread; break;
+      case "button": Component = Button; break;
+      case "carousel": Component = Carousel; break;
+      case "checkbox": Component = Checkbox; break;
+      case "date": Component = Date; break;
+      case "div": Component = Div; break;
+      case "drawer": Component = Drawer; break;
+      case "form": Component = Form; break;
+      case "frame": Component = Frame; break;
+      case "group": Component = Group; break;
+      case "html": Component = Html; break;
+      case "icon": Component = Icon; break;
+      case "iframe": Component = IFrame; break;
+      case "img": Component = Img; break;
+      case "input": Component = Input; break;
+      case "layer": Component = Layer; break;
+      case "link": Component = Link; break;
+      case "loading": Component = Loading; break;
+      case "menu": Component = Menu; break;
+      case "modal": Component = Modal; break;
+      case "pager": Component = Pager; break;
+      case "panel": Component = Panel; break;
+      case "progress": Component = Progress; break;
+      case "radio": Component = Radio; break;
+      case "select": Component = Select; break;
+      case "slide": Component = Slide; break;
+      case "span": Component = Span; break;
+      case "switch": Component = Switch; break;
+      case "table": Component = Table; break;
+      case "tabs": Component = Tabs; break;
+      case "textarea": Component = TextArea; break;
+      case "timeline": Component = TimeLine; break;
+      case "toast": Component = Toast; break;
+      case "tooltip": Component = Tooltip; break;
+      case "transfer": Component = Transfer; break;
+      case "tree": Component = Tree; break;
+      case "upload": Component = Upload; break;
+      default : log.error("config.tag has no compared", config);
     }
+    const rootClassName = [];
+    rootClassName.push(Layout.rootClassName(config));
+    props.className ? rootClassName.push(props.className) : null;
+    return Component
+      ? (
+        <div
+          key={ config.id }
+          className={ `${rootClassName.join(" ")}` }
+          style={ Layout.rootStyle(config) }
+        >
+          { config.hasOwnProperty("label") ? Label(config) : null }
+          <div
+            className={ Layout.containerClassName(config) }
+            style={ Layout.containerStyle(config) }
+          >
+            <Component
+              config={ config }
+              rowIndex={ props.rowIndex }
+              colIndex={ props.colIndex }
+            />
+          </div>
+        </div>
+    ) : null;
   };
 
   const render = () => {
-    if (!config && !configs) {
-      return null;
-    }
-    if (config) {
-      return configToComponent(config);
-    } else if (configs){
+    if (props.config) {
+      return configToComponent(props.config);
+    } else if (props.configs){
       return (
         <>
-          { configs.map((config) => configToComponent(config)) }
-        </>
-      );
+          { props.configs.map((config) => configToComponent(config)) }
+        </>);
     }
   };
 

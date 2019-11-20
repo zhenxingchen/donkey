@@ -4,15 +4,16 @@ import close from "./close";
 import configUpdate from "./configUpdate";
 import confirm from "./confirm";
 import dateFormat from "./dateFormat";
-import disabled from "./disabled";
+import disable from "./disable";
 import enable from "./enable";
 import fetch from "./fetch";
 import formSubmit from "./formSubmit";
 import formUpdate from "./formSubmit";
 import hidden from "./hidden";
 import isEmpty from "./isEmpty";
-import itemInsert from "./itemInsert";
-import itemDelete from "./itemDelete";
+import itemPop from "./itemPop";
+import itemPush from "./itemPush";
+import itemSplice from "./itemSplice";
 import jsonFlat from "./jsonFlat";
 import jsonToQuery from "./jsonToQuery";
 import layer from "./layer";
@@ -39,15 +40,16 @@ export {
   configUpdate,
   confirm,
   dateFormat,
-  disabled,
+  disable,
   enable,
   fetch,
   formSubmit,
   formUpdate,
   hidden,
   isEmpty,
-  itemDelete,
-  itemInsert,
+  itemPush,
+  itemPop,
+  itemSplice,
   jsonFlat,
   jsonToQuery,
   layer,

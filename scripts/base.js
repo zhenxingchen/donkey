@@ -3,11 +3,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const alias = {
   "@": path.resolve(__dirname, "../src/"),
+  "@api": path.resolve(__dirname, "../src/api/index"),
+  "@components": path.resolve(__dirname, "../src/components/"),
+  "@hooks": path.resolve(__dirname, "../src/hooks/index"),
+  "@shared": path.resolve(__dirname, "../src/shared/"),
   "@types-common": path.resolve(__dirname, "../src/types/common/"),
   "@types-component": path.resolve(__dirname, "../src/types/component/"),
-  "@components": path.resolve(__dirname, "../src/components/"),
-  "@api": path.resolve(__dirname, "../src/api/index"),
-  "@shared": path.resolve(__dirname, "../src/shared/"),
   "@util": path.resolve(__dirname, "../src/util/index")
 };
 

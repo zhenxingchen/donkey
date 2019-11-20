@@ -6,11 +6,12 @@
     "jsx": "react",
     "baseUrl": "./src",
     "paths": {
+      "@api": ["api/index"],
+      "@components/*": ["components/*"],
+      "@hooks": ["hooks/index"],
+      "@shared/*": ["shared/*"],
       "@types-common/*": ["types/common/*"],
       "@types-component/*": ["types/component/*"],
-      "@components/*": ["components/*"],
-      "@api": ["api/index"],
-      "@shared/*": ["shared/*"],
       "@util": ["util/index"]
     }
   },

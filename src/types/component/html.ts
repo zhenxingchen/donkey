@@ -1,14 +1,13 @@
+import IComponent from "@types-common/component";
 import IFormItem from "@types-common/formItem";
 import ILayout from "@types-common/layout";
 
-interface IHtml extends ILayout, IFormItem {
+interface IHtml extends IComponent, IFormItem, ILayout {
   tag: "html";
-  id?: string;
-  scriptUrl?: string | [];
-  styleUrl?: string | [];
-  visible?: boolean;
-  onLoad?: () => void;
-  onError?: () => void;
+  content?: string;
+  resourceSrc?: string | [];
+  onResourceLoad?: () => void;
+  onResourceError?: () => void;
 }
 
 export default IHtml;

@@ -1,23 +1,45 @@
-import { Subject } from "rxjs";
+import { fromEvent, Subject } from "rxjs";
 
-const docClickSubject = new Subject<{}>();
-const winResizeSubject = new Subject<{}>();
+const docClickSubject = fromEvent(document, "click");
+const winResizeSubject = fromEvent(window, "resize");
+const winCloseSubject = fromEvent(window, "close");
+const enterKeySubject = fromEvent(document, "keyup");
+const escKeySubject = fromEvent(document, "keyup");
 
-const ajaxSubject = new Subject<{}>();
+const ajaxTriggerSubject = new Subject<{}>();
 const alertSubject = new Subject<{}>();
 const closeSubject = new Subject<{}>();
-
-const updateSubject = new Subject<{}>();
-const insertSubject = new Subject<{}>();
-const removeSubject = new Subject<{}>();
+const configUpdateSubject = new Subject<{}>();
+const disabledSubject = new Subject<{}>();
+const enableSubject = new Subject<{}>();
+const formSubmitSubject = new Subject<{}>();
+const formUpdateSubject = new Subject<{}>();
+const itemPopSubject = new Subject<{}>();
+const itemPushSubject = new Subject<{}>();
+const itemSpliceSubject = new Subject<{}>();
+const readonlySubject = new Subject<{}>();
+const validateSubject = new Subject<{}>();
+const visibleSubject = new Subject<{}>();
 
 export {
   docClickSubject,
   winResizeSubject,
-  ajaxSubject,
+  winCloseSubject,
+  enterKeySubject,
+  escKeySubject,
+
+  ajaxTriggerSubject,
   alertSubject,
   closeSubject,
-  updateSubject,
-  insertSubject,
-  removeSubject
+  configUpdateSubject,
+  disabledSubject,
+  enableSubject,
+  formSubmitSubject,
+  formUpdateSubject,
+  itemPopSubject,
+  itemPushSubject,
+  itemSpliceSubject,
+  readonlySubject,
+  validateSubject,
+  visibleSubject
 };

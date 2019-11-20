@@ -5,6 +5,7 @@ import ICarousel from "@types-component/carousel";
 import ICheckbox from "@types-component/checkbox";
 import IDate from "@types-component/date";
 import IDiv from "@types-component/div";
+import IDrawer from "@types-component/drawer"; // todo move out
 import IForm from "@types-component/form";
 import IFrame from "@types-component/frame";
 import IGroup from "@types-component/group";
@@ -24,7 +25,6 @@ import IPanel from "@types-component/panel";
 import IProgress from "@types-component/progress";
 import IRadio from "@types-component/radio";
 import ISelect from "@types-component/select";
-import ISide from "@types-component/side"; // todo move out
 import ISlide from "@types-component/slide";
 import ISpan from "@types-component/span";
 import ISwitch from "@types-component/switch";
@@ -32,6 +32,7 @@ import ITab from "@types-component/tab";
 import ITable from "@types-component/table";
 import ITabs from "@types-component/tabs";
 import ITextArea from "@types-component/textarea";
+import ITimeLine from "@types-component/timeline";
 import IToast from "@types-component/toast"; // todo move out
 import ITooltip from "@types-component/tooltip"; // todo move out
 import ITransfer from "@types-component/transfer";
@@ -46,6 +47,7 @@ type IItem =
   | ICheckbox
   | IDate
   | IDiv
+  | IDrawer
   | IForm
   | IFrame
   | IGroup
@@ -65,7 +67,6 @@ type IItem =
   | IProgress
   | IRadio
   | ISelect
-  | ISide
   | ISlide
   | ISpan
   | ISwitch
@@ -73,6 +74,7 @@ type IItem =
   | ITable
   | ITabs
   | ITextArea
+  | ITimeLine
   | IToast
   | ITooltip
   | ITransfer

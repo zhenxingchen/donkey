@@ -1,10 +1,9 @@
 import * as React from "react";
-/**
- * set component hidden
- */
-function hidden(id: string | string[]) {
+import { visibleSubject } from "@shared/subject";
 
+function hidden(id: string | string[]) {
+  const visible = false;
+  visibleSubject.next({ id, visible });
 }
 
 export default hidden;
-

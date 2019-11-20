@@ -19,7 +19,7 @@ type IGetAlertConfig = (param: AlertParam) => IModal;
 
 const getAlertConfig : IGetAlertConfig =
   (param: AlertParam) => {
-    const modalId = Id("modal");
+    const modalId = Id.generate("modal");
     return {
       tag: "modal",
       id: modalId,
@@ -55,10 +55,7 @@ function alert(
   const target = Doc.createAndAppend("div");
   const alertConfig = getAlertConfig(_param);
   Doc.render(
-    <Modal
-      config={ alertConfig }
-      target={ target }
-    />,
+    <Modal config={ alertConfig } target={ target }/>,
     target
   );
 }

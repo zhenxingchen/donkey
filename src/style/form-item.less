@@ -1,46 +1,44 @@
 @charset "utf-8";
 @import "../theme/style";
 /* 表单元素：处理 label、margin-bottom */
-.dk-form-item {
+.@{prefix}-form-item {
   margin: 0 0 20px 0;
   line-height: @height-form-item;
   white-space: nowrap;
-  //background: #f2f2f2;
-  .dk-label {
-    display: inline-block;
+  .@{prefix}-label {
+    float: left;
     line-height: @height-form-item;
     min-width: 100px;
     margin-right: 8px;
     text-align: right;
     vertical-align: top;
-    &.dk-required-before {
-      &:before {
-        position: absolute;
-        color: #e40;
-        content: "*";
-        margin-top: 3px;
-        margin-left: -10px;
-      }
+  }
+  &.@{prefix}-required-before {
+    &:before {
+      position: absolute;
+      color: #e40;
+      content: "*";
+      margin-top: 3px;
+      margin-left: -10px;
     }
-    &.dk-required-after {
-      &:after {
-        position: absolute;
-        color: #e40;
-        content: "*";
-        margin-top: 3px;
-        margin-right: 1px;
-      }
+  }
+  &.@{prefix}-required-after {
+    &:after {
+      position: absolute;
+      color: #e40;
+      content: "*";
+      margin-top: 3px;
+      margin-right: 1px;
     }
   }
   /* override */
-  .dk-switch-container {
-    position: absolute;
-    top: 6px;
+  .@{prefix}-switch-container {
+    padding-top: 7px;
   }
 }
 
 /* input、select、textarea 默认样式*/
-.dk-form-control {
+.@{prefix}-form-control {
   display: inline-block;
   border: 1px solid @border-color;
   box-sizing: border-box;
@@ -68,6 +66,6 @@
   }
 }
 
-textarea.dk-form-control {
+textarea.@{prefix}-form-control {
   height: 80px;
 }

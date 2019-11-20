@@ -5,9 +5,7 @@ import ILayout from "@types-common/layout";
 
 interface IBread extends IComponent, ILayout {
   tag: "bread";
-  id?: string;
   split?: string;
-  visible?: boolean;
   items?: IItem[];
   ajax?: IAjax;
 }

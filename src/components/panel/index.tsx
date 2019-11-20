@@ -2,7 +2,6 @@ import * as React from "react";
 import IPanel from "@types-component/panel";
 import IProps from "@types-common/props";
 import Item from "@components/item";
-import { Layout } from "@util";
 import "./style.less";
 
 function Panel(props: IProps<IPanel>) {
@@ -24,7 +23,10 @@ function Panel(props: IProps<IPanel>) {
   };
 
   const renderContent = () => {
-    if (!config.items || !(config.items instanceof Array) || config.items.length < 1 ) {
+    if (!config.items
+      || !(config.items instanceof Array)
+      || config.items.length < 1
+    ) {
       return null;
     }
     return (

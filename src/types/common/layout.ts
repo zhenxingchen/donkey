@@ -1,7 +1,7 @@
 /**
  * layout custom
  */
-export default interface ILayout {
+interface ILayout {
   // response cols
   cols?: string;
   // for root
@@ -15,5 +15,11 @@ export default interface ILayout {
   componentStyle?: {};
   // for label
   labelClassName?: string;
-  labelStyle?: {}
+  labelStyle?: {};
+  // space for component container
+  itemsSpace?: number;
+  itemsSpaceLeft?: number;
+  itemsSpaceRight?: number;
 }
+
+export default ILayout;

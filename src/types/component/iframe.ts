@@ -5,6 +5,10 @@ interface IIFrame extends IComponent, ILayout {
   tag: "iframe";
   name?: string;
   src?: string;
+  width?: string;
+  height?: string;
+  border?: boolean;
+  scrolling?: boolean;
   onLoad?: () => void;
 }
 

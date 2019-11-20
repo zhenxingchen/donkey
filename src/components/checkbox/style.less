@@ -1,22 +1,14 @@
 @charset "utf-8";
 @import "../../theme/style";
-
 @checkbox: ~"@{prefix}-checkbox";
-
 .@{checkbox} {
-
-  &-container {
-    display: inline-block;
-  }
-
+  .@{checkbox}-container {}
   input {
     display: none;
   }
-
   label {
     cursor: pointer;
   }
-
   input[disabled] + label {
     cursor: not-allowed;
   }
@@ -25,5 +17,4 @@
     float: left;
     margin: 8px 6px 0 0;
   }
-
 }

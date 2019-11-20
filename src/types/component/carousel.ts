@@ -4,8 +4,6 @@ import IItem from "@types-component/item";
 
 interface ICarousel extends IComponent, ILayout {
   tag: "carousel";
-  id?: string;
-  visible?: boolean;
   items?: IItem[];
   onChange?: (index: number) => void;
 }
